@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public interface ActividadesRepository extends CrudRepository<String, Actividades> {
+public interface ActividadesRepository extends CrudRepository<Actividades, String> {
 }

@@ -3,6 +3,7 @@ package gym.gymServer.Classes;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Empresas {
 
     private String contrasena;
 
-    private String mail;
+    private @Id String mail;
 
     private List<Usuarios> listaUsuarios;
 
