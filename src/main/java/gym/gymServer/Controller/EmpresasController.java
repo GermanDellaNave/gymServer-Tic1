@@ -1,5 +1,6 @@
 package gym.gymServer.Controller;
 
+import gym.gymServer.Classes.Empresas;
 import gym.gymServer.Service.EmpresasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,5 +14,9 @@ public class EmpresasController {
     private EmpresasService empresasService;
 
     public EmpresasController() {
+    }
+
+    public void registrarEmpresa(Empresas nuevaEmpresa) {
+        if
     }
 }

@@ -4,4 +4,6 @@ import gym.gymServer.Classes.Empresas;
 import org.springframework.data.repository.CrudRepository;
 
 public interface EmpresasRepository extends CrudRepository<String, Empresas> {
+
+    Empresas findOneByMail();
 }
