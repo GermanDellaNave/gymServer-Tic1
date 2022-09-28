@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class Empresas {
 
     private @Id String mail;
 
+    @OneToMany
     private List<Usuarios> listaUsuarios;
 
     private List<Integer> listaSaldo;

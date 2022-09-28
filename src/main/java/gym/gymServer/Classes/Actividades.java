@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -24,6 +25,7 @@ public class Actividades {
 
     private @Id LocalDate dia;
 
+    @OneToMany
     private List<Usuarios> listaUsuariosInscriptos;
 
     private boolean conCupos;
