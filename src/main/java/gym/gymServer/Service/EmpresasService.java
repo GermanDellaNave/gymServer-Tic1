@@ -42,4 +42,17 @@ public class EmpresasService {
 
         empresasRepository.deleteById(mailId);
     }
+
+    public void actualizarDatosEmpresa(String mailId, String nombre, String contrasena) throws EmpresaNoExiste {
+        Empresas empresaActualizable = empresasRepository.findOneByMail(mailId);
+
+        if (empresaActualizable == null) {
+            throw new EmpresaNoExiste();
+        }
+
+        empresaActualizable.setContrasena(contrasena);
+        empresaActualizable.setNombre(nombre);
+
+        empresasRepository.save(empresaActualizable);
+    }
 }

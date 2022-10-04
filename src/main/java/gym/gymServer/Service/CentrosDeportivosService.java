@@ -44,4 +44,17 @@ public class CentrosDeportivosService {
 
         centrosDeportivosRepository.deleteById(mailId);
     }
+
+    public void actualizarDatosCD(String mailId, String nombre, String contrasena) throws CentroDeportivoNoExiste {
+        CentrosDeportivos centroActualizable = centrosDeportivosRepository.findOneByMail(mailId);
+
+        if (centroActualizable == null) {
+            throw new CentroDeportivoNoExiste();
+        }
+
+        centroActualizable.setContrasena(contrasena);
+        centroActualizable.setNombre(nombre);
+
+        centrosDeportivosRepository.save(centroActualizable);
+    }
 }

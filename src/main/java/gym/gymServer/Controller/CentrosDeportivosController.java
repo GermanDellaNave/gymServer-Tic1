@@ -36,4 +36,9 @@ public class CentrosDeportivosController {
     public void borrarCentroDeportivo(@PathVariable("centroDeportivoId") String mailId) throws CentroDeportivoNoExiste {
         centrosDeportivosService.borrarCentroDeportivo(mailId);
     }
+
+    @PutMapping("{mail}")
+    public void modificarDatoEmpresa(@PathVariable("centroDeportivoId") String mailId, String nombre, String contrasena) throws CentroDeportivoNoExiste {
+        centrosDeportivosService.actualizarDatosCD(mailId, nombre, contrasena);
+    }
 }
