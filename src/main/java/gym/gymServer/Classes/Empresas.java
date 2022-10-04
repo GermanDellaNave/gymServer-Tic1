@@ -22,14 +22,14 @@ public class Empresas {
     @OneToMany
     private List<Usuarios> listaUsuarios;
 
-    private List<Integer> listaSaldo;
+    //private List<Integer> listaSaldo;
 
-    public Empresas(String nombre, String contrasena, String mail, List<Usuarios> listaUsuarios, List<Integer> listaSaldo) {
+    public Empresas(String nombre, String contrasena, String mail, List<Usuarios> listaUsuarios/*, List<Integer> listaSaldo*/) {
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.mail = mail;
         this.listaUsuarios = listaUsuarios;
-        this.listaSaldo = listaSaldo;
+        //this.listaSaldo = listaSaldo;
     }
 
     public Empresas() {
@@ -67,11 +67,11 @@ public class Empresas {
         this.listaUsuarios = listaUsuarios;
     }
 
-    public List<Integer> getListaSaldo() {
+    /*public List<Integer> getListaSaldo() {
         return listaSaldo;
     }
 
     public void setListaSaldo(List<Integer> listaSaldo) {
         this.listaSaldo = listaSaldo;
-    }
+    }*/
 }

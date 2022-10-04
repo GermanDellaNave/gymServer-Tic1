@@ -2,16 +2,14 @@ package gym.gymServer.Classes;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
 @Entity
 @Table(name = "Actividades")
+@IdClass(ActividadesID.class)
 @Component
 public class Actividades {
 
@@ -34,6 +32,7 @@ public class Actividades {
 
     private boolean reservable;
 
+    @OneToOne
     private @Id CentrosDeportivos centroDeportivo;
 
     public Actividades() {

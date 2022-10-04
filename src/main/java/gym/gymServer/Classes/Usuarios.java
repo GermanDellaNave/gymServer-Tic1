@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +20,7 @@ public class Usuarios {
 
     private String contrasena;
 
+    @OneToOne
     private Empresas empresa;
 
     private int saldoDisponible;

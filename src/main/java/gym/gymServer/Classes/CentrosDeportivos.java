@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Entity
-@Table(name = "Centros Deportivos")
+@Table(name = "Centros_Deportivos")
 @Component
 public class CentrosDeportivos {
 
@@ -22,17 +22,17 @@ public class CentrosDeportivos {
     @OneToMany
     private List<Actividades> listaActividades;
 
-    private List<Integer> listaSaldo;
+    /*private List<Integer> listaSaldo;*/
 
     public CentrosDeportivos() {
     }
 
-    public CentrosDeportivos(String nombre, String contrasena, String mail, List<Actividades> listaActividades, List<Integer> listaSaldo) {
+    public CentrosDeportivos(String nombre, String contrasena, String mail, List<Actividades> listaActividades/*, List<Integer> listaSaldo*/) {
         this.nombre = nombre;
         this.contrasena = contrasena;
         this.mail = mail;
         this.listaActividades = listaActividades;
-        this.listaSaldo = listaSaldo;
+        //this.listaSaldo = listaSaldo;
     }
 
     public String getNombre() {
@@ -66,12 +66,12 @@ public class CentrosDeportivos {
     public void setListaActividades(List<Actividades> listaActividades) {
         this.listaActividades = listaActividades;
     }
-
+/*
     public List<Integer> getListaSaldo() {
         return listaSaldo;
     }
 
     public void setListaSaldo(List<Integer> listaSaldo) {
         this.listaSaldo = listaSaldo;
-    }
+    }*/
 }
