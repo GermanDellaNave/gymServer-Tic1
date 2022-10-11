@@ -5,10 +5,7 @@ import gym.gymServer.Classes.Empresas;
 import gym.gymServer.Classes.Exceptions.EmpresaYaExiste;
 import gym.gymServer.Classes.Login;
 import gym.gymServer.Service.LoginUsuariosService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,8 +18,16 @@ public class LoginUsuariosController {
     public LoginUsuariosController() {
     }
 
+    @PostMapping
+    public void registrarLogin(@RequestBody Login nuevoLogin) throws Exception {
+        System.out.println(nuevoLogin.getContrasena());
+        System.out.println(nuevoLogin.getMail());
+        System.out.println(nuevoLogin.getTipoDeUsuario());
+        loginUsuariosService.registrarLogin(nuevoLogin);
+    }
+
     @GetMapping
-    public String getRole(@RequestBody Login nuevoLogin) throws Exception{
+    public String getRole(Login nuevoLogin) throws Exception{
         return loginUsuariosService.getRole(nuevoLogin.getTipoDeUsuario());
     }
 }

@@ -28,4 +28,11 @@ public class LoginUsuariosService {
         }
         return user.getTipoDeUsuario();
     }
+
+    public void registrarLogin (Login nuevoLogin) throws Exception {
+        if (loginRepository.findOneByMail(nuevoLogin.getMail()) != null) {
+            throw new Exception();
+        }
+        loginRepository.save(nuevoLogin);
+    }
 }

@@ -33,6 +33,7 @@ public class EmpresasService {
         }
 
         empresasRepository.save(nuevaEmpresa);
+        System.out.println("RegistroEmpresa");
     }
 
     public void borrarEmpresa(String mailId) throws EmpresaNoExiste{
@@ -50,7 +51,6 @@ public class EmpresasService {
             throw new EmpresaNoExiste();
         }
 
-        empresaActualizable.setContrasena(contrasena);
         empresaActualizable.setNombre(nombre);
 
         empresasRepository.save(empresaActualizable);

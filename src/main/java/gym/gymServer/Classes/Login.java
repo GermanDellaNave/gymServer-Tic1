@@ -2,10 +2,9 @@ package gym.gymServer.Classes;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "Login")
 @Component

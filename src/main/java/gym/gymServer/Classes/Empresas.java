@@ -2,20 +2,16 @@ package gym.gymServer.Classes;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "Empresas")
 @Component
-public class Empresas {
+@PrimaryKeyJoinColumn(name = "mail")
+public class Empresas extends Login{
 
     private String nombre;
-
-    private String contrasena;
 
     private @Id String mail;
 
@@ -24,9 +20,8 @@ public class Empresas {
 
     //private List<Integer> listaSaldo;
 
-    public Empresas(String nombre, String contrasena, String mail, List<Usuarios> listaUsuarios/*, List<Integer> listaSaldo*/) {
+    public Empresas(String nombre, String mail, List<Usuarios> listaUsuarios/*, List<Integer> listaSaldo*/) {
         this.nombre = nombre;
-        this.contrasena = contrasena;
         this.mail = mail;
         this.listaUsuarios = listaUsuarios;
         //this.listaSaldo = listaSaldo;
@@ -41,14 +36,6 @@ public class Empresas {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
     }
 
     public String getMail() {
