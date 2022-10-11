@@ -5,6 +5,7 @@ import gym.gymServer.Classes.Empresas;
 import gym.gymServer.Classes.Exceptions.EmpresaYaExiste;
 import gym.gymServer.Classes.Login;
 import gym.gymServer.Repository.LoginRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,10 +13,10 @@ import java.util.List;
 @Service
 public class LoginUsuariosService {
 
-    LoginRepository loginRepository;
+    @Autowired
+    private LoginRepository loginRepository;
 
-    public LoginUsuariosService() {
-    }
+    public LoginUsuariosService() {}
 
     public LoginUsuariosService(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
@@ -34,5 +35,6 @@ public class LoginUsuariosService {
             throw new Exception();
         }
         loginRepository.save(nuevoLogin);
+        System.out.println("Login creado");
     }
 }

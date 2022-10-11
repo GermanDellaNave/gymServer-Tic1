@@ -5,6 +5,7 @@ import gym.gymServer.Classes.Empresas;
 import gym.gymServer.Classes.Exceptions.EmpresaYaExiste;
 import gym.gymServer.Classes.Login;
 import gym.gymServer.Service.LoginUsuariosService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequestMapping(path = "/api/login")
 public class LoginUsuariosController {
 
+    @Autowired
     LoginUsuariosService loginUsuariosService;
 
     public LoginUsuariosController() {
