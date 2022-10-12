@@ -30,10 +30,10 @@ public class CentrosDeportivosService {
     }
 
     public void registrarCentroDeportivo (CentrosDeportivos nuevoCentro) throws CentroDeportivoYaExiste {
-        if (centrosDeportivosRepository.findOneByMail(nuevoCentro.getMail()) != null) {
+        /*if (centrosDeportivosRepository.findOneByMail(nuevoCentro.getMail()) != null) {
             System.out.println("ERROR");
             throw new CentroDeportivoYaExiste();
-        }
+        }*/
 
         centrosDeportivosRepository.save(nuevoCentro);
         System.out.println("Registro Centro");
