@@ -7,8 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Usuarios")
 @Component
-@PrimaryKeyJoinColumn(name = "mail")
-public class Usuarios extends Login{
+public class Usuarios{
 
     private String nombre;
 

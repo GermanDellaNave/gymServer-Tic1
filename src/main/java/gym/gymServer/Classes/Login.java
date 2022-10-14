@@ -4,12 +4,12 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Table(name = "Login")
 @Component
 public class Login {
 
+    @Column(name = "mail")
     private @Id String mail;
 
     private String contrasena;

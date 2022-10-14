@@ -8,8 +8,7 @@ import java.util.List;
 @Entity
 @Table(name = "Empresas")
 @Component
-@PrimaryKeyJoinColumn(name = "mail")
-public class Empresas extends Login{
+public class Empresas{
 
     private String nombre;
 

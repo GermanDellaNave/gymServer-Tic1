@@ -8,8 +8,10 @@ import java.util.List;
 @Entity
 @Table(name = "Centros_Deportivos")
 @Component
-@PrimaryKeyJoinColumn(name = "mail")
-public class CentrosDeportivos extends Login {
+public class CentrosDeportivos {
+
+    @OneToOne
+    private Login login;
 
     private String nombre;
 
@@ -18,7 +20,7 @@ public class CentrosDeportivos extends Login {
     @OneToMany
     private List<Actividades> listaActividades;
 
-    /*private List<Integer> listaSaldo;*/
+    /*private List<Integer, CentrosDeportivos> listaSaldo;*/
 
     public CentrosDeportivos() {
     }
