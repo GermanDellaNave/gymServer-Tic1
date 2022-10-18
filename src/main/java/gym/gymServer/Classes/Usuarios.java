@@ -15,6 +15,8 @@ public class Usuarios{
 
     private @Id String mail;
 
+    private String telefono;
+
     @OneToOne
     private Empresas empresa;
 
