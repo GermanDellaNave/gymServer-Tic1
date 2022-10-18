@@ -1,7 +1,9 @@
 package gym.gymServer.Service;
 
 
+import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empresas;
+import gym.gymServer.Classes.Exceptions.CentroDeportivoNoExiste;
 import gym.gymServer.Classes.Exceptions.EmpresaNoExiste;
 import gym.gymServer.Classes.Exceptions.EmpresaYaExiste;
 import gym.gymServer.Repository.EmpresasRepository;
@@ -54,5 +56,16 @@ public class EmpresasService {
         empresaActualizable.setNombre(nombre);
 
         empresasRepository.save(empresaActualizable);
+    }
+
+    public Empresas getEmpresa(String mail) throws EmpresaNoExiste {
+        System.out.println("Buscando");
+        Empresas empresa = empresasRepository.findOneByMail(mail);
+        if (empresa == null) {
+            System.out.println("ERROR");
+            throw new EmpresaNoExiste();
+        }
+        System.out.println("Busqueda Empresa");
+        return empresa;
     }
 }

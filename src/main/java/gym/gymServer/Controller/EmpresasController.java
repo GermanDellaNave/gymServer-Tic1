@@ -1,6 +1,8 @@
 package gym.gymServer.Controller;
 
+import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empresas;
+import gym.gymServer.Classes.Exceptions.CentroDeportivoNoExiste;
 import gym.gymServer.Classes.Exceptions.EmpresaNoExiste;
 import gym.gymServer.Classes.Exceptions.EmpresaYaExiste;
 import gym.gymServer.Service.EmpresasService;
@@ -23,6 +25,12 @@ public class EmpresasController {
     @GetMapping
     public List<Empresas> getEmpresas() {
         return empresasService.getEmpresas();
+    }
+
+    @GetMapping("/empresaMail/{mail}")
+    public Empresas getCentroDeportivo(@PathVariable String mail) throws EmpresaNoExiste {
+        System.out.println("Buscando empresa");
+        return empresasService.getEmpresa(mail);
     }
 
     @PostMapping

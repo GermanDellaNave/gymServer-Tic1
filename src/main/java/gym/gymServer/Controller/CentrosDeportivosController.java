@@ -1,5 +1,6 @@
 package gym.gymServer.Controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empresas;
 import gym.gymServer.Classes.Exceptions.CentroDeportivoNoExiste;
@@ -48,4 +49,5 @@ public class CentrosDeportivosController {
     public void modificarDatoEmpresa(@PathVariable("centroDeportivoId") String mailId, String nombre, String contrasena) throws CentroDeportivoNoExiste {
         centrosDeportivosService.actualizarDatosCD(mailId, nombre, contrasena);
     }
+
 }
