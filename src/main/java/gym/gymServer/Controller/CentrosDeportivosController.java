@@ -22,17 +22,24 @@ public class CentrosDeportivosController {
     public CentrosDeportivosController() {
     }
 
-    @GetMapping
+    @GetMapping("/centros")
     public List<CentrosDeportivos> getCentrosDeportivos() {
         return centrosDeportivosService.getCentrosDeportivos();
     }
 
+    @GetMapping("/centrosMail/{mail}")
+    public CentrosDeportivos getCentroDeportivo(@PathVariable String mail) throws CentroDeportivoNoExiste {
+        System.out.println("Buscando centro");
+        return centrosDeportivosService.getCentroDeportivo(mail);
+    }
+
     @PostMapping
     public void registrarCentroDeportivo(@RequestBody CentrosDeportivos nuevoCentroDeportivo) throws CentroDeportivoYaExiste {
+        System.out.println("Centro Deportivo controller post");
         centrosDeportivosService.registrarCentroDeportivo(nuevoCentroDeportivo);
     }
 
-    @DeleteMapping (path = {"centroDeportivoId"})
+    @DeleteMapping (path = {"/centroDeportivoId"})
     public void borrarCentroDeportivo(@PathVariable("centroDeportivoId") String mailId) throws CentroDeportivoNoExiste {
         centrosDeportivosService.borrarCentroDeportivo(mailId);
     }

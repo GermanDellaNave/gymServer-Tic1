@@ -5,13 +5,12 @@ import gym.gymServer.Classes.Exceptions.EmpresaNoExiste;
 import gym.gymServer.Classes.Exceptions.EmpresaYaExiste;
 import gym.gymServer.Service.EmpresasService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@PreAuthorize("hasRole('EMPRESA')")
+//@PreAuthorize("hasRole('EMPRESA')")
 @RequestMapping (path = "/api/empresas")
 public class EmpresasController {
 

@@ -10,8 +10,8 @@ import java.util.List;
 @Component
 public class CentrosDeportivos {
 
-    @OneToOne
-    private UserLogin userLogin;
+    /*@OneToOne
+    private UserLogin userLogin;*/
 
     private String nombre;
 
@@ -28,7 +28,7 @@ public class CentrosDeportivos {
     public CentrosDeportivos(String nombre, String mail, List<Actividades> listaActividades/*, List<Integer> listaSaldo*/) {
         this.nombre = nombre;
         this.mail = mail;
-        this.listaActividades = listaActividades;
+        //this.listaActividades = listaActividades;
         //this.listaSaldo = listaSaldo;
     }
 
@@ -48,13 +48,13 @@ public class CentrosDeportivos {
         this.mail = mail;
     }
 
-    public List<Actividades> getListaActividades() {
+    /*public List<Actividades> getListaActividades() {
         return listaActividades;
     }
 
     public void setListaActividades(List<Actividades> listaActividades) {
         this.listaActividades = listaActividades;
-    }
+    }*/
 /*
     public List<Integer> getListaSaldo() {
         return listaSaldo;

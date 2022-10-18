@@ -29,12 +29,22 @@ public class CentrosDeportivosService {
         return (List<CentrosDeportivos>) centrosDeportivosRepository.findAll();
     }
 
+    public CentrosDeportivos getCentroDeportivo(String mail) throws CentroDeportivoNoExiste {
+        System.out.println("Buscando");
+        CentrosDeportivos centro = centrosDeportivosRepository.findOneByMail(mail);
+        if (centro == null) {
+            System.out.println("ERROR");
+            throw new CentroDeportivoNoExiste();
+        }
+        System.out.println("Busqueda Centro");
+        return centro;
+    }
+
     public void registrarCentroDeportivo (CentrosDeportivos nuevoCentro) throws CentroDeportivoYaExiste {
-        /*if (centrosDeportivosRepository.findOneByMail(nuevoCentro.getMail()) != null) {
+        if (centrosDeportivosRepository.findOneByMail(nuevoCentro.getMail()) != null) {
             System.out.println("ERROR");
             throw new CentroDeportivoYaExiste();
-        }*/
-
+        }
         centrosDeportivosRepository.save(nuevoCentro);
         System.out.println("Registro Centro");
     }

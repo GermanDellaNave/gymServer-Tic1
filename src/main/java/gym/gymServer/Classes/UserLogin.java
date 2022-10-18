@@ -1,40 +1,31 @@
 package gym.gymServer.Classes;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "Login")
 @Component
-public class UserLogin implements UserDetails {
+public class UserLogin {
 
     @Column(name = "mail")
     private @Id String mail;
 
     private String contrasena;
 
-    @Enumerated(EnumType.STRING)
-    private UserLoginRole tipoDeUsuario;
-
-    private Boolean bloqueada;
-
-    private Boolean enabled;
+    private String tipoDeUsuario;
 
     public UserLogin() {
     }
 
-    public UserLogin(String mail, String contrasena, UserLoginRole tipoDeUsuario, Boolean bloqueada, Boolean enabled) {
+    public UserLogin(String mail, String contrasena, String tipoDeUsuario) {
         this.mail = mail;
         this.contrasena = contrasena;
         this.tipoDeUsuario = tipoDeUsuario;
-        this.bloqueada = bloqueada;
-        this.enabled = enabled;
     }
 
     public String getMail() {
@@ -53,63 +44,11 @@ public class UserLogin implements UserDetails {
         this.contrasena = contrasena;
     }
 
-    public UserLoginRole getTipoDeUsuario() {
+    public String getTipoDeUsuario() {
         return tipoDeUsuario;
     }
 
-    public void setTipoDeUsuario(UserLoginRole tipoDeUsuario) {
+    public void setTipoDeUsuario(String tipoDeUsuario) {
         this.tipoDeUsuario = tipoDeUsuario;
-    }
-
-    public Boolean getBloqueada() {
-        return bloqueada;
-    }
-
-    public void setBloqueada(Boolean bloqueada) {
-        this.bloqueada = bloqueada;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(tipoDeUsuario.name());
-        return Collections.singletonList(authority);
-    }
-
-    @Override
-    public String getPassword() {
-        return contrasena;
-    }
-
-    @Override
-    public String getUsername() {
-        return mail;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return !bloqueada;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
     }
 }
