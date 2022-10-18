@@ -11,7 +11,7 @@ import java.util.List;
 public class CentrosDeportivos {
 
     @OneToOne
-    private Login login;
+    private UserLogin userLogin;
 
     private String nombre;
 
