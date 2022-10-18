@@ -17,7 +17,8 @@ public class Usuarios{
 
     private String telefono;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "mailEmpresa")
     private Empresas empresa;
 
     private int saldoDisponible;
