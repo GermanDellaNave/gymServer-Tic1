@@ -28,7 +28,7 @@ public class EmpresasController {
     }
 
     @GetMapping("/empresaMail/{mail}")
-    public Empresas getCentroDeportivo(@PathVariable String mail) throws EmpresaNoExiste {
+    public Empresas getEmpresa(@PathVariable String mail) throws EmpresaNoExiste {
         System.out.println("Buscando empresa");
         return empresasService.getEmpresa(mail);
     }

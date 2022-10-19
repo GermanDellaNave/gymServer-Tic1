@@ -12,7 +12,6 @@ public class Empresas{
 
     private String nombre;
 
-    @Column(name = "mailEmpresa")
     private @Id String mail;
 
     @OneToMany

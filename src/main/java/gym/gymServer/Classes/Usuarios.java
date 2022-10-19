@@ -17,20 +17,21 @@ public class Usuarios{
 
     private String telefono;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "mailEmpresa")
-    private Empresas empresa;
+    private Empresas mailEmpresa;*/
 
     private int saldoDisponible;
 
     public Usuarios() {
     }
 
-    public Usuarios(String nombre, String apellido, String mail, Empresas empresa, int saldoDisponible) {
+    public Usuarios(String nombre, String apellido, String mail, String telefono, String mailEmpresa, int saldoDisponible) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
-        this.empresa = empresa;
+        this.telefono = telefono;
+        //this.mailEmpresa = mailEmpresa;
         this.saldoDisponible = saldoDisponible;
     }
 
@@ -58,13 +59,13 @@ public class Usuarios{
         this.mail = mail;
     }
 
-    public Empresas getEmpresa() {
-        return empresa;
+    /*public String getMailEmpresa() {
+        return mailEmpresa;
     }
 
-    public void setEmpresa(Empresas empresa) {
-        this.empresa = empresa;
-    }
+    public void setMailEmpresa(String mailEmpresa) {
+        this.mailEmpresa = mailEmpresa;
+    }*/
 
     public int getSaldoDisponible() {
         return saldoDisponible;
@@ -72,5 +73,13 @@ public class Usuarios{
 
     public void setSaldoDisponible(int saldoDisponible) {
         this.saldoDisponible = saldoDisponible;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }
