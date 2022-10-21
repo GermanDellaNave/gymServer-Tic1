@@ -29,9 +29,14 @@ public class CentrosDeportivosController {
     }
 
     @GetMapping("/centrosMail/{mail}")
-    public CentrosDeportivos getCentroDeportivo(@PathVariable String mail) throws CentroDeportivoNoExiste {
+    public CentrosDeportivos getCentroDeportivo(@PathVariable("mail") String mail) throws CentroDeportivoNoExiste {
         System.out.println("Buscando centro");
         return centrosDeportivosService.getCentroDeportivo(mail);
+    }
+
+    @GetMapping(path = "/nombreCentro/{mail}")
+    public String getNombreCentro(@PathVariable("mail") String mail) {
+        return centrosDeportivosService.getCentroDeportivoNombre(mail);
     }
 
     @PostMapping

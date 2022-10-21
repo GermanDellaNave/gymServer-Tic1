@@ -40,6 +40,16 @@ public class CentrosDeportivosService {
         return centro;
     }
 
+    public String getCentroDeportivoNombre(String mail) {
+        System.out.println("Buscando");
+        CentrosDeportivos centro = centrosDeportivosRepository.findOneByMail(mail);
+        if (centro == null) {
+            return null;
+        } else {
+            return centro.getNombre();
+        }
+    }
+
     public void registrarCentroDeportivo (CentrosDeportivos nuevoCentro) throws CentroDeportivoYaExiste {
         if (centrosDeportivosRepository.findOneByMail(nuevoCentro.getMail()) != null) {
             System.out.println("ERROR");
