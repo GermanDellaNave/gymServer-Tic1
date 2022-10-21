@@ -3,6 +3,7 @@ package gym.gymServer.Service;
 import gym.gymServer.Classes.UserLogin;
 import gym.gymServer.Repository.UserLoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,17 +12,22 @@ public class UserLoginService {
     @Autowired
     private UserLoginRepository userLoginRepository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     public UserLoginService() {
     }
 
-    public UserLoginService(UserLoginRepository userLoginRepository) {
+    public UserLoginService(UserLoginRepository userLoginRepository, PasswordEncoder passwordEncoder) {
         this.userLoginRepository = userLoginRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public String getRole(String mail) throws Exception {
         UserLogin user = userLoginRepository.findOneByMail(mail);
         if (user == null) {
-            throw new Exception();
+            return null;
+            //throw new Exception("Usuario no encontrado");
         }
         System.out.println("Encontrado");
         return user.getTipoDeUsuario();
@@ -31,8 +37,9 @@ public class UserLoginService {
         if (userLoginRepository.findOneByMail(nuevoUserLogin.getMail()) != null) {
             throw new Exception("Entidad ya existe");
         }
-        UserLogin nuevoUsuario = new UserLogin(nuevoUserLogin.getMail(), nuevoUserLogin.getContrasena(), nuevoUserLogin.getTipoDeUsuario());
-        userLoginRepository.save(nuevoUsuario);
+        String encodedPassword = this.passwordEncoder.encode(nuevoUserLogin.getContrasena());
+        nuevoUserLogin.setContrasena(encodedPassword);
+        userLoginRepository.save(nuevoUserLogin);
         System.out.println("Login creado");
     }
 
@@ -42,5 +49,13 @@ public class UserLoginService {
             throw new Exception("Entidad no existe");
         }
         return usuarioTmpl.getTipoDeUsuario();
+    }
+
+    public Boolean confirmPassword(String mail, String password) throws Exception {
+        UserLogin userLogin = userLoginRepository.findOneByMail(mail);
+        if (userLogin == null) {
+            return null;
+        }
+        return this.passwordEncoder.matches(password, userLogin.getContrasena());
     }
 }
