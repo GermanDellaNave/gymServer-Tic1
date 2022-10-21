@@ -35,8 +35,8 @@ public class UserLoginController {
         return userLoginService.getRole(mail);
     }
 
-    @GetMapping(path = "/password/{mail}/{password}")
-    public Boolean confirmPassword(@PathVariable("mail") String mail, @PathVariable("password") String password) throws Exception {
+    @GetMapping(path = "/password/{mail}/{contrasenaUsuario}")
+    public Boolean confirmPassword(@PathVariable("mail") String mail, @PathVariable("contrasenaUsuario") String password) {
         return userLoginService.confirmPassword(mail, password);
     }
 }
