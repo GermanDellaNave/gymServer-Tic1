@@ -11,17 +11,18 @@ import java.util.List;
 @Table(name = "Actividades")
 @IdClass(ActividadesID.class)
 @Component
-public class Actividades {
+public class Actividades extends ActividadesID {
+
+    private ActividadesID idActividad;
 
     private @Id String nombre;
-
-    private String tipo;
-
-    private String descripcion;
 
     private @Id LocalTime hora;
 
     private @Id LocalDate dia;
+    private String tipo;
+
+    private String descripcion;
 
     @OneToMany
     private List<Usuarios> listaUsuariosInscriptos;
@@ -33,29 +34,19 @@ public class Actividades {
     private boolean reservable;
 
     @OneToOne
-    private @Id CentrosDeportivos centroDeportivo;
+    private CentrosDeportivos centroDeportivo;
 
     public Actividades() {
+        super();
     }
 
     public Actividades(String nombre, String tipo, String descripcion, LocalTime hora, LocalDate dia, List<Usuarios> listaUsuariosInscriptos, boolean conCupos, int cupos, boolean reservable) {
-        this.nombre = nombre;
         this.tipo = tipo;
         this.descripcion = descripcion;
-        this.hora = hora;
-        this.dia = dia;
         this.listaUsuariosInscriptos = listaUsuariosInscriptos;
         this.conCupos = conCupos;
         this.cupos = cupos;
         this.reservable = reservable;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getTipo() {
@@ -72,22 +63,6 @@ public class Actividades {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public LocalTime getHora() {
-        return hora;
-    }
-
-    public void setHora(LocalTime hora) {
-        this.hora = hora;
-    }
-
-    public LocalDate getDia() {
-        return dia;
-    }
-
-    public void setDia(LocalDate dia) {
-        this.dia = dia;
     }
 
     public List<Usuarios> getListaUsuariosInscriptos() {

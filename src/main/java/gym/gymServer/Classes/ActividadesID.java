@@ -24,4 +24,8 @@ public class ActividadesID implements Serializable {
         this.dia = dia;
         this.centroDeportivo = centroDeportivo;
     }
+
+    public ActividadesID() {
+
+    }
 }
