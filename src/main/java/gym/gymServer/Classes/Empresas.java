@@ -13,7 +13,7 @@ import java.util.Objects;
 public class Empresas implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "mail_empresa", referencedColumnName = "mail", nullable = false)
+    @JoinColumn(name = "mail_empresa", referencedColumnName = "mail"/*, nullable = false*/)
     private UserLogin userLoginReference;
 
     private String nombre;

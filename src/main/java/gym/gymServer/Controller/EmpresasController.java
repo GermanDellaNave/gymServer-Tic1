@@ -35,6 +35,7 @@ public class EmpresasController {
 
     @PostMapping
     public void registrarEmpresa(@RequestBody Empresas nuevaEmpresa) throws EmpresaYaExiste {
+        System.out.println(nuevaEmpresa);
         empresasService.registrarEmpresa(nuevaEmpresa);
     }
 
