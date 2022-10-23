@@ -1,12 +1,14 @@
 package gym.gymServer.Classes;
 
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Objects;
 
 public class ActividadesID implements Serializable {
 
@@ -27,5 +29,18 @@ public class ActividadesID implements Serializable {
 
     public ActividadesID() {
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ActividadesID that = (ActividadesID) o;
+        return Objects.equals(nombre, that.nombre) && Objects.equals(hora, that.hora) && Objects.equals(dia, that.dia) && Objects.equals(centroDeportivo, that.centroDeportivo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, hora, dia, centroDeportivo);
     }
 }

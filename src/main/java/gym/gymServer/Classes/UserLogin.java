@@ -15,6 +15,7 @@ public class UserLogin {
     @Column(name = "mail")
     private @Id String mail;
 
+    @Column(name = "contraseña", nullable = false)
     private String contrasena;
 
     private String tipoDeUsuario;

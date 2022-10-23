@@ -1,7 +1,7 @@
 package gym.gymServer.Controller;
 
-import gym.gymServer.Classes.Usuarios;
-import gym.gymServer.Service.UsuariosService;
+import gym.gymServer.Classes.Empleado;
+import gym.gymServer.Service.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping (path = "/api/usuarios")
-public class UsuariosController {
+public class EmpleadoController {
 
     @Autowired
-    private UsuariosService usuariosService;
+    private EmpleadoService empleadoService;
 
-    public UsuariosController() {}
+    public EmpleadoController() {}
 
     @PostMapping
-    public void registrarUsuario(@RequestBody Usuarios usuario ) throws Exception {
-        usuariosService.registrarUsuario(usuario);
+    public void registrarUsuario(@RequestBody Empleado usuario ) throws Exception {
+        empleadoService.registrarUsuario(usuario);
     }
 
 
