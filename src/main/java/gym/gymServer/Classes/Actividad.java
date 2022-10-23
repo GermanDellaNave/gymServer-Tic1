@@ -3,16 +3,15 @@ package gym.gymServer.Classes;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Table(name = "Actividades")
+@Table(name = "Actividad")
 @IdClass(value = ActividadesID.class)
 @Component
-public class Actividades {
+public class Actividad {
 
     @Column(name = "nombreActividad")
     private @Id String nombre;
@@ -45,11 +44,11 @@ public class Actividades {
     @Id
     private CentrosDeportivos centroDeportivo;
 
-    public Actividades() {
+    public Actividad() {
         super();
     }
 
-    public Actividades(String nombre, String tipo, String descripcion, LocalTime hora, LocalDate dia, boolean conCupos, int cupos, boolean reservable) {
+    public Actividad(String nombre, String tipo, String descripcion, LocalTime hora, LocalDate dia, boolean conCupos, int cupos, boolean reservable) {
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.conCupos = conCupos;

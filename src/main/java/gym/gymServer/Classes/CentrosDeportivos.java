@@ -21,8 +21,8 @@ public class CentrosDeportivos implements Serializable {
     @Column(name = "mailCentro")
     private @Id String mail;
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Actividades.class, mappedBy = "centroDeportivo")
-    private List<Actividades> listaActividades;
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = Actividad.class, mappedBy = "centroDeportivo")
+    private List<Actividad> listaActividades;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "centroDeportivo")
     private List<Pago> pagos;
@@ -30,7 +30,7 @@ public class CentrosDeportivos implements Serializable {
     public CentrosDeportivos() {
     }
 
-    public CentrosDeportivos(String nombre, String mail, List<Actividades> listaActividades) {
+    public CentrosDeportivos(String nombre, String mail, List<Actividad> listaActividades) {
         this.nombre = nombre;
         this.mail = mail;
         this.listaActividades = listaActividades;
@@ -52,11 +52,11 @@ public class CentrosDeportivos implements Serializable {
         this.mail = mail;
     }
 
-    public List<Actividades> getListaActividades() {
+    public List<Actividad> getListaActividades() {
         return listaActividades;
     }
 
-    public void setListaActividades(List<Actividades> listaActividades) {
+    public void setListaActividades(List<Actividad> listaActividades) {
         this.listaActividades = listaActividades;
     }
 

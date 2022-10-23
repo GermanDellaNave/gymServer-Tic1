@@ -1,17 +1,17 @@
 package gym.gymServer.Controller;
 
-import gym.gymServer.Service.ActividadesService;
+import gym.gymServer.Service.ActividadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping (path = "/api/actividades")
-public class ActividadesController {
+public class ActividadController {
 
     @Autowired
-    private ActividadesService actividadesService;
+    private ActividadService actividadService;
 
-    public ActividadesController() {
+    public ActividadController() {
     }
 }

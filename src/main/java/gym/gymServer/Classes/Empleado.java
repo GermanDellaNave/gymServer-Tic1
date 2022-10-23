@@ -12,6 +12,7 @@ public class Empleado {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuarioLogin", referencedColumnName = "mail", nullable = false)
     private UserLogin userLoginReference;
+
     private String nombre;
 
     private String apellido;
