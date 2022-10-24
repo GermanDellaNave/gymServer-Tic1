@@ -29,15 +29,17 @@ public class CentrosDeportivosService {
         return (List<CentrosDeportivos>) centrosDeportivosRepository.findAll();
     }
 
-    public CentrosDeportivos getCentroDeportivo(String mail) throws CentroDeportivoNoExiste {
+    public CentrosDeportivos getCentroDeportivo(String mail) {
         System.out.println("Buscando");
         CentrosDeportivos centro = centrosDeportivosRepository.findOneByMail(mail);
         if (centro == null) {
-            System.out.println("ERROR");
-            throw new CentroDeportivoNoExiste();
+            System.out.println("ERROR: centro no existe");
+            return null;
+        } else {
+            System.out.println("Busqueda Centro exitosa");
+            return centro;
         }
-        System.out.println("Busqueda Centro");
-        return centro;
+
     }
 
     public String getCentroDeportivoNombre(String mail) {
@@ -59,12 +61,10 @@ public class CentrosDeportivosService {
         System.out.println("Registro Centro");
     }
 
-    public void borrarCentroDeportivo(String mailId) throws CentroDeportivoNoExiste {
-        if (centrosDeportivosRepository.findOneByMail(mailId) == null) {
-            throw new CentroDeportivoNoExiste();
+    public void borrarCentroDeportivo(String mailId) {
+        if (centrosDeportivosRepository.findOneByMail(mailId) != null) {
+            centrosDeportivosRepository.deleteById(mailId);
         }
-
-        centrosDeportivosRepository.deleteById(mailId);
     }
 
     public void actualizarDatosCD(String mailId, String nombre, String contrasena) throws CentroDeportivoNoExiste {
