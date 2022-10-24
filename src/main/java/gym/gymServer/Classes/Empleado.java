@@ -3,6 +3,7 @@ package gym.gymServer.Classes;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Empleados"/* uniqueConstraints = {@UniqueConstraint(name = "uniqueConstraint", columnNames = "nombre")}*/)
@@ -31,6 +32,9 @@ public class Empleado {
     private int saldoOriginal;
 
     private int deuda;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "empleadoMailInscripciones")
+    private List<InscripcionesActividades> actividadesInscripto;
 
     public Empleado() {
     }

@@ -25,13 +25,13 @@ public class Actividad {
 
     private String descripcion;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "empleado_actividad", joinColumns = {@JoinColumn(name = "nombre_actividad", referencedColumnName = "nombreActividad"),
-            @JoinColumn(name = "hora_actividad", referencedColumnName = "horaActividad"),
-            @JoinColumn(name = "dia_actividad", referencedColumnName = "diaActividad"),
-            @JoinColumn(name = "centro_actividad", referencedColumnName = "centro_mail")},
-            inverseJoinColumns = @JoinColumn(name = "mail_empleado", referencedColumnName = "mailEmpleado"))
-    private List<Empleado> listaEmpleadoInscriptos;
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "empleado_actividad", joinColumns = {@JoinColumn(name = "nombre_actividad", referencedColumnName = "nombreActividad"),
+//            @JoinColumn(name = "hora_actividad", referencedColumnName = "horaActividad"),
+//            @JoinColumn(name = "dia_actividad", referencedColumnName = "diaActividad"),
+//            @JoinColumn(name = "centro_actividad", referencedColumnName = "centro_mail")},
+//            inverseJoinColumns = @JoinColumn(name = "mail_empleado", referencedColumnName = "mailEmpleado"))
+//    private List<Empleado> listaEmpleadoInscriptos;
 
     private boolean conCupos;
 
@@ -43,6 +43,9 @@ public class Actividad {
     @JoinColumn(name = "centro_mail", referencedColumnName = "mailCentro")
     @Id
     private CentrosDeportivos centroDeportivo;
+
+    @OneToMany(fetch = FetchType.EAGER/*, mappedBy = "actividadNombreInscripcion","actividadDiaInscripcion","actividadHoraInscripcion"*/)
+    private List<InscripcionesActividades> actividadesInscripto;
 
     public Actividad() {
         super();
@@ -96,13 +99,13 @@ public class Actividad {
         this.descripcion = descripcion;
     }
 
-    public List<Empleado> getListaEmpleadoInscriptos() {
+    /*public List<Empleado> getListaEmpleadoInscriptos() {
         return listaEmpleadoInscriptos;
     }
 
     public void setListaEmpleadoInscriptos(List<Empleado> listaEmpleadoInscriptos) {
         this.listaEmpleadoInscriptos = listaEmpleadoInscriptos;
-    }
+    }*/
 
     public boolean isConCupos() {
         return conCupos;
@@ -144,7 +147,7 @@ public class Actividad {
                 ", dia=" + dia +
                 ", tipo='" + tipo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", listaEmpleadoInscriptos=" + listaEmpleadoInscriptos +
+                //", listaEmpleadoInscriptos=" + listaEmpleadoInscriptos +
                 ", conCupos=" + conCupos +
                 ", cupos=" + cupos +
                 ", reservable=" + reservable +
