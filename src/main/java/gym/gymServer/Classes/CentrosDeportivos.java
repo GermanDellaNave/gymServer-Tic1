@@ -12,7 +12,7 @@ import java.util.Objects;
 @Component
 public class CentrosDeportivos implements Serializable {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "usuarioLogin", referencedColumnName = "mail", nullable = false)
     private UserLogin userLogin;
 

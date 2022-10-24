@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Component
 public class Empleado {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "usuarioLogin", referencedColumnName = "mail", nullable = false)
     private UserLogin userLoginReference;
 
