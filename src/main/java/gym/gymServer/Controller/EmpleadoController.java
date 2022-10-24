@@ -18,8 +18,8 @@ public class EmpleadoController {
     public EmpleadoController() {}
 
     @PostMapping
-    public void registrarUsuario(@RequestBody Empleado usuario ) throws Exception {
-        empleadoService.registrarUsuario(usuario);
+    public void registrarEmpleado (@RequestBody Empleado empleado) throws Exception {
+        empleadoService.registrarEmpleado(empleado);
     }
 
 

@@ -18,11 +18,11 @@ public class EmpleadoService {
         this.empleadoRepository = empleadoRepository;
     }
 
-    public void registrarUsuario(Empleado usuario) throws Exception {
-        if(empleadoRepository.findOneByMail(usuario.getMail())!=null){
+    public void registrarEmpleado(Empleado empleado) throws Exception {
+        if(empleadoRepository.findOneByMail(empleado.getMail())!=null){
             throw new Exception();
         }
-        empleadoRepository.save(usuario);
-        System.out.println("Registro usuario");
+        empleadoRepository.save(empleado);
+        System.out.println("Registro empleado");
     }
 }
