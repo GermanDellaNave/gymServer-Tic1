@@ -56,6 +56,17 @@ public class Actividad {
         this.reservable = reservable;
     }
 
+    public Actividad(String nombre, LocalTime hora, LocalDate dia, String tipo, String descripcion, int cupos, boolean reservable, CentrosDeportivos centroDeportivo) {
+        this.nombre = nombre;
+        this.hora = hora;
+        this.dia = dia;
+        this.tipo = tipo;
+        this.descripcion = descripcion;
+        this.cupos = cupos;
+        this.reservable = reservable;
+        this.centroDeportivo = centroDeportivo;
+    }
+
     public String getNombre() {
         return nombre;
     }
