@@ -22,7 +22,7 @@ public class EmpresasController {
     public EmpresasController() {
     }
 
-    @GetMapping
+    @GetMapping("/allEmpresas")
     public List<Empresas> getEmpresas() {
         return empresasService.getEmpresas();
     }

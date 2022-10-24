@@ -56,7 +56,99 @@ public class Actividad {
         this.reservable = reservable;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
+    public LocalTime getHora() {
+        return hora;
+    }
 
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
+    }
+
+    public LocalDate getDia() {
+        return dia;
+    }
+
+    public void setDia(LocalDate dia) {
+        this.dia = dia;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public List<Empleado> getListaEmpleadoInscriptos() {
+        return listaEmpleadoInscriptos;
+    }
+
+    public void setListaEmpleadoInscriptos(List<Empleado> listaEmpleadoInscriptos) {
+        this.listaEmpleadoInscriptos = listaEmpleadoInscriptos;
+    }
+
+    public boolean isConCupos() {
+        return conCupos;
+    }
+
+    public void setConCupos(boolean conCupos) {
+        this.conCupos = conCupos;
+    }
+
+    public int getCupos() {
+        return cupos;
+    }
+
+    public void setCupos(int cupos) {
+        this.cupos = cupos;
+    }
+
+    public boolean isReservable() {
+        return reservable;
+    }
+
+    public void setReservable(boolean reservable) {
+        this.reservable = reservable;
+    }
+
+    public CentrosDeportivos getCentroDeportivo() {
+        return centroDeportivo;
+    }
+
+    public void setCentroDeportivo(CentrosDeportivos centroDeportivo) {
+        this.centroDeportivo = centroDeportivo;
+    }
+
+    @Override
+    public String toString() {
+        return "Actividad{" +
+                "nombre='" + nombre + '\'' +
+                ", hora=" + hora +
+                ", dia=" + dia +
+                ", tipo='" + tipo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", listaEmpleadoInscriptos=" + listaEmpleadoInscriptos +
+                ", conCupos=" + conCupos +
+                ", cupos=" + cupos +
+                ", reservable=" + reservable +
+                ", centroDeportivo=" + centroDeportivo +
+                '}';
+    }
 }
