@@ -12,8 +12,8 @@ import java.util.Objects;
 @Component
 public class Empresas implements Serializable {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "mail_empresa", referencedColumnName = "mail"/*, nullable = false*/)
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "user_login", referencedColumnName = "mail"/*, nullable = false*/)
     private UserLogin userLoginReference;
 
     private String nombre;

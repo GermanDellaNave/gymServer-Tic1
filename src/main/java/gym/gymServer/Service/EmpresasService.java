@@ -33,7 +33,8 @@ public class EmpresasService {
         if (empresasRepository.findOneByMail(nuevaEmpresa.getMail()) != null) {
             throw new EmpresaYaExiste();
         }
-
+        System.out.println("Definicion empresa service");
+        System.out.println(nuevaEmpresa);
         empresasRepository.save(nuevaEmpresa);
         System.out.println("RegistroEmpresa");
     }

@@ -52,4 +52,13 @@ public class UserLogin {
     public void setTipoDeUsuario(String tipoDeUsuario) {
         this.tipoDeUsuario = tipoDeUsuario;
     }
+
+    @Override
+    public String toString() {
+        return "UserLogin{" +
+                "mail='" + mail + '\'' +
+                ", contrasena='" + contrasena + '\'' +
+                ", tipoDeUsuario='" + tipoDeUsuario + '\'' +
+                '}';
+    }
 }
