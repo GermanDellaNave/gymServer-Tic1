@@ -45,12 +45,13 @@ public class CentrosDeportivosController {
         centrosDeportivosService.registrarCentroDeportivo(nuevoCentroDeportivo);
     }
 
-    @DeleteMapping (path = {"/centroDeportivoId"})
+    @DeleteMapping (path = {"/delete/{centroDeportivoId}"})
     public void borrarCentroDeportivo(@PathVariable("centroDeportivoId") String mailId) throws CentroDeportivoNoExiste {
+        System.out.println("Borrando centro deportivo controller");
         centrosDeportivosService.borrarCentroDeportivo(mailId);
     }
 
-    @PutMapping("{mail}")
+    @PutMapping("/updateCentro/{mail}")
     public void modificarDatoEmpresa(@PathVariable("centroDeportivoId") String mailId, String nombre, String contrasena) throws CentroDeportivoNoExiste {
         centrosDeportivosService.actualizarDatosCD(mailId, nombre, contrasena);
     }
