@@ -1,6 +1,8 @@
 package gym.gymServer.Classes;
 
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -9,31 +11,29 @@ import java.util.Objects;
 @Entity
 @Table(name = "inscripcionesEmpleadoActividad")
 @IdClass(value=InscripcionesActividadesID.class)
+@Component
 public class InscripcionesActividades {
 
-    @Id
-    private String empleadoMailInscripciones;
+    private @Id String empleadoMailInscripcion;
 
-    @Id
-    private String actividadNombreInscripcion;
+    private @Id String actividadNombreInscripcion;
 
-    @Id
-    private LocalDate actividadDiaInscripcion;
+    private @Id LocalDate actividadDiaInscripcion;
 
-    @Id
-    private LocalTime actividadHoraInscripcion;
+    private @Id LocalTime actividadHoraInscripcion;
 
     private boolean asistencia;
 
     @ManyToOne
-    @JoinColumn(name = "empleado_mail_inscripcion", referencedColumnName = "mailEmpleado", insertable = false, updatable = false)
+    @JoinColumn(name = "empleado_mail_inscripcion_join", referencedColumnName = "mailEmpleado", insertable = false, updatable = false)
     private Empleado empleado;
 
     @ManyToOne(targetEntity = Actividad.class, fetch = FetchType.LAZY)
     @JoinColumns( {
-        @JoinColumn(name = "actividad_nombre_inscripcion", referencedColumnName = "nombreActividad"),
-        @JoinColumn(name = "actividad_dia_inscripcion", referencedColumnName = "diaActividad"),
-        @JoinColumn(name = "actividad_hora_inscripcion", referencedColumnName = "horaActividad")
+        @JoinColumn(name = "actividad_nombre_inscripcion_join", referencedColumnName = "nombreActividad"),
+        @JoinColumn(name = "actividad_dia_inscripcion_join", referencedColumnName = "diaActividad"),
+        @JoinColumn(name = "actividad_hora_inscripcion_join", referencedColumnName = "horaActividad"),
+        @JoinColumn(name = "actividad_centro_inscripcion_join", referencedColumnName = "centro_mail"),
     })
     private Actividad actividad;
 
@@ -41,7 +41,7 @@ public class InscripcionesActividades {
     }
 
     public InscripcionesActividades(String empleadoMailInscripciones, String actividadNombreInscripcion, LocalDate actividadDiaInscripcion, LocalTime actividadHoraInscripcion, boolean asistencia, Empleado empleado, Actividad actividad) {
-        this.empleadoMailInscripciones = empleadoMailInscripciones;
+        this.empleadoMailInscripcion = empleadoMailInscripciones;
         this.actividadNombreInscripcion = actividadNombreInscripcion;
         this.actividadDiaInscripcion = actividadDiaInscripcion;
         this.actividadHoraInscripcion = actividadHoraInscripcion;
@@ -51,11 +51,11 @@ public class InscripcionesActividades {
     }
 
     public String getEmpleadoMailInscripciones() {
-        return empleadoMailInscripciones;
+        return empleadoMailInscripcion;
     }
 
     public void setEmpleadoMailInscripciones(String empleadoMailInscripciones) {
-        this.empleadoMailInscripciones = empleadoMailInscripciones;
+        this.empleadoMailInscripcion = empleadoMailInscripciones;
     }
 
     public String getActividadNombreInscripcion() {
@@ -111,18 +111,18 @@ public class InscripcionesActividades {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InscripcionesActividades that = (InscripcionesActividades) o;
-        return asistencia == that.asistencia && Objects.equals(empleadoMailInscripciones, that.empleadoMailInscripciones) && Objects.equals(actividadNombreInscripcion, that.actividadNombreInscripcion) && Objects.equals(actividadDiaInscripcion, that.actividadDiaInscripcion) && Objects.equals(actividadHoraInscripcion, that.actividadHoraInscripcion) && Objects.equals(empleado, that.empleado) && Objects.equals(actividad, that.actividad);
+        return asistencia == that.asistencia && Objects.equals(empleadoMailInscripcion, that.empleadoMailInscripcion) && Objects.equals(actividadNombreInscripcion, that.actividadNombreInscripcion) && Objects.equals(actividadDiaInscripcion, that.actividadDiaInscripcion) && Objects.equals(actividadHoraInscripcion, that.actividadHoraInscripcion) && Objects.equals(empleado, that.empleado) && Objects.equals(actividad, that.actividad);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(empleadoMailInscripciones, actividadNombreInscripcion, actividadDiaInscripcion, actividadHoraInscripcion, asistencia, empleado, actividad);
+        return Objects.hash(empleadoMailInscripcion, actividadNombreInscripcion, actividadDiaInscripcion, actividadHoraInscripcion, asistencia, empleado, actividad);
     }
 
     @Override
     public String toString() {
         return "InscripcionesActividades{" +
-                "empleadoMailInscripciones='" + empleadoMailInscripciones + '\'' +
+                "empleadoMailInscripciones='" + empleadoMailInscripcion + '\'' +
                 ", actividadNombreInscripcion='" + actividadNombreInscripcion + '\'' +
                 ", actividadDiaInscripcion=" + actividadDiaInscripcion +
                 ", actividadHoraInscripcion=" + actividadHoraInscripcion +

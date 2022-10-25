@@ -33,7 +33,7 @@ public class Empleado {
 
     private int deuda;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "empleadoMailInscripciones")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "empleado")
     private List<InscripcionesActividades> actividadesInscripto;
 
     public Empleado() {

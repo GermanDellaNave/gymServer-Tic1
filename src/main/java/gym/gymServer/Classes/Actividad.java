@@ -39,12 +39,11 @@ public class Actividad {
 
     private boolean reservable;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "centro_mail", referencedColumnName = "mailCentro")
-    @Id
-    private CentrosDeportivos centroDeportivo;
+    private @Id CentrosDeportivos centroDeportivo;
 
-    @OneToMany(fetch = FetchType.EAGER/*, mappedBy = "actividadNombreInscripcion","actividadDiaInscripcion","actividadHoraInscripcion"*/)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "actividad")
     private List<InscripcionesActividades> actividadesInscripto;
 
     public Actividad() {

@@ -7,16 +7,13 @@ import java.time.LocalTime;
 import java.util.Objects;
 
 public class InscripcionesActividadesID implements Serializable {
-    @Column(name = "empleado_mail_inscripcion")
+
     private String empleadoMailInscripcion;
 
-    @Column(name = "actividad_nombre_inscripcion")
     private String actividadNombreInscripcion;
 
-    @Column(name = "actividad_dia_inscripcion")
     private LocalDate actividadDiaInscripcion;
 
-    @Column(name = "actividad_hora_inscripcion")
     private LocalTime actividadHoraInscripcion;
 
     public InscripcionesActividadesID() {
