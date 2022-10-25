@@ -8,7 +8,7 @@ import java.util.Objects;
 @IdClass(PagoId.class)
 public class Pago {
 
-    @Id
+        @Id
         private String empresaMailPago;
 
         @Id

@@ -22,18 +22,20 @@ public class InscripcionesActividades {
 
     private @Id LocalTime actividadHoraInscripcion;
 
+    private @Id String actividadCentroInscripcion;
+
     private boolean asistencia;
 
-    @ManyToOne
-    @JoinColumn(name = "empleado_mail_inscripcion_join", referencedColumnName = "mailEmpleado", insertable = false, updatable = false)
+    @ManyToOne(targetEntity = Empleado.class)
+    @JoinColumn(name = "empleadoMailInscripcion", referencedColumnName = "mailEmpleado", insertable = false, updatable = false)
     private Empleado empleado;
 
     @ManyToOne(targetEntity = Actividad.class, fetch = FetchType.LAZY)
     @JoinColumns( {
-        @JoinColumn(name = "actividad_nombre_inscripcion_join", referencedColumnName = "nombreActividad"),
-        @JoinColumn(name = "actividad_dia_inscripcion_join", referencedColumnName = "diaActividad"),
-        @JoinColumn(name = "actividad_hora_inscripcion_join", referencedColumnName = "horaActividad"),
-        @JoinColumn(name = "actividad_centro_inscripcion_join", referencedColumnName = "centro_mail"),
+        @JoinColumn(name = "actividadNombreInscripcion", referencedColumnName = "nombreActividad", insertable = false, updatable = false),
+        @JoinColumn(name = "actividadDiaInscripcion", referencedColumnName = "diaActividad", insertable = false, updatable = false),
+        @JoinColumn(name = "actividadHoraInscripcion", referencedColumnName = "horaActividad", insertable = false, updatable = false),
+        @JoinColumn(name = "actividadCentroInscripcion", referencedColumnName = "centroMailActividad", insertable = false, updatable = false),
     })
     private Actividad actividad;
 

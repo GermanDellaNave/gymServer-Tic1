@@ -18,7 +18,7 @@ public class ActividadesID implements Serializable {
     @Column(name = "diaActividad")
     private LocalDate dia;
 
-    @Column(name = "centro_mail")
+    @Column(name = "centroMailActividad")
     private String centroMail;
 
     public ActividadesID(String nombre, LocalTime hora, LocalDate dia, String centroMail) {

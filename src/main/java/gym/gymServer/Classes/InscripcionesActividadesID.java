@@ -16,14 +16,17 @@ public class InscripcionesActividadesID implements Serializable {
 
     private LocalTime actividadHoraInscripcion;
 
+    private String actividadCentroInscripcion;
+
     public InscripcionesActividadesID() {
     }
 
-    public InscripcionesActividadesID(String empleadoMailInscripcion, String actividadNombreInscripcion, LocalDate actividadDiaInscripcion, LocalTime actividadHoraInscripcion) {
+    public InscripcionesActividadesID(String empleadoMailInscripcion, String actividadNombreInscripcion, LocalDate actividadDiaInscripcion, LocalTime actividadHoraInscripcion, String actividadCentroInscripcion) {
         this.empleadoMailInscripcion = empleadoMailInscripcion;
         this.actividadNombreInscripcion = actividadNombreInscripcion;
         this.actividadDiaInscripcion = actividadDiaInscripcion;
         this.actividadHoraInscripcion = actividadHoraInscripcion;
+        this.actividadCentroInscripcion = actividadCentroInscripcion;
     }
 
     public String getEmpleadoMailInscripcion() {
@@ -58,17 +61,25 @@ public class InscripcionesActividadesID implements Serializable {
         this.actividadHoraInscripcion = actividadHoraInscripcion;
     }
 
+    public String getActividadCentroInscripcion() {
+        return actividadCentroInscripcion;
+    }
+
+    public void setActividadCentroInscripcion(String actividadCentroInscripcion) {
+        this.actividadCentroInscripcion = actividadCentroInscripcion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InscripcionesActividadesID that = (InscripcionesActividadesID) o;
-        return Objects.equals(empleadoMailInscripcion, that.empleadoMailInscripcion) && Objects.equals(actividadNombreInscripcion, that.actividadNombreInscripcion) && Objects.equals(actividadDiaInscripcion, that.actividadDiaInscripcion) && Objects.equals(actividadHoraInscripcion, that.actividadHoraInscripcion);
+        return Objects.equals(empleadoMailInscripcion, that.empleadoMailInscripcion) && Objects.equals(actividadNombreInscripcion, that.actividadNombreInscripcion) && Objects.equals(actividadDiaInscripcion, that.actividadDiaInscripcion) && Objects.equals(actividadHoraInscripcion, that.actividadHoraInscripcion) && Objects.equals(actividadCentroInscripcion, that.actividadCentroInscripcion);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(empleadoMailInscripcion, actividadNombreInscripcion, actividadDiaInscripcion, actividadHoraInscripcion);
+        return Objects.hash(empleadoMailInscripcion, actividadNombreInscripcion, actividadDiaInscripcion, actividadHoraInscripcion, actividadCentroInscripcion);
     }
 
     @Override
@@ -78,6 +89,7 @@ public class InscripcionesActividadesID implements Serializable {
                 ", actividadNombreInscripcion='" + actividadNombreInscripcion + '\'' +
                 ", actividadDiaInscripcion=" + actividadDiaInscripcion +
                 ", actividadHoraInscripcion=" + actividadHoraInscripcion +
+                ", actividadCentroInscripcion='" + actividadCentroInscripcion + '\'' +
                 '}';
     }
 }

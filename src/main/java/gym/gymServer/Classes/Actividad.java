@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,7 +23,7 @@ public class Actividad {
     @Column(name = "diaActividad")
     private @Id LocalDate dia;
 
-    @Column(name = "diaActividad")
+    @Column(name = "centroMailActividad")
     private @Id String centroMail;
     private String tipo;
 
@@ -42,12 +43,12 @@ public class Actividad {
 
     private boolean reservable;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "centro_mail", referencedColumnName = "mailCentro", insertable = false, updatable = false)
+    @ManyToOne(targetEntity = CentrosDeportivos.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "centro", referencedColumnName = "mailCentro", insertable = false, updatable = false)
     private CentrosDeportivos centroDeportivo;
 
     @OneToMany(/*fetch = FetchType.EAGER,*/ mappedBy = "actividad")
-    private List<InscripcionesActividades> actividadesInscripto;
+    private List<InscripcionesActividades> actividadesInscripto = new ArrayList<>();
 
     public Actividad() {
         super();
@@ -63,6 +64,19 @@ public class Actividad {
         this.costo = costo;
         this.cupos = cupos;
         this.reservable = reservable;
+    }
+
+    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, String tipo, String descripcion, int costo, int cupos, boolean reservable, CentrosDeportivos centroDeportivo) {
+        this.nombre = nombre;
+        this.hora = hora;
+        this.dia = dia;
+        this.centroMail = centroMail;
+        this.tipo = tipo;
+        this.descripcion = descripcion;
+        this.costo = costo;
+        this.cupos = cupos;
+        this.reservable = reservable;
+        this.centroDeportivo = centroDeportivo;
     }
 
     public String getNombre() {
