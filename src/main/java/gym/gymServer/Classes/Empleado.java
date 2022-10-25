@@ -23,7 +23,7 @@ public class Empleado {
 
     private String telefono;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "empresa_mail", referencedColumnName = "mailEmpresa")
     private Empresas empresa;
 

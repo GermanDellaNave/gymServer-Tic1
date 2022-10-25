@@ -46,7 +46,7 @@ public class Actividad {
     @JoinColumn(name = "centro_mail", referencedColumnName = "mailCentro", insertable = false, updatable = false)
     private CentrosDeportivos centroDeportivo;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "actividad")
+    @OneToMany(/*fetch = FetchType.EAGER,*/ mappedBy = "actividad")
     private List<InscripcionesActividades> actividadesInscripto;
 
     public Actividad() {
