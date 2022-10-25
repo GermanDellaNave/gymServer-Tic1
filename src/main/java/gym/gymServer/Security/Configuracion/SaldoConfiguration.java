@@ -2,15 +2,12 @@ package gym.gymServer.Security.Configuracion;
 
 import gym.gymServer.Classes.Empleado;
 import gym.gymServer.Repository.EmpleadoRepository;
-import org.hibernate.type.LocalDateType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Configuration
