@@ -24,7 +24,8 @@ public class SaldoConfiguration {
         for (int i = 0; i < empleados.size(); i++) {
             Empleado empleado_i = empleados.get(i);
             if(empleado_i.getSaldoDisponible() < 0) {
-                empleado_i.setDeuda(empleado_i.getSaldoDisponible());
+                Integer deuda = Math.abs(empleado_i.getSaldoDisponible());
+                empleado_i.setDeuda(deuda);
             }
             empleado_i.setSaldoDisponible(empleados.get(i).getEmpresa().getBono());
         }
