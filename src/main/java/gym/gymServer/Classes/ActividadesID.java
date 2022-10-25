@@ -27,6 +27,12 @@ public class ActividadesID implements Serializable {
         this.centroDeportivo = centroDeportivo;
     }
 
+    public ActividadesID(String nombre, LocalTime hora, LocalDate dia) {
+        this.nombre = nombre;
+        this.hora = hora;
+        this.dia = dia;
+    }
+
     public ActividadesID() {
 
     }
@@ -42,5 +48,15 @@ public class ActividadesID implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(nombre, hora, dia, centroDeportivo);
+    }
+
+    @Override
+    public String toString() {
+        return "ActividadesID{" +
+                "nombre='" + nombre + '\'' +
+                ", hora=" + hora +
+                ", dia=" + dia +
+                ", centroDeportivo=" + centroDeportivo +
+                '}';
     }
 }

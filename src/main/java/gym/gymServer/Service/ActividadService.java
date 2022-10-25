@@ -28,7 +28,7 @@ public class ActividadService {
     }
 
     public  void registrarActividad(Actividad actividad) {
-        if (actividadRepository.findOneByNombreAndHoraAndDiaAndCentroDeportivo(actividad.getNombre(), actividad.getHora(), actividad.getDia(), actividad.getCentroDeportivo()) == null) {
+        if (actividadRepository.findOneByNombreAndHoraAndDia(actividad.getNombre(), actividad.getHora(), actividad.getDia()) == null) {
             actividadRepository.save(actividad);
         } else {
             System.out.println("Error: actividad ya existe");
@@ -39,7 +39,7 @@ public class ActividadService {
         LocalTime horaLT = LocalTime.parse(hora);
         LocalDate diaLT = LocalDate.parse(dia);
         CentrosDeportivos centroDeportivo = centrosDeportivosRepository.findOneByMail(centroMail);
-        return actividadRepository.findOneByNombreAndHoraAndDiaAndCentroDeportivo(nombre, horaLT, diaLT, centroDeportivo);
+        return actividadRepository.findOneByNombreAndHoraAndDia(nombre, horaLT, diaLT);
     }
 
     public List<Actividad> getActividades() {
