@@ -28,7 +28,7 @@ public class EmpresasController {
     }
 
     @GetMapping("/empresaMail/{mail}")
-    public Empresas getEmpresa(@PathVariable String mail) throws EmpresaNoExiste {
+    public Empresas getEmpresa(@PathVariable String mail) {
         System.out.println("Buscando empresa");
         return empresasService.getEmpresa(mail);
     }
@@ -39,8 +39,9 @@ public class EmpresasController {
         empresasService.registrarEmpresa(nuevaEmpresa);
     }
 
-    @DeleteMapping (path = {"empresasId"})
-    public void borrarEmpresa(@PathVariable("empresasId") String mailId) throws EmpresaNoExiste {
+    @DeleteMapping (path = {"/delete/{empresasId}"})
+    public void borrarEmpresa(@PathVariable("empresasId") String mailId) {
+        System.out.println("Borrando Empresa Controller");
         empresasService.borrarEmpresa(mailId);
     }
 

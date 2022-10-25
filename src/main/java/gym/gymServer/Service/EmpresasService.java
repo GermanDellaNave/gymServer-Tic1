@@ -39,12 +39,10 @@ public class EmpresasService {
         System.out.println("RegistroEmpresa");
     }
 
-    public void borrarEmpresa(String mailId) throws EmpresaNoExiste{
-        if (empresasRepository.findOneByMail(mailId) == null) {
-            throw new EmpresaNoExiste();
+    public void borrarEmpresa(String mailId) {
+        if (empresasRepository.findOneByMail(mailId) != null) {
+            empresasRepository.deleteById(mailId);
         }
-
-        empresasRepository.deleteById(mailId);
     }
 
     public void actualizarDatosEmpresa(String mailId, String nombre, String contrasena) throws EmpresaNoExiste {
@@ -59,12 +57,12 @@ public class EmpresasService {
         empresasRepository.save(empresaActualizable);
     }
 
-    public Empresas getEmpresa(String mail) throws EmpresaNoExiste {
+    public Empresas getEmpresa(String mail) {
         System.out.println("Buscando");
         Empresas empresa = empresasRepository.findOneByMail(mail);
         if (empresa == null) {
             System.out.println("ERROR");
-            throw new EmpresaNoExiste();
+            return null;
         }
         System.out.println("Busqueda Empresa");
         return empresa;

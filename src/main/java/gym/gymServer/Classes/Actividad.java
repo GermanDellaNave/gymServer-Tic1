@@ -8,7 +8,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Table(name = "Actividad")
+@Table(name = "Actividades")
 @IdClass(value = ActividadesID.class)
 @Component
 public class Actividad {
