@@ -4,35 +4,24 @@ import gym.gymServer.Classes.Empleado;
 import gym.gymServer.Repository.EmpleadoRepository;
 import org.hibernate.type.LocalDateType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Configuration
+@EnableScheduling
+@ConditionalOnProperty(name = "scheduling.enabled", matchIfMissing = true)
 public class SaldoConfiguration {
-
-    /*
-    LocalDate lastUpdate;
-    LocalDate date = LocalDate.now();
 
     @Autowired
     EmpleadoRepository empleadoRepository;
 
-    public SaldoConfiguration(LocalDate lastUpdate, LocalDate date) {
-        this.lastUpdate = lastUpdate;
-        this.date = date;
-    }
-
-    @Bean
-    public void checkDate(LocalDate now, LocalDate before) {
-        if (now.getMonth() != before.getMonth()) {
-            actualizarSaldoDisponible();
-        }
-        this.lastUpdate = this.date;
-    }
-
+    @Scheduled(cron = "0 0 1 1 * ?")
     public void actualizarSaldoDisponible () {
         List<Empleado> empleados = (List<Empleado>) empleadoRepository.findAll();
         for (int i = 0; i < empleados.size(); i++) {
@@ -44,6 +33,6 @@ public class SaldoConfiguration {
         }
         empleadoRepository.saveAll(empleados);
 
-    }*/
+    }
 
 }
