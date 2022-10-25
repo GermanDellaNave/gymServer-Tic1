@@ -21,6 +21,9 @@ public class Actividad {
 
     @Column(name = "diaActividad")
     private @Id LocalDate dia;
+
+    @Column(name = "diaActividad")
+    private @Id String centroMail;
     private String tipo;
 
     private String descripcion;
@@ -33,15 +36,15 @@ public class Actividad {
 //            inverseJoinColumns = @JoinColumn(name = "mail_empleado", referencedColumnName = "mailEmpleado"))
 //    private List<Empleado> listaEmpleadoInscriptos;
 
-    private boolean conCupos;
+    private int costo;
 
     private int cupos;
 
     private boolean reservable;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "centro_mail", referencedColumnName = "mailCentro")
-    private @Id CentrosDeportivos centroDeportivo;
+    @JoinColumn(name = "centro_mail", referencedColumnName = "mailCentro", insertable = false, updatable = false)
+    private CentrosDeportivos centroDeportivo;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "actividad")
     private List<InscripcionesActividades> actividadesInscripto;
@@ -50,23 +53,16 @@ public class Actividad {
         super();
     }
 
-    public Actividad(String nombre, String tipo, String descripcion, LocalTime hora, LocalDate dia, boolean conCupos, int cupos, boolean reservable) {
-        this.tipo = tipo;
-        this.descripcion = descripcion;
-        this.conCupos = conCupos;
-        this.cupos = cupos;
-        this.reservable = reservable;
-    }
-
-    public Actividad(String nombre, LocalTime hora, LocalDate dia, String tipo, String descripcion, int cupos, boolean reservable, CentrosDeportivos centroDeportivo) {
+    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, String tipo, String descripcion, int costo, int cupos, boolean reservable) {
         this.nombre = nombre;
         this.hora = hora;
         this.dia = dia;
+        this.centroMail = centroMail;
         this.tipo = tipo;
         this.descripcion = descripcion;
+        this.costo = costo;
         this.cupos = cupos;
         this.reservable = reservable;
-        this.centroDeportivo = centroDeportivo;
     }
 
     public String getNombre() {
@@ -117,12 +113,28 @@ public class Actividad {
         this.listaEmpleadoInscriptos = listaEmpleadoInscriptos;
     }*/
 
-    public boolean isConCupos() {
-        return conCupos;
+    public String getCentroMail() {
+        return centroMail;
     }
 
-    public void setConCupos(boolean conCupos) {
-        this.conCupos = conCupos;
+    public void setCentroMail(String centroMail) {
+        this.centroMail = centroMail;
+    }
+
+    public List<InscripcionesActividades> getActividadesInscripto() {
+        return actividadesInscripto;
+    }
+
+    public void setActividadesInscripto(List<InscripcionesActividades> actividadesInscripto) {
+        this.actividadesInscripto = actividadesInscripto;
+    }
+
+    public int getCosto() {
+        return costo;
+    }
+
+    public void setCosto(int costo) {
+        this.costo = costo;
     }
 
     public int getCupos() {
@@ -155,13 +167,14 @@ public class Actividad {
                 "nombre='" + nombre + '\'' +
                 ", hora=" + hora +
                 ", dia=" + dia +
+                ", centroMail='" + centroMail + '\'' +
                 ", tipo='" + tipo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                //", listaEmpleadoInscriptos=" + listaEmpleadoInscriptos +
-                ", conCupos=" + conCupos +
+                ", costo=" + costo +
                 ", cupos=" + cupos +
                 ", reservable=" + reservable +
                 ", centroDeportivo=" + centroDeportivo +
+                ", actividadesInscripto=" + actividadesInscripto +
                 '}';
     }
 }

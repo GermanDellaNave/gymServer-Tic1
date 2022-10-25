@@ -28,18 +28,19 @@ public class ActividadService {
     }
 
     public  void registrarActividad(Actividad actividad) {
-        if (actividadRepository.findOneByNombreAndHoraAndDia(actividad.getNombre(), actividad.getHora(), actividad.getDia()) == null) {
+        //if (actividadRepository.findOneById(actividad.getNombre(), actividad.getHora(), actividad.getDia(), actividad.getCentroDeportivo()) == null) {
             actividadRepository.save(actividad);
-        } else {
+        //} else {
             System.out.println("Error: actividad ya existe");
-        }
+        //}
     }
 
     public Actividad getActividad(String nombre, String hora, String dia, String centroMail) {
         LocalTime horaLT = LocalTime.parse(hora);
         LocalDate diaLT = LocalDate.parse(dia);
         CentrosDeportivos centroDeportivo = centrosDeportivosRepository.findOneByMail(centroMail);
-        return actividadRepository.findOneByNombreAndHoraAndDia(nombre, horaLT, diaLT);
+        return null;
+        //return actividadRepository.findOneById(nombre, horaLT, diaLT, centroDeportivo);
     }
 
     public List<Actividad> getActividades() {
