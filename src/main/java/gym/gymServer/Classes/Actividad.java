@@ -1,6 +1,8 @@
 package gym.gymServer.Classes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
