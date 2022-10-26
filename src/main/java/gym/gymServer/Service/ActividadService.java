@@ -31,7 +31,7 @@ public class ActividadService {
         //if (actividadRepository.findOneById(actividad.getNombre(), actividad.getHora(), actividad.getDia(), actividad.getCentroDeportivo()) == null) {
             actividadRepository.save(actividad);
         //} else {
-            System.out.println("Error: actividad ya existe");
+            System.out.println("Hola actividad ya existe");
         //}
     }
 

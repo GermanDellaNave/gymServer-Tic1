@@ -25,7 +25,10 @@ public class Actividad {
 
     @Column(name = "centroMailActividad")
     private @Id String centroMail;
-    private String tipo;
+
+    @ManyToOne(targetEntity = TipoActividad.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "tipo", referencedColumnName = "tipo", insertable = false, updatable = false)
+    private TipoActividad tipo;
 
     private String descripcion;
 
@@ -54,7 +57,7 @@ public class Actividad {
         super();
     }
 
-    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, String tipo, String descripcion, int costo, int cupos, boolean reservable) {
+    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int costo, int cupos, boolean reservable) {
         this.nombre = nombre;
         this.hora = hora;
         this.dia = dia;
@@ -66,7 +69,7 @@ public class Actividad {
         this.reservable = reservable;
     }
 
-    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, String tipo, String descripcion, int costo, int cupos, boolean reservable, CentrosDeportivos centroDeportivo) {
+    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int costo, int cupos, boolean reservable, CentrosDeportivos centroDeportivo) {
         this.nombre = nombre;
         this.hora = hora;
         this.dia = dia;
@@ -103,11 +106,11 @@ public class Actividad {
         this.dia = dia;
     }
 
-    public String getTipo() {
+    public TipoActividad getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoActividad tipo) {
         this.tipo = tipo;
     }
 
@@ -182,7 +185,7 @@ public class Actividad {
                 ", hora=" + hora +
                 ", dia=" + dia +
                 ", centroMail='" + centroMail + '\'' +
-                ", tipo='" + tipo + '\'' +
+                ", tipo=" + tipo +
                 ", descripcion='" + descripcion + '\'' +
                 ", costo=" + costo +
                 ", cupos=" + cupos +

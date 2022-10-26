@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Configuration
@@ -19,6 +20,7 @@ public class SaldoConfiguration {
     EmpleadoRepository empleadoRepository;
 
     @Scheduled(cron = "0 0 1 1 * ?")
+    @Transactional
     public void actualizarSaldoDisponible () {
         List<Empleado> empleados = (List<Empleado>) empleadoRepository.findAll();
         for (int i = 0; i < empleados.size(); i++) {
@@ -29,8 +31,6 @@ public class SaldoConfiguration {
             }
             empleado_i.setSaldoDisponible(empleados.get(i).getEmpresa().getBono());
         }
-        empleadoRepository.saveAll(empleados);
-
     }
 
 }
