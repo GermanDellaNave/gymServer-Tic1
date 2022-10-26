@@ -36,4 +36,9 @@ public class ActividadController {
         System.out.println("Buscando empresa");
         return actividadService.getActividad(nombre, hora, dia, centroMail);
     }
+
+    @GetMapping("/nuevasActividades")
+    public List<Actividad> getActividadesRecientes() {
+        return actividadService.getActividades();
+    }
 }

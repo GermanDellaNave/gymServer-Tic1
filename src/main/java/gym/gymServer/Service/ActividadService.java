@@ -1,6 +1,7 @@
 package gym.gymServer.Service;
 
 import gym.gymServer.Classes.Actividad;
+import gym.gymServer.Classes.ActividadesID;
 import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Repository.ActividadRepository;
 import gym.gymServer.Repository.CentrosDeportivosRepository;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -28,11 +31,11 @@ public class ActividadService {
     }
 
     public  void registrarActividad(Actividad actividad) {
-        //if (actividadRepository.findOneById(actividad.getNombre(), actividad.getHora(), actividad.getDia(), actividad.getCentroDeportivo()) == null) {
+        if (actividadRepository.findOneByKey(actividad.getCentroMail(), actividad.getDia(), actividad.getHora(), actividad.getNombre()) == null) {
             actividadRepository.save(actividad);
-        //} else {
+        } else {
             System.out.println("Hola actividad ya existe");
-        //}
+        }
     }
 
     public Actividad getActividad(String nombre, String hora, String dia, String centroMail) {
@@ -45,5 +48,9 @@ public class ActividadService {
 
     public List<Actividad> getActividades() {
         return (List<Actividad>) actividadRepository.findAll();
+    }
+
+    public List<Actividad> getActividadesRecientes() {
+        return (List<Actividad>) actividadRepository.findTopNewest(LocalDate.now());
     }
 }
