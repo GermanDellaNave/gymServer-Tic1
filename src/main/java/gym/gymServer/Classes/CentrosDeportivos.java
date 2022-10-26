@@ -21,7 +21,7 @@ public class CentrosDeportivos implements Serializable {
     @Column(name = "mailCentro")
     private @Id String mail;
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Actividad.class, mappedBy = "centroDeportivo")
+    @OneToMany(targetEntity = Actividad.class, mappedBy = "centroDeportivo")
     private List<Actividad> listaActividades;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "centroDeportivo")

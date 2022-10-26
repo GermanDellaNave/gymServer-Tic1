@@ -1,5 +1,6 @@
 package gym.gymServer.Classes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -26,8 +27,9 @@ public class Actividad {
     @Column(name = "centroMailActividad")
     private @Id String centroMail;
 
+    @JsonIgnore
     @ManyToOne(targetEntity = TipoActividad.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "tipo", referencedColumnName = "tipo", insertable = false, updatable = false)
+    @JoinColumn(name = "tipo", referencedColumnName = "tipo"/*, updatable = false*/)
     private TipoActividad tipo;
 
     private String descripcion;
@@ -46,8 +48,9 @@ public class Actividad {
 
     private boolean reservable;
 
+    @JsonIgnore
     @ManyToOne(targetEntity = CentrosDeportivos.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "centro", referencedColumnName = "mailCentro", insertable = false, updatable = false)
+    @JoinColumn(name = "centro", referencedColumnName = "mailCentro"/*, updatable = false*/)
     private CentrosDeportivos centroDeportivo;
 
     @OneToMany(/*fetch = FetchType.EAGER,*/ mappedBy = "actividad")
@@ -55,18 +58,6 @@ public class Actividad {
 
     public Actividad() {
         super();
-    }
-
-    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int costo, int cupos, boolean reservable) {
-        this.nombre = nombre;
-        this.hora = hora;
-        this.dia = dia;
-        this.centroMail = centroMail;
-        this.tipo = tipo;
-        this.descripcion = descripcion;
-        this.costo = costo;
-        this.cupos = cupos;
-        this.reservable = reservable;
     }
 
     public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int costo, int cupos, boolean reservable, CentrosDeportivos centroDeportivo) {
@@ -80,6 +71,7 @@ public class Actividad {
         this.cupos = cupos;
         this.reservable = reservable;
         this.centroDeportivo = centroDeportivo;
+        this.actividadesInscripto = new ArrayList<>();
     }
 
     public String getNombre() {
