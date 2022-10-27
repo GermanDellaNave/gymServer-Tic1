@@ -1,5 +1,6 @@
 package gym.gymServer.Classes;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -21,10 +22,12 @@ public class CentrosDeportivos implements Serializable {
     @Column(name = "mailCentro")
     private @Id String mail;
 
-    @OneToMany(targetEntity = Actividad.class, mappedBy = "centroDeportivo")
+    @OneToMany()
+    @JoinColumn(name = "listaActividad", referencedColumnName = "mailCentro")
     private List<Actividad> listaActividades;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "centroDeportivo")
+    @OneToMany()
+    @JoinColumn(name = "pagos", referencedColumnName = "mailCentro")
     private List<Pago> pagos;
 
     public CentrosDeportivos() {

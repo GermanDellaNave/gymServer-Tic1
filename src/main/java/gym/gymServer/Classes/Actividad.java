@@ -1,7 +1,9 @@
 package gym.gymServer.Classes;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.stereotype.Component;
@@ -31,8 +33,7 @@ public class Actividad {
     @Column(name = "centroMailActividad")
     private @Id String centroMail;
 
-    @JsonIgnore
-    @ManyToOne(targetEntity = TipoActividad.class, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST/*, targetEntity = TipoActividad.class, fetch = FetchType.LAZY*/)
     @JoinColumn(name = "tipo", referencedColumnName = "tipo"/*, updatable = false*/)
     private TipoActividad tipo;
 
@@ -54,9 +55,9 @@ public class Actividad {
 
     private Date dateCreada;
 
-    @JsonIgnore
-    @ManyToOne(targetEntity = CentrosDeportivos.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "centro", referencedColumnName = "mailCentro"/*, updatable = false*/)
+    //@ManyToOne()
+    //@JoinColumn(name = "centro", referencedColumnName = "mailCentro")
+    //@JsonBackReference
     private CentrosDeportivos centroDeportivo;
 
     @OneToMany(/*fetch = FetchType.EAGER,*/ mappedBy = "actividad")
@@ -184,6 +185,8 @@ public class Actividad {
     public void setCentroDeportivo(CentrosDeportivos centroDeportivo) {
         this.centroDeportivo = centroDeportivo;
     }
+
+
 
     @Override
     public String toString() {

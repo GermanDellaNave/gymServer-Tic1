@@ -6,11 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "Login")
 @Component
-public class UserLogin {
+public class UserLogin implements Serializable {
 
     @Column(name = "mail")
     private @Id String mail;
@@ -52,6 +53,10 @@ public class UserLogin {
     public void setTipoDeUsuario(String tipoDeUsuario) {
         this.tipoDeUsuario = tipoDeUsuario;
     }
+
+
+
+
 
     @Override
     public String toString() {

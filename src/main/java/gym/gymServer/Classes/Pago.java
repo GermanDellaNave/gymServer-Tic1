@@ -31,49 +31,53 @@ public class Pago {
             this.empresaMailPago = empresaMailPago;
             this.centroMailPago = centroMailPago;
             this.monto = monto;
-        }
+    }
 
-        public String getEmpresaMailPago() {
-            return empresaMailPago;
-        }
+    public String getEmpresaMailPago() {
+        return empresaMailPago;
+    }
 
-        public void setEmpresaMailPago(String empresaMailPago) {
-            this.empresaMailPago = empresaMailPago;
-        }
+    public void setEmpresaMailPago(String empresaMailPago) {
+        this.empresaMailPago = empresaMailPago;
+    }
 
-        public String getCentroMailPago() {
-            return centroMailPago;
-        }
+    public String getCentroMailPago() {
+        return centroMailPago;
+    }
 
-        public void setCentroMailPago(String centroMailPago) {
-            this.centroMailPago = centroMailPago;
-        }
+    public void setCentroMailPago(String centroMailPago) {
+        this.centroMailPago = centroMailPago;
+    }
 
-        public Integer getMonto() {
-            return monto;
-        }
+    public Integer getMonto() {
+        return monto;
+    }
 
-        public void setMonto(Integer monto) {
-            this.monto = monto;
-        }
+    public void setMonto(Integer monto) {
+        this.monto = monto;
+    }
 
-        public Empresas getEmpresa() {
-            return empresa;
-        }
+    public Empresas getEmpresa() {
+        return empresa;
+    }
 
-        public void setEmpresa(Empresas empresa) {
-            this.empresa = empresa;
-        }
+    public void setEmpresa(Empresas empresa) {
+        this.empresa = empresa;
+    }
 
-        public CentrosDeportivos getCentroDeportivo() {
-            return centroDeportivo;
-        }
+    public CentrosDeportivos getCentroDeportivo() {
+        return centroDeportivo;
+    }
 
-        public void setCentrosDeportivos(CentrosDeportivos centrosDeportivos) {
-            this.centroDeportivo = centrosDeportivos;
-        }
+    public void setCentrosDeportivos(CentrosDeportivos centrosDeportivos) {
+        this.centroDeportivo = centrosDeportivos;
+    }
 
-        @Override
+    public void setCentroDeportivo(CentrosDeportivos centroDeportivo) {
+        this.centroDeportivo = centroDeportivo;
+    }
+
+    @Override
         public String toString() {
             return "Pago{" +
                     "empresaMailPago='" + empresaMailPago + '\'' +

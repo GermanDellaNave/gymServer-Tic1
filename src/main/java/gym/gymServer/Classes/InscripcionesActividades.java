@@ -108,6 +108,22 @@ public class InscripcionesActividades {
         this.actividad = actividad;
     }
 
+    public String getEmpleadoMailInscripcion() {
+        return empleadoMailInscripcion;
+    }
+
+    public void setEmpleadoMailInscripcion(String empleadoMailInscripcion) {
+        this.empleadoMailInscripcion = empleadoMailInscripcion;
+    }
+
+    public String getActividadCentroInscripcion() {
+        return actividadCentroInscripcion;
+    }
+
+    public void setActividadCentroInscripcion(String actividadCentroInscripcion) {
+        this.actividadCentroInscripcion = actividadCentroInscripcion;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

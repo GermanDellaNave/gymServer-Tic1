@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Empleados"/* uniqueConstraints = {@UniqueConstraint(name = "uniqueConstraint", columnNames = "nombre")}*/)
@@ -121,5 +122,42 @@ public class Empleado {
 
     public void setDeuda(int deuda) {
         this.deuda = deuda;
+    }
+
+    public List<InscripcionesActividades> getActividadesInscripto() {
+        return actividadesInscripto;
+    }
+
+    public void setActividadesInscripto(List<InscripcionesActividades> actividadesInscripto) {
+        this.actividadesInscripto = actividadesInscripto;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Empleado empleado = (Empleado) o;
+        return saldoDisponible == empleado.saldoDisponible && saldoOriginal == empleado.saldoOriginal && deuda == empleado.deuda && Objects.equals(userLoginReference, empleado.userLoginReference) && Objects.equals(nombre, empleado.nombre) && Objects.equals(apellido, empleado.apellido) && Objects.equals(mail, empleado.mail) && Objects.equals(telefono, empleado.telefono) && Objects.equals(empresa, empleado.empresa) && Objects.equals(actividadesInscripto, empleado.actividadesInscripto);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userLoginReference, nombre, apellido, mail, telefono, empresa, saldoDisponible, saldoOriginal, deuda, actividadesInscripto);
+    }
+
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "userLoginReference=" + userLoginReference +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", mail='" + mail + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", empresa=" + empresa +
+                ", saldoDisponible=" + saldoDisponible +
+                ", saldoOriginal=" + saldoOriginal +
+                ", deuda=" + deuda +
+                ", actividadesInscripto=" + actividadesInscripto +
+                '}';
     }
 }
