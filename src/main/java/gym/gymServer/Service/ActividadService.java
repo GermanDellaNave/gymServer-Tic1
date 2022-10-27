@@ -51,6 +51,6 @@ public class ActividadService {
     }
 
     public List<Actividad> getActividadesRecientes() {
-        return (List<Actividad>) actividadRepository.findTopNewest(LocalDate.now());
+        return actividadRepository.findTopNewest();
     }
 }

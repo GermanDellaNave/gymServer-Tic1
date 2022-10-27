@@ -1,5 +1,6 @@
 package gym.gymServer.Classes;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -50,6 +52,8 @@ public class Actividad {
 
     private boolean reservable;
 
+    private Date dateCreada;
+
     @JsonIgnore
     @ManyToOne(targetEntity = CentrosDeportivos.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "centro", referencedColumnName = "mailCentro"/*, updatable = false*/)
@@ -62,7 +66,7 @@ public class Actividad {
         super();
     }
 
-    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int costo, int cupos, boolean reservable, CentrosDeportivos centroDeportivo) {
+    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int costo, int cupos, boolean reservable, Date dateCreada, CentrosDeportivos centroDeportivo, List<InscripcionesActividades> actividadesInscripto) {
         this.nombre = nombre;
         this.hora = hora;
         this.dia = dia;
@@ -72,8 +76,9 @@ public class Actividad {
         this.costo = costo;
         this.cupos = cupos;
         this.reservable = reservable;
+        this.dateCreada = dateCreada;
         this.centroDeportivo = centroDeportivo;
-        this.actividadesInscripto = new ArrayList<>();
+        this.actividadesInscripto = actividadesInscripto;
     }
 
     public String getNombre() {
@@ -164,6 +169,14 @@ public class Actividad {
         this.reservable = reservable;
     }
 
+    public Date getDateCreada() {
+        return dateCreada;
+    }
+
+    public void setDateCreada(Date dateCreada) {
+        this.dateCreada = dateCreada;
+    }
+
     public CentrosDeportivos getCentroDeportivo() {
         return centroDeportivo;
     }
@@ -184,6 +197,7 @@ public class Actividad {
                 ", costo=" + costo +
                 ", cupos=" + cupos +
                 ", reservable=" + reservable +
+                ", dateCreada=" + dateCreada +
                 ", centroDeportivo=" + centroDeportivo +
                 ", actividadesInscripto=" + actividadesInscripto +
                 '}';

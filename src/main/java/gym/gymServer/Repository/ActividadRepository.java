@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 public interface ActividadRepository extends CrudRepository<Actividad, ActividadesID> {
@@ -19,6 +20,6 @@ public interface ActividadRepository extends CrudRepository<Actividad, Actividad
     @Query(value = "SELECT * FROM actividades a WHERE a.centro_mail_actividad LIKE %?1%", nativeQuery = true)
     List<Actividad> findBySearch(String input);
 
-    @Query(value = "SELECT * FROM actividades a WHERE a.dia_actividad <= :date ORDER BY dia_actividad DESC LIMIT 0, 5", nativeQuery = true)
-    List<Actividad> findTopNewest(LocalDate date);
+    @Query(value = "SELECT * FROM actividades ORDER BY date_creada DESC LIMIT 5", nativeQuery = true)
+    List<Actividad> findTopNewest();
 }

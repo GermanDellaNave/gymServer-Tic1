@@ -39,6 +39,6 @@ public class ActividadController {
 
     @GetMapping("/nuevasActividades")
     public List<Actividad> getActividadesRecientes() {
-        return actividadService.getActividades();
+        return actividadService.getActividadesRecientes();
     }
 }
