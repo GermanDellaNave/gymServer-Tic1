@@ -22,10 +22,12 @@ public class CentrosDeportivos implements Serializable {
     @Column(name = "mailCentro")
     private @Id String mail;
 
+    //Eliminar
     @OneToMany()
     @JoinColumn(name = "listaActividad", referencedColumnName = "mailCentro")
     private List<Actividad> listaActividades;
 
+    //Eliminar
     @OneToMany()
     @JoinColumn(name = "pagos", referencedColumnName = "mailCentro")
     private List<Pago> pagos;
