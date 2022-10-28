@@ -23,8 +23,8 @@ public class Empresas implements Serializable {
     @Column(name = "mailEmpresa")
     private @Id String mail;
 
-    @OneToMany(targetEntity = Empleado.class, cascade = CascadeType.ALL, mappedBy = "empresa")
-    private List<Empleado> listaEmpleados;
+    /*@OneToMany(targetEntity = Empleado.class, cascade = CascadeType.ALL, mappedBy = "empresa")
+    private List<Empleado> listaEmpleados;*/
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "empresa")
     private List<Pago> pagos;
@@ -36,12 +36,11 @@ public class Empresas implements Serializable {
         this.mail = mail;
     }
 
-    public Empresas(UserLogin userLoginReference, String nombre, Integer bono, String mail, List<Empleado> listaEmpleados, List<Pago> pagos) {
+    public Empresas(UserLogin userLoginReference, String nombre, Integer bono, String mail, List<Pago> pagos) {
         this.userLoginReference = userLoginReference;
         this.nombre = nombre;
         this.bono = bono;
         this.mail = mail;
-        this.listaEmpleados = listaEmpleados;
         this.pagos = pagos;
     }
 
@@ -72,14 +71,6 @@ public class Empresas implements Serializable {
         this.mail = mail;
     }
 
-    public List<Empleado> getListaEmpleados() {
-        return listaEmpleados;
-    }
-
-    public void setListaEmpleados(List<Empleado> listaEmpleados) {
-        this.listaEmpleados = listaEmpleados;
-    }
-
     public UserLogin getUserLoginReference() {
         return userLoginReference;
     }
@@ -101,12 +92,12 @@ public class Empresas implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Empresas empresas = (Empresas) o;
-        return Objects.equals(userLoginReference, empresas.userLoginReference) && Objects.equals(nombre, empresas.nombre) && Objects.equals(bono, empresas.bono) && Objects.equals(mail, empresas.mail) && Objects.equals(listaEmpleados, empresas.listaEmpleados) && Objects.equals(pagos, empresas.pagos);
+        return Objects.equals(userLoginReference, empresas.userLoginReference) && Objects.equals(nombre, empresas.nombre) && Objects.equals(bono, empresas.bono) && Objects.equals(mail, empresas.mail) && Objects.equals(pagos, empresas.pagos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userLoginReference, nombre, bono, mail, listaEmpleados, pagos);
+        return Objects.hash(userLoginReference, nombre, bono, mail, pagos);
     }
 
     @Override
@@ -116,7 +107,6 @@ public class Empresas implements Serializable {
                 ", nombre='" + nombre + '\'' +
                 ", bono=" + bono +
                 ", mail='" + mail + '\'' +
-                ", listaEmpleados=" + listaEmpleados +
                 ", pagos=" + pagos +
                 '}';
     }

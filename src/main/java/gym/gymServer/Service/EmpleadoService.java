@@ -1,9 +1,12 @@
 package gym.gymServer.Service;
 
+import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empleado;
 import gym.gymServer.Repository.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EmpleadoService {
@@ -24,5 +27,10 @@ public class EmpleadoService {
         }
         empleadoRepository.save(empleado);
         System.out.println("Registro empleado");
+    }
+
+
+    public List<Empleado> todosLosEmpleados() {
+        return (List<Empleado>) empleadoRepository.findAll();
     }
 }
