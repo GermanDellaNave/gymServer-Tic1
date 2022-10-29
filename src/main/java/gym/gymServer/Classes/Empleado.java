@@ -34,6 +34,9 @@ public class Empleado {
 
     private int deuda;
 
+    @Lob
+    private String imagen;
+
     /*
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "empleado")
     private List<InscripcionesActividades> actividadesInscripto;
@@ -41,7 +44,7 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(UserLogin userLoginReference, String nombre, String apellido, String mail, String telefono, Empresas empresa, int saldoDisponible, int saldoOriginal, int deuda) {
+    public Empleado(UserLogin userLoginReference, String nombre, String apellido, String mail, String telefono, Empresas empresa, int saldoDisponible, int saldoOriginal, int deuda, String imagen) {
         this.userLoginReference = userLoginReference;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -51,6 +54,7 @@ public class Empleado {
         this.saldoDisponible = saldoDisponible;
         this.saldoOriginal = saldoOriginal;
         this.deuda = deuda;
+        this.imagen = imagen;
     }
 
     public UserLogin getUserLoginReference() {
@@ -125,6 +129,14 @@ public class Empleado {
         this.deuda = deuda;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     /*public List<InscripcionesActividades> getActividadesInscripto() {
         return actividadesInscripto;
     }
@@ -138,12 +150,13 @@ public class Empleado {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Empleado empleado = (Empleado) o;
-        return saldoDisponible == empleado.saldoDisponible && saldoOriginal == empleado.saldoOriginal && deuda == empleado.deuda && Objects.equals(userLoginReference, empleado.userLoginReference) && Objects.equals(nombre, empleado.nombre) && Objects.equals(apellido, empleado.apellido) && Objects.equals(mail, empleado.mail) && Objects.equals(telefono, empleado.telefono) && Objects.equals(empresa, empleado.empresa);
+        return saldoDisponible == empleado.saldoDisponible && saldoOriginal == empleado.saldoOriginal && deuda == empleado.deuda && Objects.equals(userLoginReference, empleado.userLoginReference) && Objects.equals(nombre, empleado.nombre) && Objects.equals(apellido, empleado.apellido) && Objects.equals(mail, empleado.mail) && Objects.equals(telefono, empleado.telefono) && Objects.equals(empresa, empleado.empresa) && Objects.equals(imagen, empleado.imagen);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userLoginReference, nombre, apellido, mail, telefono, empresa, saldoDisponible, saldoOriginal, deuda);
+
+        return Objects.hash(userLoginReference, nombre, apellido, mail, telefono, empresa, saldoDisponible, saldoOriginal, deuda, imagen);
     }
 
     @Override
@@ -158,7 +171,7 @@ public class Empleado {
                 ", saldoDisponible=" + saldoDisponible +
                 ", saldoOriginal=" + saldoOriginal +
                 ", deuda=" + deuda +
-                //", actividadesInscripto=" + actividadesInscripto +
+                ", imagen='" + imagen + '\'' +
                 '}';
     }
 }

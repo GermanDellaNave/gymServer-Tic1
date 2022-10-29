@@ -73,22 +73,6 @@ public class Actividad {
         super();
     }
 
-    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int costo, int cupos, boolean reservable, Date dateCreada, String imagen, CentrosDeportivos centroDeportivo/*, List<InscripcionesActividades> actividadesInscripto*/) {
-        this.nombre = nombre;
-        this.hora = hora;
-        this.dia = dia;
-        this.centroMail = centroMail;
-        this.tipo = tipo;
-        this.descripcion = descripcion;
-        this.costo = costo;
-        this.cupos = cupos;
-        this.reservable = reservable;
-        this.dateCreada = dateCreada;
-        this.imagen = imagen;
-        this.centroDeportivo = centroDeportivo;
-        //this.actividadesInscripto = actividadesInscripto;
-    }
-
     public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int duracion, int costo, int cupos, boolean reservable, Date dateCreada, String imagen, CentrosDeportivos centroDeportivo) {
         this.nombre = nombre;
         this.hora = hora;

@@ -23,17 +23,21 @@ public class Empresas implements Serializable {
     @Column(name = "mailEmpresa")
     private @Id String mail;
 
+    @Lob
+    private String imagen;
+
     /*@OneToMany(targetEntity = Empleado.class, cascade = CascadeType.ALL, mappedBy = "empresa")
     private List<Empleado> listaEmpleados;*/
 
     /*@OneToMany(fetch = FetchType.EAGER, mappedBy = "empresa")
     private List<Pago> pagos;*/
 
-    public Empresas(UserLogin userLoginReference, String nombre, Integer bono, String mail) {
+    public Empresas(UserLogin userLoginReference, String nombre, Integer bono, String mail, String imagen) {
         this.userLoginReference = userLoginReference;
         this.nombre = nombre;
         this.bono = bono;
         this.mail = mail;
+        this.imagen = imagen;
     }
 
     public Empresas() {
@@ -71,17 +75,25 @@ public class Empresas implements Serializable {
         this.userLoginReference = userLoginReference;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Empresas empresas = (Empresas) o;
-        return Objects.equals(userLoginReference, empresas.userLoginReference) && Objects.equals(nombre, empresas.nombre) && Objects.equals(bono, empresas.bono) && Objects.equals(mail, empresas.mail);
+        return Objects.equals(userLoginReference, empresas.userLoginReference) && Objects.equals(nombre, empresas.nombre) && Objects.equals(bono, empresas.bono) && Objects.equals(mail, empresas.mail) && Objects.equals(imagen, empresas.imagen);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userLoginReference, nombre, bono, mail);
+        return Objects.hash(userLoginReference, nombre, bono, mail, imagen);
     }
 
     @Override
@@ -91,6 +103,7 @@ public class Empresas implements Serializable {
                 ", nombre='" + nombre + '\'' +
                 ", bono=" + bono +
                 ", mail='" + mail + '\'' +
+                ", imagen='" + imagen + '\'' +
                 '}';
     }
 }

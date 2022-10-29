@@ -22,6 +22,9 @@ public class CentrosDeportivos implements Serializable {
     @Column(name = "mailCentro")
     private @Id String mail;
 
+    @Lob
+    private String imagen;
+
     //Eliminar
     /*@OneToMany()
     @JoinColumn(name = "listaActividad", referencedColumnName = "mailCentro")
@@ -35,10 +38,11 @@ public class CentrosDeportivos implements Serializable {
     public CentrosDeportivos() {
     }
 
-    public CentrosDeportivos(String nombre, String mail/*, List<Actividad> listaActividades*/) {
+    public CentrosDeportivos(UserLogin userLogin, String nombre, String mail, String imagen) {
+        this.userLogin = userLogin;
         this.nombre = nombre;
         this.mail = mail;
-        //this.listaActividades = listaActividades;
+        this.imagen = imagen;
     }
 
     public String getNombre() {
@@ -73,6 +77,14 @@ public class CentrosDeportivos implements Serializable {
         this.userLogin = userLogin;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     /*public List<Pago> getPagos() {
         return pagos;
     }
@@ -86,12 +98,12 @@ public class CentrosDeportivos implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CentrosDeportivos that = (CentrosDeportivos) o;
-        return Objects.equals(userLogin, that.userLogin) && Objects.equals(nombre, that.nombre) && Objects.equals(mail, that.mail) ;//&& Objects.equals(listaActividades, that.listaActividades) && Objects.equals(pagos, that.pagos);
+        return Objects.equals(userLogin, that.userLogin) && Objects.equals(nombre, that.nombre) && Objects.equals(mail, that.mail) && Objects.equals(imagen, that.imagen);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userLogin, nombre, mail);
+        return Objects.hash(userLogin, nombre, mail, imagen);
     }
 
     @Override
@@ -100,6 +112,7 @@ public class CentrosDeportivos implements Serializable {
                 "userLogin=" + userLogin +
                 ", nombre='" + nombre + '\'' +
                 ", mail='" + mail + '\'' +
+                ", imagen='" + imagen + '\'' +
                 '}';
     }
 }
