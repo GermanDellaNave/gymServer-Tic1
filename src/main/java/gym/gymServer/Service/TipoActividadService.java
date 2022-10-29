@@ -3,6 +3,7 @@ package gym.gymServer.Service;
 import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.TipoActividad;
 import gym.gymServer.Repository.TipoActividadRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import java.util.List;
 @Service
 public class TipoActividadService {
 
+    @Autowired
     TipoActividadRepository tipoActividadRepository;
 
     public TipoActividadService() {
@@ -22,7 +24,7 @@ public class TipoActividadService {
     }
 
     public void registrarTipo(TipoActividad tipoActividad){
-        if(tipoActividadRepository.findOneByTipo(tipoActividad)==null){
+        if(tipoActividadRepository.findOneByTipo(tipoActividad.getTipo())==null){
             tipoActividadRepository.save(tipoActividad);
         }
     }
@@ -32,7 +34,8 @@ public class TipoActividadService {
     }
 
     public void borrarTipoActividad(String tipo) {
-        if (tipoActividadRepository.findOneByNombreTipo(tipo)!= null) {
+        if (tipoActividadRepository.findOneByTipo(tipo) != null) {
             tipoActividadRepository.deleteById(tipo);
+        }
     }
 }

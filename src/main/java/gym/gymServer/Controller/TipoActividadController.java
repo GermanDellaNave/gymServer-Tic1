@@ -33,7 +33,7 @@ public class TipoActividadController {
     }
 
     @DeleteMapping (path = {"/delete/{tipo}"})
-    public void borrarTipoActividad(@PathVariable("tipo") String tipo {
+    public void borrarTipoActividad(@PathVariable("tipo") String tipo) {
         tipoActividadService.borrarTipoActividad(tipo);
     }
 

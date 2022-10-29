@@ -7,8 +7,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface TipoActividadRepository extends CrudRepository<TipoActividad, String> {
 
-    TipoActividad findOneByTipo(TipoActividad tipoActividad);
+    TipoActividad findOneByTipo(String tipoActividad);
 
-    @Query(value = "SELECT * FROM tipo_actividades t where t.tipo = :tipo", nativeQuery = true)
-    TipoActividad findOneByNombreTipo(@Param("tipo") String tipo);
+    /*@Query(value = "SELECT * FROM tipo_actividades t where t.tipo = :tipo", nativeQuery = true)
+    TipoActividad findOneByNombreTipo(@Param("tipo") String tipo);*/
 }
