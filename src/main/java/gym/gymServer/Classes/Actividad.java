@@ -201,6 +201,14 @@ public class Actividad {
         this.reservable = reservable;
     }
 
+    public int getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
+    }
+
     public Date getDateCreada() {
         return dateCreada;
     }
