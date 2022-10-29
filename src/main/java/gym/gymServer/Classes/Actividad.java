@@ -12,6 +12,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -39,6 +40,8 @@ public class Actividad {
 
     private String descripcion;
 
+    private int duracion;
+
 //    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinTable(name = "empleado_actividad", joinColumns = {@JoinColumn(name = "nombre_actividad", referencedColumnName = "nombreActividad"),
 //            @JoinColumn(name = "hora_actividad", referencedColumnName = "horaActividad"),
@@ -55,19 +58,22 @@ public class Actividad {
 
     private Date dateCreada;
 
+    @Lob
+    private String imagen;
+
     //@ManyToOne()
     //@JoinColumn(name = "centro", referencedColumnName = "mailCentro")
     //@JsonBackReference
     private CentrosDeportivos centroDeportivo;
 
-    @OneToMany(/*fetch = FetchType.EAGER,*/ mappedBy = "actividad")
-    private List<InscripcionesActividades> actividadesInscripto = new ArrayList<>();
+    /*@OneToMany(fetch = FetchType.EAGER, mappedBy = "actividad")
+    private List<InscripcionesActividades> actividadesInscripto = new ArrayList<>();*/
 
     public Actividad() {
         super();
     }
 
-    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int costo, int cupos, boolean reservable, Date dateCreada, CentrosDeportivos centroDeportivo, List<InscripcionesActividades> actividadesInscripto) {
+    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int costo, int cupos, boolean reservable, Date dateCreada, String imagen, CentrosDeportivos centroDeportivo/*, List<InscripcionesActividades> actividadesInscripto*/) {
         this.nombre = nombre;
         this.hora = hora;
         this.dia = dia;
@@ -78,8 +84,25 @@ public class Actividad {
         this.cupos = cupos;
         this.reservable = reservable;
         this.dateCreada = dateCreada;
+        this.imagen = imagen;
         this.centroDeportivo = centroDeportivo;
-        this.actividadesInscripto = actividadesInscripto;
+        //this.actividadesInscripto = actividadesInscripto;
+    }
+
+    public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int duracion, int costo, int cupos, boolean reservable, Date dateCreada, String imagen, CentrosDeportivos centroDeportivo) {
+        this.nombre = nombre;
+        this.hora = hora;
+        this.dia = dia;
+        this.centroMail = centroMail;
+        this.tipo = tipo;
+        this.descripcion = descripcion;
+        this.duracion = duracion;
+        this.costo = costo;
+        this.cupos = cupos;
+        this.reservable = reservable;
+        this.dateCreada = dateCreada;
+        this.imagen = imagen;
+        this.centroDeportivo = centroDeportivo;
     }
 
     public String getNombre() {
@@ -138,13 +161,21 @@ public class Actividad {
         this.centroMail = centroMail;
     }
 
-    public List<InscripcionesActividades> getActividadesInscripto() {
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    /*public List<InscripcionesActividades> getActividadesInscripto() {
         return actividadesInscripto;
     }
 
     public void setActividadesInscripto(List<InscripcionesActividades> actividadesInscripto) {
         this.actividadesInscripto = actividadesInscripto;
-    }
+    }*/
 
     public int getCosto() {
         return costo;
@@ -187,7 +218,6 @@ public class Actividad {
     }
 
 
-
     @Override
     public String toString() {
         return "Actividad{" +
@@ -201,8 +231,9 @@ public class Actividad {
                 ", cupos=" + cupos +
                 ", reservable=" + reservable +
                 ", dateCreada=" + dateCreada +
+                ", imagen=" + imagen +
                 ", centroDeportivo=" + centroDeportivo +
-                ", actividadesInscripto=" + actividadesInscripto +
+                //", actividadesInscripto=" + actividadesInscripto +
                 '}';
     }
 }

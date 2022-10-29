@@ -8,6 +8,7 @@ import gym.gymServer.Repository.CentrosDeportivosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Calendar;
@@ -31,11 +32,11 @@ public class ActividadService {
     }
 
     public  void registrarActividad(Actividad actividad) {
-        if (actividadRepository.findOneByKey(actividad.getCentroMail(), actividad.getDia(), actividad.getHora(), actividad.getNombre()) == null) {
+        //if (actividadRepository.findOneByKey(actividad.getCentroMail(), actividad.getDia(), actividad.getHora(), actividad.getNombre()) == null) {
             actividadRepository.save(actividad);
-        } else {
+        //} else {
             System.out.println("Hola actividad ya existe");
-        }
+        //}
     }
 
     public Actividad getActividad(String nombre, String hora, String dia, String centroMail) {

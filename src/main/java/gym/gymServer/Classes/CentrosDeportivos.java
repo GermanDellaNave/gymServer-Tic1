@@ -23,22 +23,22 @@ public class CentrosDeportivos implements Serializable {
     private @Id String mail;
 
     //Eliminar
-    @OneToMany()
+    /*@OneToMany()
     @JoinColumn(name = "listaActividad", referencedColumnName = "mailCentro")
     private List<Actividad> listaActividades;
 
     //Eliminar
     @OneToMany()
     @JoinColumn(name = "pagos", referencedColumnName = "mailCentro")
-    private List<Pago> pagos;
+    private List<Pago> pagos;*/
 
     public CentrosDeportivos() {
     }
 
-    public CentrosDeportivos(String nombre, String mail, List<Actividad> listaActividades) {
+    public CentrosDeportivos(String nombre, String mail/*, List<Actividad> listaActividades*/) {
         this.nombre = nombre;
         this.mail = mail;
-        this.listaActividades = listaActividades;
+        //this.listaActividades = listaActividades;
     }
 
     public String getNombre() {
@@ -57,13 +57,13 @@ public class CentrosDeportivos implements Serializable {
         this.mail = mail;
     }
 
-    public List<Actividad> getListaActividades() {
+    /*public List<Actividad> getListaActividades() {
         return listaActividades;
     }
 
     public void setListaActividades(List<Actividad> listaActividades) {
         this.listaActividades = listaActividades;
-    }
+    }*/
 
     public UserLogin getUserLogin() {
         return userLogin;
@@ -73,25 +73,25 @@ public class CentrosDeportivos implements Serializable {
         this.userLogin = userLogin;
     }
 
-    public List<Pago> getPagos() {
+    /*public List<Pago> getPagos() {
         return pagos;
     }
 
     public void setPagos(List<Pago> pagos) {
         this.pagos = pagos;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CentrosDeportivos that = (CentrosDeportivos) o;
-        return Objects.equals(userLogin, that.userLogin) && Objects.equals(nombre, that.nombre) && Objects.equals(mail, that.mail) && Objects.equals(listaActividades, that.listaActividades) && Objects.equals(pagos, that.pagos);
+        return Objects.equals(userLogin, that.userLogin) && Objects.equals(nombre, that.nombre) && Objects.equals(mail, that.mail) ;//&& Objects.equals(listaActividades, that.listaActividades) && Objects.equals(pagos, that.pagos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userLogin, nombre, mail, listaActividades, pagos);
+        return Objects.hash(userLogin, nombre, mail);
     }
 
     @Override
@@ -100,8 +100,6 @@ public class CentrosDeportivos implements Serializable {
                 "userLogin=" + userLogin +
                 ", nombre='" + nombre + '\'' +
                 ", mail='" + mail + '\'' +
-                ", listaActividades=" + listaActividades +
-                ", pagos=" + pagos +
                 '}';
     }
 }

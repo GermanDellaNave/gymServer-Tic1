@@ -34,9 +34,10 @@ public class Empleado {
 
     private int deuda;
 
+    /*
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "empleado")
     private List<InscripcionesActividades> actividadesInscripto;
-
+*/
     public Empleado() {
     }
 
@@ -124,25 +125,25 @@ public class Empleado {
         this.deuda = deuda;
     }
 
-    public List<InscripcionesActividades> getActividadesInscripto() {
+    /*public List<InscripcionesActividades> getActividadesInscripto() {
         return actividadesInscripto;
     }
 
     public void setActividadesInscripto(List<InscripcionesActividades> actividadesInscripto) {
         this.actividadesInscripto = actividadesInscripto;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Empleado empleado = (Empleado) o;
-        return saldoDisponible == empleado.saldoDisponible && saldoOriginal == empleado.saldoOriginal && deuda == empleado.deuda && Objects.equals(userLoginReference, empleado.userLoginReference) && Objects.equals(nombre, empleado.nombre) && Objects.equals(apellido, empleado.apellido) && Objects.equals(mail, empleado.mail) && Objects.equals(telefono, empleado.telefono) && Objects.equals(empresa, empleado.empresa) && Objects.equals(actividadesInscripto, empleado.actividadesInscripto);
+        return saldoDisponible == empleado.saldoDisponible && saldoOriginal == empleado.saldoOriginal && deuda == empleado.deuda && Objects.equals(userLoginReference, empleado.userLoginReference) && Objects.equals(nombre, empleado.nombre) && Objects.equals(apellido, empleado.apellido) && Objects.equals(mail, empleado.mail) && Objects.equals(telefono, empleado.telefono) && Objects.equals(empresa, empleado.empresa);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userLoginReference, nombre, apellido, mail, telefono, empresa, saldoDisponible, saldoOriginal, deuda, actividadesInscripto);
+        return Objects.hash(userLoginReference, nombre, apellido, mail, telefono, empresa, saldoDisponible, saldoOriginal, deuda);
     }
 
     @Override
@@ -157,7 +158,7 @@ public class Empleado {
                 ", saldoDisponible=" + saldoDisponible +
                 ", saldoOriginal=" + saldoOriginal +
                 ", deuda=" + deuda +
-                ", actividadesInscripto=" + actividadesInscripto +
+                //", actividadesInscripto=" + actividadesInscripto +
                 '}';
     }
 }
