@@ -35,7 +35,8 @@ public class EmpleadoService {
     }
 
     public Empleado getEmpleado(String mail){
-        Empleado empleado=empleadoRepository.findOneByMail(mail);
+        Empleado empleado = empleadoRepository.findOneByMail(mail);
+        System.out.println(empleado);
         return empleado;
     }
 }
