@@ -27,5 +27,9 @@ public class EmpleadoController {
         return empleadoService.todosLosEmpleados();
     }
 
+    @GetMapping("/empleadoMail/{mail}")
+    public Empleado getEmpleado(@PathVariable("mail") String mail){
+        return empleadoService.getEmpleado(mail);
+    }
 
 }

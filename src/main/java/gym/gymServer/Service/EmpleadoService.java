@@ -33,4 +33,9 @@ public class EmpleadoService {
     public List<Empleado> todosLosEmpleados() {
         return (List<Empleado>) empleadoRepository.findAll();
     }
+
+    public Empleado getEmpleado(String mail){
+        Empleado empleado=empleadoRepository.findOneByMail(mail);
+        return empleado;
+    }
 }
