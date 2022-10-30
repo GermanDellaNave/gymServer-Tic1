@@ -42,4 +42,9 @@ public class ActividadController {
     public List<Actividad> getActividadesRecientes() {
         return actividadService.getActividadesRecientes();
     }
+
+    @GetMapping("/similarActividad/{like}")
+    public List<Actividad> getActividadesLike(@PathVariable("like") String search) {
+        return actividadService.getActividadesLike(search);
+    }
 }

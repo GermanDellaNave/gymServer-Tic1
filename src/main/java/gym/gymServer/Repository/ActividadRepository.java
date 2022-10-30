@@ -19,7 +19,7 @@ public interface ActividadRepository extends CrudRepository<Actividad, Actividad
     @Query( value = "SELECT * FROM actividades a where a.centro_mail_actividad = :centroMail AND dia_actividad = :dia AND hora_actividad = :hora AND nombre_actividad = :nombre", nativeQuery = true)
     Actividad findOneByKey(@Param("centroMail") String centroMail, @Param("dia") LocalDate dia, @Param("hora")  LocalTime hora, @Param("nombre")  String nombre);
 
-    @Query(value = "SELECT * FROM actividades a WHERE a.centro_mail_actividad LIKE %?1%", nativeQuery = true)
+    @Query(value = "SELECT * FROM actividades a WHERE a.centro_mail_actividad LIKE %?1% OR a.nombre_actividad LIKE %?1%", nativeQuery = true)
     List<Actividad> findBySearch(String input);
 
     @Query(value = "SELECT * FROM actividades ORDER BY date_creada DESC LIMIT 5", nativeQuery = true)

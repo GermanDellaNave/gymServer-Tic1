@@ -54,4 +54,8 @@ public class ActividadService {
     public List<Actividad> getActividadesRecientes() {
         return actividadRepository.findTopNewest();
     }
+
+    public List<Actividad> getActividadesLike(String search) {
+        return actividadRepository.findBySearch(search);
+    }
 }
