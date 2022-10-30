@@ -47,4 +47,9 @@ public class ActividadController {
     public List<Actividad> getActividadesLike(@PathVariable("like") String search) {
         return actividadService.getActividadesLike(search);
     }
+
+    @GetMapping(path = "actividadTipo/{tipo}")
+    public List<Actividad> getActividadesTipo(String tipo) {
+        return actividadService.getActividadesTipo(tipo);
+    }
 }

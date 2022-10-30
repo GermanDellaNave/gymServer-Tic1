@@ -24,4 +24,7 @@ public interface ActividadRepository extends CrudRepository<Actividad, Actividad
 
     @Query(value = "SELECT * FROM actividades ORDER BY date_creada DESC LIMIT 5", nativeQuery = true)
     List<Actividad> findTopNewest();
+
+    @Query(value = "SELECT a FROM actividades a JOIN tipo_actividades t ON a.tipo = t.tipo WHERE a.tipo = :tipostring", nativeQuery = true)
+    List<Actividad> getAllByTipo(@Param("tipostring") String tipostring);
 }

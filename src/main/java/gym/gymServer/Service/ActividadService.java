@@ -58,4 +58,8 @@ public class ActividadService {
     public List<Actividad> getActividadesLike(String search) {
         return actividadRepository.findBySearch(search);
     }
+
+    public List<Actividad> getActividadesTipo(String tipo) {
+        return actividadRepository.getAllByTipo(tipo);
+    }
 }
