@@ -49,7 +49,8 @@ public class ActividadController {
     }
 
     @GetMapping(path = "actividadTipo/{tipo}")
-    public List<Actividad> getActividadesTipo(String tipo) {
+    public List<Actividad> getActividadesTipo(@PathVariable("tipo") String tipo) {
+        System.out.println(tipo);
         return actividadService.getActividadesTipo(tipo);
     }
 }

@@ -39,6 +39,8 @@ public class InscripcionesActividades {
     })
     private Actividad actividad;
 
+    private String tipoReserva;
+
     public InscripcionesActividades() {
     }
 
@@ -50,6 +52,18 @@ public class InscripcionesActividades {
         this.asistencia = asistencia;
         this.empleado = empleado;
         this.actividad = actividad;
+    }
+
+    public InscripcionesActividades(String empleadoMailInscripcion, String actividadNombreInscripcion, LocalDate actividadDiaInscripcion, LocalTime actividadHoraInscripcion, String actividadCentroInscripcion, boolean asistencia, Empleado empleado, Actividad actividad, String tipoReserva) {
+        this.empleadoMailInscripcion = empleadoMailInscripcion;
+        this.actividadNombreInscripcion = actividadNombreInscripcion;
+        this.actividadDiaInscripcion = actividadDiaInscripcion;
+        this.actividadHoraInscripcion = actividadHoraInscripcion;
+        this.actividadCentroInscripcion = actividadCentroInscripcion;
+        this.asistencia = asistencia;
+        this.empleado = empleado;
+        this.actividad = actividad;
+        this.tipoReserva = tipoReserva;
     }
 
     public String getEmpleadoMailInscripciones() {
@@ -124,29 +138,39 @@ public class InscripcionesActividades {
         this.actividadCentroInscripcion = actividadCentroInscripcion;
     }
 
+    public String getTipoReserva() {
+        return tipoReserva;
+    }
+
+    public void setTipoReserva(String tipoReserva) {
+        this.tipoReserva = tipoReserva;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InscripcionesActividades that = (InscripcionesActividades) o;
-        return asistencia == that.asistencia && Objects.equals(empleadoMailInscripcion, that.empleadoMailInscripcion) && Objects.equals(actividadNombreInscripcion, that.actividadNombreInscripcion) && Objects.equals(actividadDiaInscripcion, that.actividadDiaInscripcion) && Objects.equals(actividadHoraInscripcion, that.actividadHoraInscripcion) && Objects.equals(empleado, that.empleado) && Objects.equals(actividad, that.actividad);
+        return asistencia == that.asistencia && Objects.equals(empleadoMailInscripcion, that.empleadoMailInscripcion) && Objects.equals(actividadNombreInscripcion, that.actividadNombreInscripcion) && Objects.equals(actividadDiaInscripcion, that.actividadDiaInscripcion) && Objects.equals(actividadHoraInscripcion, that.actividadHoraInscripcion) && Objects.equals(actividadCentroInscripcion, that.actividadCentroInscripcion) && Objects.equals(empleado, that.empleado) && Objects.equals(actividad, that.actividad) && Objects.equals(tipoReserva, that.tipoReserva);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(empleadoMailInscripcion, actividadNombreInscripcion, actividadDiaInscripcion, actividadHoraInscripcion, asistencia, empleado, actividad);
+        return Objects.hash(empleadoMailInscripcion, actividadNombreInscripcion, actividadDiaInscripcion, actividadHoraInscripcion, actividadCentroInscripcion, asistencia, empleado, actividad, tipoReserva);
     }
 
     @Override
     public String toString() {
         return "InscripcionesActividades{" +
-                "empleadoMailInscripciones='" + empleadoMailInscripcion + '\'' +
+                "empleadoMailInscripcion='" + empleadoMailInscripcion + '\'' +
                 ", actividadNombreInscripcion='" + actividadNombreInscripcion + '\'' +
                 ", actividadDiaInscripcion=" + actividadDiaInscripcion +
                 ", actividadHoraInscripcion=" + actividadHoraInscripcion +
+                ", actividadCentroInscripcion='" + actividadCentroInscripcion + '\'' +
                 ", asistencia=" + asistencia +
                 ", empleado=" + empleado +
                 ", actividad=" + actividad +
+                ", tipoReserva='" + tipoReserva + '\'' +
                 '}';
     }
 }
