@@ -5,4 +5,5 @@ import gym.gymServer.Classes.InscripcionesActividadesID;
 import org.springframework.data.repository.CrudRepository;
 
 public interface InscripcionesActividadesRepository extends CrudRepository<InscripcionesActividades, InscripcionesActividadesID> {
+
 }

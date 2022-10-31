@@ -45,8 +45,8 @@ public class EmpresasController {
         empresasService.borrarEmpresa(mailId);
     }
 
-    @PutMapping("{mail}")
-    public void modificarDatoEmpresa(@PathVariable("empresasId") String mailId, String nombre, String contrasena) throws EmpresaNoExiste {
+    @PutMapping("/{mail}")
+    public void modificarDatoEmpresa(@PathVariable("mail") String mailId, String nombre, String contrasena) throws EmpresaNoExiste {
         empresasService.actualizarDatosEmpresa(mailId, nombre, contrasena);
     }
 }
