@@ -14,6 +14,7 @@ import java.util.Objects;
 @Component
 public class InscripcionesActividades {
 
+
     private @Id String empleadoMailInscripcion;
 
     private @Id String actividadNombreInscripcion;

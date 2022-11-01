@@ -12,4 +12,6 @@ public interface EmpleadoRepository extends CrudRepository<Empleado, String> {
 
     @Query(value = "SELECT * FROM empleados e WHERE e.mail_empleado = :mail", nativeQuery = true)
     Empleado findOneByMail(@Param("mail") String mail);
+
+
 }

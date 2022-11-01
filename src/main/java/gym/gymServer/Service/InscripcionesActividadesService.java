@@ -1,10 +1,13 @@
 package gym.gymServer.Service;
 
+import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.InscripcionesActividades;
 import gym.gymServer.Classes.InscripcionesActividadesID;
 import gym.gymServer.Repository.InscripcionesActividadesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class InscripcionesActividadesService {
@@ -18,5 +21,9 @@ public class InscripcionesActividadesService {
         } else {
             System.out.println("usuario ya inscripto a esa actividad");
         }
+    }
+
+    public List<Actividad> getActividadesReservadasUsuario(String mailUsuario){
+        return inscripcionesActividadesRepository.getActividadesInscriptoEmpleado(mailUsuario);
     }
 }
