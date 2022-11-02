@@ -22,7 +22,7 @@ public class InscripcionesActividadesController {
     }
 
     @GetMapping(path = "/inscripcionUsuario/{mailUsuario}")
-    public List<Actividad> getActividadesReservadasUsuario(@PathVariable("mailUsuario") String mailUsuario){
-        return inscripcionesActividadesService.getActividadesReservadasUsuario(mailUsuario);
+    public void /*List<Actividad>*/ getActividadesReservadasUsuario(@PathVariable("mailUsuario") String mailUsuario){
+        /*return*/ inscripcionesActividadesService.getActividadesReservadasUsuario(mailUsuario);
     }
 }

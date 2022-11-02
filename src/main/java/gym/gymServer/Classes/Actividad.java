@@ -61,8 +61,8 @@ public class Actividad {
     @Lob
     private String imagen;
 
-    //@ManyToOne()
-    //@JoinColumn(name = "centro", referencedColumnName = "mailCentro")
+    @ManyToOne()
+    @JoinColumn(name = "centro", referencedColumnName = "mailCentro")
     //@JsonBackReference
     private CentrosDeportivos centroDeportivo;
 
@@ -72,6 +72,8 @@ public class Actividad {
     public Actividad() {
         super();
     }
+
+
 
     public Actividad(String nombre, LocalTime hora, LocalDate dia, String centroMail, TipoActividad tipo, String descripcion, int duracion, int costo, int cupos, boolean reservable, Date dateCreada, String imagen, CentrosDeportivos centroDeportivo) {
         this.nombre = nombre;
@@ -219,13 +221,13 @@ public class Actividad {
                 ", centroMail='" + centroMail + '\'' +
                 ", tipo=" + tipo +
                 ", descripcion='" + descripcion + '\'' +
+                ", duracion=" + duracion +
                 ", costo=" + costo +
                 ", cupos=" + cupos +
                 ", reservable=" + reservable +
                 ", dateCreada=" + dateCreada +
-                ", imagen=" + imagen +
+                ", imagen='" + imagen + '\'' +
                 ", centroDeportivo=" + centroDeportivo +
-                //", actividadesInscripto=" + actividadesInscripto +
                 '}';
     }
 }
