@@ -1,9 +1,11 @@
 package gym.gymServer.Classes;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
@@ -12,7 +14,8 @@ import java.util.Objects;
 @Table(name = "inscripcionesEmpleadoActividad")
 @IdClass(value=InscripcionesActividadesID.class)
 @Component
-public class InscripcionesActividades {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class InscripcionesActividades implements Serializable {
 
 
     private @Id String empleadoMailInscripcion;

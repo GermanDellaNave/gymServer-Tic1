@@ -1,14 +1,12 @@
 package gym.gymServer.Classes;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -20,7 +18,8 @@ import java.util.List;
 @Table(name = "Actividades")
 @IdClass(value = ActividadesID.class)
 @Component
-public class Actividad {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Actividad implements Serializable {
 
     @Column(name = "nombreActividad")
     private @Id String nombre;
@@ -63,7 +62,6 @@ public class Actividad {
 
     @ManyToOne()
     @JoinColumn(name = "centro", referencedColumnName = "mailCentro")
-    //@JsonBackReference
     private CentrosDeportivos centroDeportivo;
 
     /*@OneToMany(fetch = FetchType.EAGER, mappedBy = "actividad")
