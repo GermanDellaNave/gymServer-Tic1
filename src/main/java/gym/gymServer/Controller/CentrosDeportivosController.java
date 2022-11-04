@@ -1,6 +1,7 @@
 package gym.gymServer.Controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empresas;
 import gym.gymServer.Classes.Exceptions.CentroDeportivoNoExiste;
@@ -37,6 +38,11 @@ public class CentrosDeportivosController {
     @GetMapping(path = "/nombreCentro/{mail}")
     public String getNombreCentro(@PathVariable("mail") String mail) {
         return centrosDeportivosService.getCentroDeportivoNombre(mail);
+    }
+
+    @GetMapping("/similarCentroDeportivo/{like}")
+    public List<CentrosDeportivos> getCentrosDeportivosLike(@PathVariable("like") String search) {
+        return centrosDeportivosService.getCentrosDeportivosLike(search);
     }
 
     @PostMapping

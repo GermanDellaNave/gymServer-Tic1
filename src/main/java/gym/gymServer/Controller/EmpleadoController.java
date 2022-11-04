@@ -1,5 +1,6 @@
 package gym.gymServer.Controller;
 
+import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empleado;
 import gym.gymServer.Service.EmpleadoService;
@@ -30,6 +31,11 @@ public class EmpleadoController {
     @GetMapping("/empleadoMail/{mail}")
     public Empleado getEmpleado(@PathVariable("mail") String mail){
         return empleadoService.getEmpleado(mail);
+    }
+
+    @GetMapping("/similarEmpleado/{like}")
+    public List<Empleado> getEmpleadosLike(@PathVariable("like") String search) {
+        return empleadoService.getEmpleadosLike(search);
     }
 
 }

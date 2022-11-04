@@ -1,5 +1,6 @@
 package gym.gymServer.Service;
 
+import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empleado;
 import gym.gymServer.Repository.EmpleadoRepository;
@@ -38,5 +39,9 @@ public class EmpleadoService {
         Empleado empleado = empleadoRepository.findOneByMail(mail);
         System.out.println(empleado);
         return empleado;
+    }
+
+    public List<Empleado> getEmpleadosLike(String search) {
+        return empleadoRepository.findBySearch(search);
     }
 }

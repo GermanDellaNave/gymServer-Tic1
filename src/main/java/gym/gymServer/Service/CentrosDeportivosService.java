@@ -1,5 +1,6 @@
 package gym.gymServer.Service;
 
+import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empresas;
 import gym.gymServer.Classes.Exceptions.CentroDeportivoNoExiste;
@@ -77,5 +78,9 @@ public class CentrosDeportivosService {
         centroActualizable.setNombre(nombre);
 
         centrosDeportivosRepository.save(centroActualizable);
+    }
+
+    public List<CentrosDeportivos> getCentrosDeportivosLike(String search) {
+        return centrosDeportivosRepository.findBySearch(search);
     }
 }

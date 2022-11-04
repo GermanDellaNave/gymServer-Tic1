@@ -1,6 +1,7 @@
 package gym.gymServer.Service;
 
 
+import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empresas;
 import gym.gymServer.Classes.Exceptions.CentroDeportivoNoExiste;
@@ -66,5 +67,10 @@ public class EmpresasService {
         }
         System.out.println("Busqueda Empresa");
         return empresa;
+    }
+
+    public List<Empresas> getEmpresasLike(String search) {
+
+        return empresasRepository.findBySearch(search);
     }
 }
