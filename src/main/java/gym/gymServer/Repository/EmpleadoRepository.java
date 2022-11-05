@@ -18,6 +18,9 @@ public interface EmpleadoRepository extends CrudRepository<Empleado, String> {
     @Query(value = "SELECT * FROM empleados e WHERE e.mail_empleado LIKE %?1% OR e.nombre LIKE %?1% OR e.apellido LIKE %?1%", nativeQuery = true)
     List<Empleado> findBySearch(String input);
 
+    @Query(value = "SELECT * FROM empleados e WHERE e.empresa_mail = :mailEmpresa", nativeQuery = true)
+    List<Empleado> findAllByEmpresa(@Param("mailEmpresa") String mailEmpresa);
+
 
 
 }

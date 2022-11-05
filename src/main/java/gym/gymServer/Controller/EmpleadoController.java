@@ -38,4 +38,9 @@ public class EmpleadoController {
         return empleadoService.getEmpleadosLike(search);
     }
 
+    @GetMapping("/empleadosEmpresa/{mailEmpresa}")
+    public List<Empleado> getEmpleadosByEmpresa(@PathVariable("mailEmpresa") String mail) {
+        return empleadoService.getEmpleadosByEmpresa(mail);
+    }
+
 }

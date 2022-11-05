@@ -44,4 +44,8 @@ public class EmpleadoService {
     public List<Empleado> getEmpleadosLike(String search) {
         return empleadoRepository.findBySearch(search);
     }
+
+    public List<Empleado> getEmpleadosByEmpresa(String mailEmpresa) {
+        return empleadoRepository.findAllByEmpresa(mailEmpresa);
+    }
 }
