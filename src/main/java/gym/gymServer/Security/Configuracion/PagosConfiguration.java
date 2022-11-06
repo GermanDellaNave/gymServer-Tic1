@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.transaction.Transactional;
 import java.time.temporal.Temporal;
@@ -27,6 +28,7 @@ public class PagosConfiguration {
     @Autowired
     InscripcionesActividadesRepository inscripcionesActividadesRepository;
 
+    @Scheduled(cron = "0 0 */12 * * *")
     @Transactional
     public void cobrar(){
         List<InscripcionesActividades> inscripcionesActividades = (List<InscripcionesActividades>) inscripcionesActividadesRepository.findAll();
