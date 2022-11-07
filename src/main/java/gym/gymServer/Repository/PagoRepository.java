@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface PagoRepository extends CrudRepository<Pago, PagoId> {
 
-    @Query(value = "SELECT * FROM pago_empresa_centro p WHERE e.empresa_mail_pago = :mailEmpresa && e.centro_mail_pago = :mailCentro", nativeQuery = true)
+    @Query(value = "SELECT * FROM pago_empresa_centro p WHERE e.empresa_mail_pago = :mailEmpresa AND e.centro_mail_pago = :mailCentro", nativeQuery = true)
     Pago findOneByEmpresaAndCentro(@Param("mailEmpresa") String mailEmpresa,@Param("mailEmpresa") String mailCentro);
 }

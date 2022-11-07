@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -29,8 +30,18 @@ public class InscripcionesActividadesController {
     }
 
     @DeleteMapping (path = {"/delete/{mailEmpleado}/{nombreActividad}/{diaActividad}/{horaActividad}/{mailCentroActividad}"})
-    public void borrarCentroDeportivo(@PathVariable("mailEmpleado") String mailEmpleado, @PathVariable("nombreActividad") String nombreActividad, @PathVariable("diaActividad") LocalDate diaActividad, @PathVariable("horaActividad") LocalTime horaActividad, @PathVariable("centroMailActividad") String mailCentroActividad) {
-        inscripcionesActividadesService.borrarInscripcionActividad(mailEmpleado, nombreActividad, diaActividad, horaActividad, mailCentroActividad);
+    public void borrarCentroDeportivo(@PathVariable("mailEmpleado") String mailEmpleado, @PathVariable("nombreActividad") String nombreActividad, @PathVariable("diaActividad") String diaActividad, @PathVariable("horaActividad") String horaActividad, @PathVariable("mailCentroActividad") String mailCentroActividad) {
+        System.out.println("Entro borrar");
+        System.out.println(horaActividad);
+        LocalDate diaDate = LocalDate.parse(diaActividad);
+        System.out.println(diaDate);
+
+        LocalTime horaTime = LocalTime.parse(horaActividad);
+        LocalTime horaConSeg = horaTime.plusSeconds(1);
+
+        System.out.println(horaTime);
+        System.out.println(horaConSeg);
+        inscripcionesActividadesService.borrarInscripcionActividad(mailEmpleado, nombreActividad, diaDate, horaConSeg, mailCentroActividad);
     }
 
 }

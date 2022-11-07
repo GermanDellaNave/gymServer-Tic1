@@ -48,8 +48,11 @@ public class InscripcionesActividadesService {
     }
 
     public void borrarInscripcionActividad(String mailEmpleado,String nombreActividad,LocalDate diaActividad,LocalTime horaActividad,String mailCentroActividad) {
-        if (inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado,nombreActividad,diaActividad,horaActividad,mailCentroActividad) != null) {
+        System.out.println("Entro service borrar Inscripcion");
+        //InscripcionesActividades inscripcionesActividades = inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado,nombreActividad,diaActividad,horaActividad,mailCentroActividad);
+        //System.out.println(inscripcionesActividades);
+        //if (!inscripcionesActividades.equals(null)) {
             inscripcionesActividadesRepository.borrarInscripcionActividad(mailEmpleado, nombreActividad, diaActividad, horaActividad, mailCentroActividad);
-        }
+        //}
     }
 }
