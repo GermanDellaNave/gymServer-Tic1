@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.List;
 
 @RestController
@@ -35,13 +36,17 @@ public class InscripcionesActividadesController {
         System.out.println(horaActividad);
         LocalDate diaDate = LocalDate.parse(diaActividad);
         System.out.println(diaDate);
+        DateTimeFormatter formato = new DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern("HH:mm:ss").toFormatter();
+        LocalTime hora = LocalTime.of(0,0,0);
+        System.out.println(hora.format(formato));
+
 
         LocalTime horaTime = LocalTime.parse(horaActividad);
-        LocalTime horaConSeg = horaTime.plusSeconds(1);
+        horaTime = horaTime.plusSeconds(0);
 
-        System.out.println(horaTime);
-        System.out.println(horaConSeg);
-        inscripcionesActividadesService.borrarInscripcionActividad(mailEmpleado, nombreActividad, diaDate, horaConSeg, mailCentroActividad);
+        System.out.println(horaTime.format(formato));
+        //System.out.println(horaConSeg);
+        inscripcionesActividadesService.borrarInscripcionActividad(mailEmpleado, nombreActividad, diaDate, horaTime.withSecond(0), mailCentroActividad);
     }
 
 }
