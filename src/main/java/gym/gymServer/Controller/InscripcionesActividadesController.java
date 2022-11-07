@@ -6,6 +6,8 @@ import gym.gymServer.Service.InscripcionesActividadesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -25,4 +27,10 @@ public class InscripcionesActividadesController {
     public List<Actividad> getActividadesReservadasUsuario(@PathVariable("mailUsuario") String mailUsuario){
         return inscripcionesActividadesService.getActividadesReservadasUsuario(mailUsuario);
     }
+
+    @DeleteMapping (path = {"/delete/{mailEmpleado}/{nombreActividad}/{diaActividad}/{horaActividad}/{mailCentroActividad}"})
+    public void borrarCentroDeportivo(@PathVariable("mailEmpleado") String mailEmpleado, @PathVariable("nombreActividad") String nombreActividad, @PathVariable("diaActividad") LocalDate diaActividad, @PathVariable("horaActividad") LocalTime horaActividad, @PathVariable("centroMailActividad") String mailCentroActividad) {
+        inscripcionesActividadesService.borrarInscripcionActividad(mailEmpleado, nombreActividad, diaActividad, horaActividad, mailCentroActividad);
+    }
+
 }

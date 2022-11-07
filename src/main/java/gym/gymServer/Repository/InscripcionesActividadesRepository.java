@@ -7,6 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Transactional
@@ -30,6 +32,12 @@ public interface InscripcionesActividadesRepository extends CrudRepository<Inscr
     List<InscripcionesActividades> getActividadesInscriptoEmpleado(@Param("mailEmpleado") String mailEmpleado);
 
     /*new Actividad(a.nombre_actividad, a.hora_actividad, a.dia_actividad, a.centro_mail_actividad, a.tipo, a.descripcion, a.duracion, a.costo, a.cupos, a.reservable, a.date_creada, a.imagen, a.centro_deportivo)*/
+
+    @Query(value = "SELECT * FROM inscripciones_empleado_actividad i WHERE i.empleado_mail_inscripcion = :mailEmpleado && i.actividad_nombre_inscripcion = :nombreActividad && i.actividad_dia_inscripcion = :diaActividad && i.actividad_hora_inscripcion = :horaActividad && i.actividad_centro_inscripcion = :centroMailActividad ", nativeQuery = true)
+    InscripcionesActividades getInscripcionActividad (@Param("mailEmpleado") String mailEmpleado, @Param("nombreActividad") String nombreActividad, @Param("diaActividad")LocalDate diaActividad, @Param("horaActividad")LocalTime horaActividad,@Param("centroMailActividad") String centroMailActividad);
+
+    @Query(value = "DELETE FROM inscripciones_empleado_actividad i WHERE i.empleado_mail_inscripcion = :mailEmpleado && i.actividad_nombre_inscripcion = :nombreActividad && i.actividad_dia_inscripcion = :diaActividad && i.actividad_hora_inscripcion = :horaActividad && i.actividad_centro_inscripcion = :centroMailActividad ", nativeQuery = true)
+    InscripcionesActividades borrarInscripcionActividad (@Param("mailEmpleado") String mailEmpleado, @Param("nombreActividad") String nombreActividad, @Param("diaActividad")LocalDate diaActividad, @Param("horaActividad")LocalTime horaActividad,@Param("centroMailActividad") String centroMailActividad);
 
 }
 

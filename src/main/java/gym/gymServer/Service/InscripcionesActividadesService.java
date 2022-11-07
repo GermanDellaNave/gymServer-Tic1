@@ -46,4 +46,10 @@ public class InscripcionesActividadesService {
         System.out.println("Salgo del for");
         return listaActividades;
     }
+
+    public void borrarInscripcionActividad(String mailEmpleado,String nombreActividad,LocalDate diaActividad,LocalTime horaActividad,String mailCentroActividad) {
+        if (inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado,nombreActividad,diaActividad,horaActividad,mailCentroActividad) != null) {
+            inscripcionesActividadesRepository.borrarInscripcionActividad(mailEmpleado, nombreActividad, diaActividad, horaActividad, mailCentroActividad);
+        }
+    }
 }
