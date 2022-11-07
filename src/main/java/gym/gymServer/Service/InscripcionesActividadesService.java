@@ -54,10 +54,10 @@ public class InscripcionesActividadesService {
         System.out.println(mailEmpleado);
         System.out.println(diaActividad);
         System.out.println(nombreActividad);
-        //InscripcionesActividades inscripcionesActividades = inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado,nombreActividad,diaActividad,horaActividad,mailCentroActividad);
+        InscripcionesActividades inscripcionesActividades = inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado,nombreActividad,diaActividad,horaActividad,mailCentroActividad);
         //System.out.println(inscripcionesActividades);
-        //if (!inscripcionesActividades.equals(null)) {
+        if (inscripcionesActividades != null) {
             inscripcionesActividadesRepository.borrarInscripcionActividad(mailEmpleado, nombreActividad, diaActividad, horaActividad.withSecond(0), mailCentroActividad);
-        //}
+        }
     }
 }
