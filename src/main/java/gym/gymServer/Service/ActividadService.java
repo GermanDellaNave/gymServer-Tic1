@@ -74,5 +74,6 @@ public class ActividadService {
         System.out.println("Entro actualizar actividad");
         Actividad actividadActualizable = actividadRepository.findOneByKey(centroMail, date, time, nombre);
         actividadActualizable.setCupos(actividad.getCupos());
+
     }
 }

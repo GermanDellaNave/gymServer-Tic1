@@ -11,6 +11,9 @@ import gym.gymServer.Repository.CentrosDeportivosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -82,5 +85,13 @@ public class CentrosDeportivosService {
 
     public List<CentrosDeportivos> getCentrosDeportivosLike(String search) {
         return centrosDeportivosRepository.findBySearch(search);
+    }
+
+    @Transactional
+    public void actualizarCentroDeportivo(String mailCentro,CentrosDeportivos centrosDeportivos) {
+
+        CentrosDeportivos centroDeportivoActualizable = centrosDeportivosRepository.findOneByMail(mailCentro);
+        centroDeportivoActualizable.setNombre(centrosDeportivos.getNombre());
+        centroDeportivoActualizable.setImagen(centrosDeportivos.getImagen());
     }
 }
