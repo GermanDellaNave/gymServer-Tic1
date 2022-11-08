@@ -48,4 +48,9 @@ public class EmpleadoController {
         empleadoService.deleteEmpleado(mail);
     }
 
+    @PutMapping(path = "/actualizar/{mailEmpleado}")
+    public void actualizarEmpleado(@PathVariable("mailEmpleado") String mailEmpleado,@RequestBody Empleado empleado) {
+        empleadoService.actualizarEmpleado(mailEmpleado,empleado);
+    }
+
 }

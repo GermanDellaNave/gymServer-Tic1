@@ -7,6 +7,9 @@ import gym.gymServer.Repository.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -57,5 +60,16 @@ public class EmpleadoService {
             empleadoRepository.deleteById(mail);
             //empleadoRepository.borrarEmpleadoEmail(mail);
         //}
+    }
+
+    @Transactional
+    public void actualizarEmpleado(String mailEmpleado,Empleado empleado) {
+        Empleado empleadoActualizable = empleadoRepository.findOneByMail(mailEmpleado);
+
+        empleadoActualizable.setApellido(empleado.getApellido());
+        empleadoActualizable.setNombre(empleado.getNombre());
+        empleadoActualizable.setSaldoDisponible(empleado.getSaldoDisponible());
+        empleadoActualizable.setDeuda(empleado.getDeuda());
+        empleadoActualizable.setTelefono(empleado.getTelefono());
     }
 }
