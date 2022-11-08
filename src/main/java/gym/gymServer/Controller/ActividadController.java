@@ -48,7 +48,7 @@ public class ActividadController {
         return actividadService.getActividadesLike(search);
     }
 
-    @GetMapping(path = "actividadTipo/{tipo}")
+    @GetMapping(path = "/actividadTipo/{tipo}")
     public List<Actividad> getActividadesTipo(@PathVariable("tipo") String tipo) {
         System.out.println(tipo);
         return actividadService.getActividadesTipo(tipo);
@@ -57,5 +57,10 @@ public class ActividadController {
     @GetMapping("/actividadesDisponibles")
     public List<Actividad> getActividadesDisponibles() {
         return actividadService.getActividadesDisponibles();
+    }
+
+    @PutMapping(path = "/actualizar/{nombre}/{dia}/{hora}/{centroMail}")
+    public void actualizarActividad(@PathVariable("nombre") String nombre, @PathVariable("dia") String dia, @PathVariable("hora") String hora, @PathVariable("centroMail") String centroMail, @RequestBody Actividad actividad) {
+        actividadService.actualizarActividad(nombre, dia, hora, centroMail, actividad);
     }
 }

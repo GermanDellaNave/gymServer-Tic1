@@ -66,4 +66,13 @@ public class ActividadService {
     public List<Actividad> getActividadesTipo(String tipo) {
         return actividadRepository.getAllByTipo(tipo);
     }
+
+    @Transactional
+    public void actualizarActividad(String nombre, String dia, String hora, String centroMail, Actividad actividad) {
+        LocalDate date = LocalDate.parse(dia);
+        LocalTime time = LocalTime.parse(hora);
+        System.out.println("Entro actualizar actividad");
+        Actividad actividadActualizable = actividadRepository.findOneByKey(centroMail, date, time, nombre);
+        actividadActualizable.setCupos(actividad.getCupos());
+    }
 }
