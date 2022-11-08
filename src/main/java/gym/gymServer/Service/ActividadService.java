@@ -76,4 +76,8 @@ public class ActividadService {
         actividadActualizable.setCupos(actividad.getCupos());
 
     }
+
+    public List<Actividad> getActividadesCentro(String mailCentro){
+        return actividadRepository.findOneByCentro(mailCentro);
+    }
 }

@@ -63,4 +63,10 @@ public class ActividadController {
     public void actualizarActividad(@PathVariable("nombre") String nombre, @PathVariable("dia") String dia, @PathVariable("hora") String hora, @PathVariable("centroMail") String centroMail, @RequestBody Actividad actividad) {
         actividadService.actualizarActividad(nombre, dia, hora, centroMail, actividad);
     }
+
+    @GetMapping("/actividadesCentro/{centroMail}")
+    public List<Actividad>  getActividadesCentro(@PathVariable("centroMail") String centroMail) {
+        return actividadService.getActividadesCentro(centroMail);
+    }
+
 }
