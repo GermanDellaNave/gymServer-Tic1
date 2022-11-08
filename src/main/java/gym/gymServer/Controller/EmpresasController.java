@@ -55,4 +55,9 @@ public class EmpresasController {
     public void modificarDatoEmpresa(@PathVariable("mail") String mailId, String nombre, String contrasena) throws EmpresaNoExiste {
         empresasService.actualizarDatosEmpresa(mailId, nombre, contrasena);
     }
+
+    @PutMapping(path = "/actualizar/{mailEmpresa}")
+    public void actualizarEmpresa(@PathVariable("mailEmpresa") String mailEmpresa, @RequestBody Empresas empresa) {
+        empresasService.actualizarEmpresa(mailEmpresa,empresa);
+    }
 }

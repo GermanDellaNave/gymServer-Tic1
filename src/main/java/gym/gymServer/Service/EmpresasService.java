@@ -11,6 +11,9 @@ import gym.gymServer.Repository.EmpresasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -72,5 +75,12 @@ public class EmpresasService {
     public List<Empresas> getEmpresasLike(String search) {
 
         return empresasRepository.findBySearch(search);
+    }
+
+    @Transactional
+    public void actualizarEmpresa(String mailEmpresa,Empresas empresa) {
+        Empresas empresaActualizable = empresasRepository.findOneByMail(mailEmpresa);
+        empresaActualizable.setNombre(empresa.getNombre());
+        empresaActualizable.setBono(empresa.getBono());
     }
 }
