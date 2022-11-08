@@ -82,5 +82,6 @@ public class EmpresasService {
         Empresas empresaActualizable = empresasRepository.findOneByMail(mailEmpresa);
         empresaActualizable.setNombre(empresa.getNombre());
         empresaActualizable.setBono(empresa.getBono());
+        empresaActualizable.setImagen(empresa.getImagen());
     }
 }
