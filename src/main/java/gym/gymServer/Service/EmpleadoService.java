@@ -71,5 +71,6 @@ public class EmpleadoService {
         empleadoActualizable.setSaldoDisponible(empleado.getSaldoDisponible());
         empleadoActualizable.setDeuda(empleado.getDeuda());
         empleadoActualizable.setTelefono(empleado.getTelefono());
+        empleadoActualizable.setImagen(empleado.getImagen());
     }
 }
