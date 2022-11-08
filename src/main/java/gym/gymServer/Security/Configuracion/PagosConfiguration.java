@@ -11,6 +11,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.Period;
 import java.time.temporal.Temporal;
 import java.util.Date;
 import java.util.List;
@@ -39,7 +41,11 @@ public class PagosConfiguration {
             CentrosDeportivos centro_deportivo_i=inscripcionActividad_i.getActividad().getCentroDeportivo();
             Actividad actividad_i=inscripcionActividad_i.getActividad();
 
-            long daysBetween=DAYS.between((Temporal) new Date(),actividad_i.getDia());
+            //long daysBetween=DAYS.between((Temporal) new Date(),actividad_i.getDia());
+
+            Period period=Period.between(LocalDate.now(),actividad_i.getDia());
+
+            Integer daysBetween=period.getDays();
 
             if(((inscripcionActividad_i.getTipoReserva().equals("RESERVAR") &&  daysBetween<=0) || inscripcionActividad_i.isAsistencia()) && !inscripcionActividad_i.equals("PAGO")){
                 Integer monto_a_cobrar_i=actividad_i.getCosto();
