@@ -29,4 +29,9 @@ public interface ActividadRepository extends CrudRepository<Actividad, Actividad
     List<Actividad> getAllByTipo(@Param("tipostring") String tipostring);
 
     /*JOIN tipo_actividades t ON a.tipo = t.tipo*/
+
+    @Query( value = "SELECT * FROM actividades a where (a.dia_actividad = ?1 AND a.hora_actividad > ?2) OR (a.dia_actividad >?1)", nativeQuery = true)
+    List <Actividad> getActividadesDisponibles(LocalDate date,LocalTime time);
+
+
 }

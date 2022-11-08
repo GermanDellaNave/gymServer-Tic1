@@ -53,4 +53,9 @@ public class ActividadController {
         System.out.println(tipo);
         return actividadService.getActividadesTipo(tipo);
     }
+
+    @GetMapping("/actividadesDisponibles")
+    public List<Actividad> getActividadesDisponibles() {
+        return actividadService.getActividadesDisponibles();
+    }
 }

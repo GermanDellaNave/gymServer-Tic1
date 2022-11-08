@@ -47,6 +47,10 @@ public class ActividadService {
         //return actividadRepository.findOneById(nombre, horaLT, diaLT, centroDeportivo);
     }
 
+    public List<Actividad> getActividadesDisponibles(){
+        return actividadRepository.getActividadesDisponibles(LocalDate.now(),LocalTime.now());
+    }
+
     public List<Actividad> getActividades() {
         return (List<Actividad>) actividadRepository.findAll();
     }
