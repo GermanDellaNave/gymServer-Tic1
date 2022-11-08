@@ -34,4 +34,9 @@ public interface ActividadRepository extends CrudRepository<Actividad, Actividad
     List <Actividad> getActividadesDisponibles(LocalDate date,LocalTime time);
 
 
+    @Query( value = "SELECT * FROM actividades a where a.centro_mail_actividad = :centroMail ", nativeQuery = true)
+    Actividad findOneByCentro(@Param("centroMail") String centroMail);
+
+
+
 }
