@@ -43,4 +43,9 @@ public class EmpleadoController {
         return empleadoService.getEmpleadosByEmpresa(mail);
     }
 
+    @DeleteMapping(path = "/deleteEmpleado/{mailEmpleado}")
+    public void deleteEmpleado(@PathVariable("mailEmpleado") String mail) {
+        empleadoService.deleteEmpleado(mail);
+    }
+
 }

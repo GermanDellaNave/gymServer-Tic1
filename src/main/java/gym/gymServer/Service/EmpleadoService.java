@@ -48,4 +48,14 @@ public class EmpleadoService {
     public List<Empleado> getEmpleadosByEmpresa(String mailEmpresa) {
         return empleadoRepository.findAllByEmpresa(mailEmpresa);
     }
+
+    public void deleteEmpleado(String mail) {
+        System.out.println("Entro delete empleado");
+        System.out.println(mail);
+        //if (empleadoRepository.findOneByMail(mail) != null) {
+            System.out.println("Entro if");
+            empleadoRepository.deleteById(mail);
+            //empleadoRepository.borrarEmpleadoEmail(mail);
+        //}
+    }
 }
