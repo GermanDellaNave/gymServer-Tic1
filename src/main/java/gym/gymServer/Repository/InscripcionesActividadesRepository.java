@@ -28,7 +28,7 @@ public interface InscripcionesActividadesRepository extends CrudRepository<Inscr
     /*@Query(value = "SELECT * FROM inscripciones_empleado_actividad i WHERE i")
     InscripcionesActividades findIscripcionActividadHecha(@Param())*/
 
-    @Query(value = "SELECT * FROM inscripciones_empleado_actividad i WHERE i.empleado_mail_inscripcion = :mailEmpleado ORDER BY i.actividad_dia_inscripcion ASC,i.actividad_hora_inscripcion ASC,i.actividad_nombre_inscripcion ASC", nativeQuery = true)
+    @Query(value = "SELECT * FROM inscripciones_empleado_actividad i WHERE i.empleado_mail_inscripcion = :mailEmpleado ORDER BY i.actividad_dia_inscripcion DESC,i.actividad_hora_inscripcion DESC,i.actividad_nombre_inscripcion DESC", nativeQuery = true)
         //@Query(value = "SELECT a FROM actividades a JOIN i.actividad_nombre_inscripcion, i.actividad_dia_inscripcion, i.actividad_hora_inscripcion, i.actividad_centro_inscripcion WHERE i.empleado_mail_inscripcion = :mailEmpleado")
     List<InscripcionesActividades> getActividadesInscriptoEmpleado(@Param("mailEmpleado") String mailEmpleado);
 
