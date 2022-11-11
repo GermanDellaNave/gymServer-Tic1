@@ -22,8 +22,8 @@ public interface ActividadRepository extends CrudRepository<Actividad, Actividad
     @Query(value = "SELECT * FROM actividades a WHERE (a.centro_mail_actividad LIKE %?1% OR a.nombre_actividad LIKE %?1%) AND ((a.dia_actividad = ?2 AND a.hora_actividad > ?3) OR (a.dia_actividad >?2)) ORDER BY a.dia_actividad ASC,a.hora_actividad ASC,a.nombre_actividad ASC ", nativeQuery = true)
     List<Actividad> findBySearch(String input,LocalDate date,LocalTime time);
 
-    @Query(value = "SELECT * FROM actividades WHERE (a.dia_actividad = ?1 AND a.hora_actividad > ?2) OR (a.dia_actividad >?1) ORDER BY date_creada DESC LIMIT 5", nativeQuery = true)
-    List<Actividad> findTopNewest();
+    @Query(value = "SELECT * FROM actividades a WHERE (a.dia_actividad = ?1 AND a.hora_actividad > ?2) OR (a.dia_actividad >?1) ORDER BY a.date_creada DESC LIMIT 5", nativeQuery = true)
+    List<Actividad> findTopNewest(LocalDate date, LocalTime time);
 
     @Query(value = "SELECT * FROM actividades a WHERE ((a.dia_actividad = ?1 AND a.hora_actividad > ?2) OR (a.dia_actividad >?1)) AND a.centro_mail_actividad = ?3 ORDER BY a.dia_actividad, a.hora_actividad LIMIT 5", nativeQuery = true)
     List<Actividad> findTopNextCentro(LocalDate date, LocalTime time, String mailCentro);

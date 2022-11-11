@@ -56,7 +56,7 @@ public class ActividadService {
     }
 
     public List<Actividad> getActividadesRecientes() {
-        return actividadRepository.findTopNewest();
+        return actividadRepository.findTopNewest(LocalDate.now(), LocalTime.now());
     }
 
     public List<Actividad> getActividadesProximasCentro(String mailCentro) {
