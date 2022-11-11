@@ -39,6 +39,7 @@ public class PagosConfiguration {
         for (int i = 0; i < inscripcionesActividades.size(); i++) {
             InscripcionesActividades inscripcionActividad_i = inscripcionesActividades.get(i);
 
+            Empleado empleado_i = inscripcionActividad_i.getEmpleado();
             Empresas empresa_i=inscripcionActividad_i.getEmpleado().getEmpresa();
             CentrosDeportivos centro_deportivo_i=inscripcionActividad_i.getActividad().getCentroDeportivo();
             Actividad actividad_i=inscripcionActividad_i.getActividad();
@@ -51,6 +52,7 @@ public class PagosConfiguration {
 
             if(((inscripcionActividad_i.getTipoReserva().equals("RESERVAR") &&  daysBetween<=0) || inscripcionActividad_i.isAsistencia()) && !inscripcionActividad_i.equals("PAGO")){
                 Integer monto_a_cobrar_i=actividad_i.getCosto();
+                empleado_i.setSaldoDisponible(empleado_i.getSaldoDisponible() - actividad_i.getCosto());
                 Pago pago_empresa_centro_i=pagoRepository.findOneByEmpresaAndCentro(empresa_i.getMail(),centro_deportivo_i.getMail());
                 if(pago_empresa_centro_i != null){
                     pago_empresa_centro_i.setMonto(pago_empresa_centro_i.getMonto()+monto_a_cobrar_i);

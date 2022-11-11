@@ -33,7 +33,7 @@ public interface ActividadRepository extends CrudRepository<Actividad, Actividad
 
     /*JOIN tipo_actividades t ON a.tipo = t.tipo*/
 
-    @Query( value = "SELECT * FROM actividades a where (a.dia_actividad = ?1 AND a.hora_actividad > ?2) OR (a.dia_actividad >?1) ORDER BY a.dia_actividad ASC,a.hora_actividad ASC,a.nombre_actividad ASC )", nativeQuery = true)
+    @Query( value = "SELECT * FROM actividades a where (a.dia_actividad = ?1 AND a.hora_actividad > ?2) OR (a.dia_actividad >?1) ORDER BY a.dia_actividad ASC,a.hora_actividad ASC,a.nombre_actividad ASC", nativeQuery = true)
     List <Actividad> getActividadesDisponibles(LocalDate date,LocalTime time);
 
 
