@@ -64,11 +64,11 @@ public class ActividadService {
     }
 
     public List<Actividad> getActividadesLike(String search) {
-        return actividadRepository.findBySearch(search);
+        return actividadRepository.findBySearch(search,LocalDate.now(),LocalTime.now());
     }
 
     public List<Actividad> getActividadesTipo(String tipo) {
-        return actividadRepository.getAllByTipo(tipo);
+        return actividadRepository.getAllByTipo(tipo,LocalDate.now(),LocalTime.now());
     }
 
     @Transactional
@@ -82,6 +82,6 @@ public class ActividadService {
     }
 
     public List<Actividad> getActividadesCentro(String mailCentro){
-        return actividadRepository.findOneByCentro(mailCentro);
+        return actividadRepository.findOneByCentro(mailCentro,LocalDate.now(),LocalTime.now());
     }
 }
