@@ -28,4 +28,9 @@ public class PagoController {
     public void registrarPago(@RequestBody Pago pago) {
         pagoService.registrarPago(pago);
     }
+
+    @GetMapping("/allPagosCentro/{mailCentro}")
+    public List<Pago> getPagosCentro(@PathVariable("mailCentro") String mail) {
+        return pagoService.getPagosCentro(mail);
+    }
 }

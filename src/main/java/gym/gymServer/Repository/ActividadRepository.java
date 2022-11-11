@@ -25,6 +25,9 @@ public interface ActividadRepository extends CrudRepository<Actividad, Actividad
     @Query(value = "SELECT * FROM actividades ORDER BY date_creada DESC LIMIT 5", nativeQuery = true)
     List<Actividad> findTopNewest();
 
+    @Query(value = "SELECT * FROM actividades a WHERE ((a.dia_actividad = ?1 AND a.hora_actividad > ?2) OR (a.dia_actividad >?1)) AND a.centro_mail_actividad = ?3 ORDER BY a.dia_actividad, a.hora_actividad LIMIT 5", nativeQuery = true)
+    List<Actividad> findTopNextCentro(LocalDate date, LocalTime time, String mailCentro);
+
     @Query(value = "SELECT * FROM actividades a WHERE a.tipo = :tipostring", nativeQuery = true)
     List<Actividad> getAllByTipo(@Param("tipostring") String tipostring);
 

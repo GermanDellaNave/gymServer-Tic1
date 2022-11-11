@@ -43,6 +43,11 @@ public class ActividadController {
         return actividadService.getActividadesRecientes();
     }
 
+    @GetMapping("/proximasActividadesCentro/{mailCentro}")
+    public List<Actividad> getActividadesRecientesCentro(@PathVariable("mailCentro") String centroMail) {
+        return actividadService.getActividadesProximasCentro(centroMail);
+    }
+
     @GetMapping("/similarActividad/{like}")
     public List<Actividad> getActividadesLike(@PathVariable("like") String search) {
         return actividadService.getActividadesLike(search);

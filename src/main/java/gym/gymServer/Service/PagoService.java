@@ -29,4 +29,8 @@ public class PagoService {
     public void registrarPago(Pago pago) {
         pagoRepository.save(pago);
     }
+
+    public List<Pago> getPagosCentro(String mail) {
+        return (List<Pago>) pagoRepository.findOneByCentro(mail);
+    }
 }

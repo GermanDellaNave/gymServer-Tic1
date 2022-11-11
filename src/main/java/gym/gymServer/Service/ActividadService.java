@@ -59,6 +59,10 @@ public class ActividadService {
         return actividadRepository.findTopNewest();
     }
 
+    public List<Actividad> getActividadesProximasCentro(String mailCentro) {
+        return actividadRepository.findTopNextCentro(LocalDate.now(), LocalTime.now(), mailCentro);
+    }
+
     public List<Actividad> getActividadesLike(String search) {
         return actividadRepository.findBySearch(search);
     }
