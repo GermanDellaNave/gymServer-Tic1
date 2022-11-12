@@ -65,6 +65,10 @@ public class CentrosDeportivosService {
         System.out.println("Registro Centro");
     }
 
+    public int getCantidadCentros(){
+        return centrosDeportivosRepository.getNumeroCentrosDeportivos();
+    }
+
     public void borrarCentroDeportivo(String mailId) {
         if (centrosDeportivosRepository.findOneByMail(mailId) != null) {
             centrosDeportivosRepository.deleteById(mailId);

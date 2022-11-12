@@ -39,6 +39,11 @@ public class EmpresasController {
         return empresasService.getEmpresasLike(search);
     }
 
+    @GetMapping("/numberEmpresas")
+    public Integer getCantidadEmpresas(){
+        return empresasService.getCantidadEmpresas();
+    }
+
     @PostMapping
     public void registrarEmpresa(@RequestBody Empresas nuevaEmpresa) throws EmpresaYaExiste {
         System.out.println(nuevaEmpresa);
@@ -51,10 +56,10 @@ public class EmpresasController {
         empresasService.borrarEmpresa(mailId);
     }
 
-    @PutMapping("/{mail}")
+    /*@PutMapping("/{mail}")
     public void modificarDatoEmpresa(@PathVariable("mail") String mailId, String nombre, String contrasena) throws EmpresaNoExiste {
         empresasService.actualizarDatosEmpresa(mailId, nombre, contrasena);
-    }
+    }*/
 
     @PutMapping(path = "/actualizar/{mailEmpresa}")
     public void actualizarEmpresa(@PathVariable("mailEmpresa") String mailEmpresa, @RequestBody Empresas empresa) {

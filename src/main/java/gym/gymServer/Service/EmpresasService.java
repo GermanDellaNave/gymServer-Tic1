@@ -77,6 +77,10 @@ public class EmpresasService {
         return empresasRepository.findBySearch(search);
     }
 
+    public int getCantidadEmpresas(){
+        return empresasRepository.getNumeroEmpresas();
+    }
+
     @Transactional
     public void actualizarEmpresa(String mailEmpresa,Empresas empresa) {
         Empresas empresaActualizable = empresasRepository.findOneByMail(mailEmpresa);

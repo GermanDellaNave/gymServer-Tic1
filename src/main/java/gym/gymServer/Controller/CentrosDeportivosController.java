@@ -45,6 +45,11 @@ public class CentrosDeportivosController {
         return centrosDeportivosService.getCentrosDeportivosLike(search);
     }
 
+    @GetMapping("/numberCentros")
+    public Integer getCantidadCentros(){
+        return centrosDeportivosService.getCantidadCentros();
+    }
+
     @PostMapping
     public void registrarCentroDeportivo(@RequestBody CentrosDeportivos nuevoCentroDeportivo) throws CentroDeportivoYaExiste {
         System.out.println("Centro Deportivo controller post");
