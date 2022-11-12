@@ -3,6 +3,7 @@ package gym.gymServer.Service;
 import gym.gymServer.Classes.*;
 import gym.gymServer.Repository.ActividadRepository;
 import gym.gymServer.Repository.InscripcionesActividadesRepository;
+import org.hibernate.type.TrueFalseType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,5 +60,16 @@ public class InscripcionesActividadesService {
         if (inscripcionesActividades != null) {
             inscripcionesActividadesRepository.borrarInscripcionActividad(mailEmpleado, nombreActividad, diaActividad, horaActividad.withSecond(0), mailCentroActividad);
         }
+    }
+
+    @Transactional
+    public void asistencia(String mailEmpleado, String nombreActividad, String diaActividad, String horaActividad,String mailCentroActividad) {
+        LocalDate date = LocalDate.parse(diaActividad);
+        LocalTime time = LocalTime.parse(horaActividad);
+
+        InscripcionesActividades inscripcionActividadActualizable = inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado,nombreActividad,date,time,mailCentroActividad);
+
+        inscripcionActividadActualizable.setAsistencia(true);
+
     }
 }

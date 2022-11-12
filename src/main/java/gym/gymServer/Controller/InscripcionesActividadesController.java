@@ -49,4 +49,9 @@ public class InscripcionesActividadesController {
         inscripcionesActividadesService.borrarInscripcionActividad(mailEmpleado, nombreActividad, diaDate, horaTime.withSecond(0), mailCentroActividad);
     }
 
+    @PutMapping(path = "/actualizar/{mailEmpleado}/{nombreActividad}/{diaActividad}/{horaActividad}/{centroMailActividad}")
+    public void asistencia(@PathVariable("mailEmpleado") String mailEmpleado, @PathVariable("nombreActividad") String nombreActividad, @PathVariable("diaActividad") String diaActividad, @PathVariable("horaActividad") String horaActividad,@PathVariable("mailCentroActividad") String mailCentroActividad) {
+        inscripcionesActividadesService.asistencia(mailEmpleado,nombreActividad,diaActividad,horaActividad,mailCentroActividad);
+    }
+
 }

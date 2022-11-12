@@ -63,7 +63,7 @@ public class CentrosDeportivosController {
     }
 
     @PutMapping(path = "/actualizar/{mailCentro}")
-    public void actualizarActividad(@PathVariable("mailCentro") String mailCentro ,@RequestBody  CentrosDeportivos centrosDeportivos) {
+    public void actualizarCentroDeportivo(@PathVariable("mailCentro") String mailCentro ,@RequestBody  CentrosDeportivos centrosDeportivos) {
         centrosDeportivosService.actualizarCentroDeportivo(mailCentro,centrosDeportivos);
     }
 
