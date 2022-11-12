@@ -33,9 +33,9 @@ public class EmpleadoController {
         return empleadoService.getEmpleado(mail);
     }
 
-    @GetMapping("/similarEmpleado/{like}")
-    public List<Empleado> getEmpleadosLike(@PathVariable("like") String search) {
-        return empleadoService.getEmpleadosLike(search);
+    @GetMapping("/similarEmpleado/{mailEmpresa}/{like}")
+    public List<Empleado> getEmpleadosLike(@PathVariable("mailEmpresa") String empresa, @PathVariable("like") String search) {
+        return empleadoService.getEmpleadosLike(empresa, search);
     }
 
     @GetMapping("/empleadosEmpresa/{mailEmpresa}")
