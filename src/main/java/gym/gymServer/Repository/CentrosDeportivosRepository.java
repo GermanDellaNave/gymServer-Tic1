@@ -16,4 +16,7 @@ public interface CentrosDeportivosRepository extends CrudRepository<CentrosDepor
     @Query(value = "SELECT * FROM centros_deportivos c WHERE c.mail_centro LIKE %?1% OR c.nombre LIKE %?1%", nativeQuery = true)
     List<CentrosDeportivos> findBySearch(String input);
 
+    @Query(value = "SELECT COUNT(c) FROM centros_deportivos c", nativeQuery = true)
+    Integer getNumeroCentrosDeportivos();
+
 }

@@ -17,6 +17,11 @@ public interface EmpresasRepository extends CrudRepository<Empresas, String> {
     @Query(value = "SELECT * FROM empresas e WHERE e.mail_empresa LIKE %?1% OR e.nombre LIKE %?1%", nativeQuery = true)
     List<Empresas> findBySearch(String input);
 
+    @Query(value = "SELECT COUNT(e) FROM empresas e", nativeQuery = true)
+    Integer getNumeroEmpresas();
+
+
+
 
 
 }
