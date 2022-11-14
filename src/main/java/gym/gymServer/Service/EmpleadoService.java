@@ -52,6 +52,14 @@ public class EmpleadoService {
         return empleadoRepository.findAllByEmpresa(mailEmpresa);
     }
 
+    public List<Empleado> getNuevosEmpleadosByEmpresa(String mailEmpresa) {
+        return empleadoRepository.findTopNewestEmpresa(mailEmpresa);
+    }
+
+    public List<Empleado> getEmpleadosConDeuda(String mailEmpresa) {
+        return empleadoRepository.getDeudoresPorEmpresa(mailEmpresa);
+    }
+
     public void deleteEmpleado(String mail) {
         System.out.println("Entro delete empleado");
         System.out.println(mail);

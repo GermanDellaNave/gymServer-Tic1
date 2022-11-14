@@ -31,8 +31,8 @@ public class PagosConfiguration {
     @Autowired
     InscripcionesActividadesRepository inscripcionesActividadesRepository;
 
-    //@Scheduled(cron = "0 0 */12 * * *")
-    @Bean
+    @Scheduled(cron = "0 0 */12 * * *")
+    //@Bean
     @Transactional
     public void cobrar(){
         List<InscripcionesActividades> inscripcionesActividades = (List<InscripcionesActividades>) inscripcionesActividadesRepository.findAll();

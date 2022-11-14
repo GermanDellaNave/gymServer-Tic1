@@ -1,7 +1,5 @@
 package gym.gymServer.Controller;
 
-import gym.gymServer.Classes.Actividad;
-import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empleado;
 import gym.gymServer.Service.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +39,16 @@ public class EmpleadoController {
     @GetMapping("/empleadosEmpresa/{mailEmpresa}")
     public List<Empleado> getEmpleadosByEmpresa(@PathVariable("mailEmpresa") String mail) {
         return empleadoService.getEmpleadosByEmpresa(mail);
+    }
+
+    @GetMapping("/nuevosEmpleadosEmpresa/{mailEmpresa}")
+    public List<Empleado> getNuevosEmpleadosByEmpresa(@PathVariable("mailEmpresa") String mail) {
+        return empleadoService.getNuevosEmpleadosByEmpresa(mail);
+    }
+
+    @GetMapping("/empleadosConDeuda/{mailEmpresa}")
+    public List<Empleado> getEmpleadosConDeuda(@PathVariable("mailEmpresa") String mail){
+        return empleadoService.getEmpleadosConDeuda(mail);
     }
 
     @DeleteMapping(path = "/deleteEmpleado/{mailEmpleado}")

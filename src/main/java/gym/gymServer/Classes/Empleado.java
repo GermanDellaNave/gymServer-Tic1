@@ -3,6 +3,7 @@ package gym.gymServer.Classes;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,7 +31,7 @@ public class Empleado {
 
     private int saldoDisponible;
 
-    private int saldoOriginal;
+    private Date dateCreado;
 
     private int deuda;
 
@@ -44,7 +45,7 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(UserLogin userLoginReference, String nombre, String apellido, String mail, String telefono, Empresas empresa, int saldoDisponible, int saldoOriginal, int deuda, String imagen) {
+    public Empleado(UserLogin userLoginReference, String nombre, String apellido, String mail, String telefono, Empresas empresa, int saldoDisponible, Date dateCreado, int deuda, String imagen) {
         this.userLoginReference = userLoginReference;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -52,7 +53,7 @@ public class Empleado {
         this.telefono = telefono;
         this.empresa = empresa;
         this.saldoDisponible = saldoDisponible;
-        this.saldoOriginal = saldoOriginal;
+        this.dateCreado = dateCreado;
         this.deuda = deuda;
         this.imagen = imagen;
     }
@@ -113,12 +114,12 @@ public class Empleado {
         this.saldoDisponible = saldoDisponible;
     }
 
-    public int getSaldoOriginal() {
-        return saldoOriginal;
+    public Date getDateCreado() {
+        return dateCreado;
     }
 
-    public void setSaldoOriginal(int saldoOriginal) {
-        this.saldoOriginal = saldoOriginal;
+    public void setDateCreado(Date dateCreado) {
+        this.dateCreado = dateCreado;
     }
 
     public int getDeuda() {
@@ -150,13 +151,12 @@ public class Empleado {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Empleado empleado = (Empleado) o;
-        return saldoDisponible == empleado.saldoDisponible && saldoOriginal == empleado.saldoOriginal && deuda == empleado.deuda && Objects.equals(userLoginReference, empleado.userLoginReference) && Objects.equals(nombre, empleado.nombre) && Objects.equals(apellido, empleado.apellido) && Objects.equals(mail, empleado.mail) && Objects.equals(telefono, empleado.telefono) && Objects.equals(empresa, empleado.empresa) && Objects.equals(imagen, empleado.imagen);
+        return saldoDisponible == empleado.saldoDisponible && deuda == empleado.deuda && Objects.equals(userLoginReference, empleado.userLoginReference) && Objects.equals(nombre, empleado.nombre) && Objects.equals(apellido, empleado.apellido) && Objects.equals(mail, empleado.mail) && Objects.equals(telefono, empleado.telefono) && Objects.equals(empresa, empleado.empresa) && Objects.equals(dateCreado, empleado.dateCreado) && Objects.equals(imagen, empleado.imagen);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(userLoginReference, nombre, apellido, mail, telefono, empresa, saldoDisponible, saldoOriginal, deuda, imagen);
+        return Objects.hash(userLoginReference, nombre, apellido, mail, telefono, empresa, saldoDisponible, dateCreado, deuda, imagen);
     }
 
     @Override
@@ -169,7 +169,7 @@ public class Empleado {
                 ", telefono='" + telefono + '\'' +
                 ", empresa=" + empresa +
                 ", saldoDisponible=" + saldoDisponible +
-                ", saldoOriginal=" + saldoOriginal +
+                ", dateCreado=" + dateCreado +
                 ", deuda=" + deuda +
                 ", imagen='" + imagen + '\'' +
                 '}';

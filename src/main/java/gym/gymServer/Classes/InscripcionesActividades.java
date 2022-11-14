@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -45,10 +46,12 @@ public class InscripcionesActividades implements Serializable {
 
     private String tipoReserva;
 
+    private Date dateIngreso;
+
     public InscripcionesActividades() {
     }
 
-    public InscripcionesActividades(String empleadoMailInscripciones, String actividadNombreInscripcion, LocalDate actividadDiaInscripcion, LocalTime actividadHoraInscripcion, boolean asistencia, Empleado empleado, Actividad actividad) {
+    public InscripcionesActividades(String empleadoMailInscripciones, String actividadNombreInscripcion, LocalDate actividadDiaInscripcion, LocalTime actividadHoraInscripcion, boolean asistencia, Empleado empleado, Actividad actividad, Date dateIngreso) {
         this.empleadoMailInscripcion = empleadoMailInscripciones;
         this.actividadNombreInscripcion = actividadNombreInscripcion;
         this.actividadDiaInscripcion = actividadDiaInscripcion;
@@ -56,9 +59,10 @@ public class InscripcionesActividades implements Serializable {
         this.asistencia = asistencia;
         this.empleado = empleado;
         this.actividad = actividad;
+        this.dateIngreso = dateIngreso;
     }
 
-    public InscripcionesActividades(String empleadoMailInscripcion, String actividadNombreInscripcion, LocalDate actividadDiaInscripcion, LocalTime actividadHoraInscripcion, String actividadCentroInscripcion, boolean asistencia, Empleado empleado, Actividad actividad, String tipoReserva) {
+    public InscripcionesActividades(String empleadoMailInscripcion, String actividadNombreInscripcion, LocalDate actividadDiaInscripcion, LocalTime actividadHoraInscripcion, String actividadCentroInscripcion, boolean asistencia, Empleado empleado, Actividad actividad, String tipoReserva, Date dateIngreso) {
         this.empleadoMailInscripcion = empleadoMailInscripcion;
         this.actividadNombreInscripcion = actividadNombreInscripcion;
         this.actividadDiaInscripcion = actividadDiaInscripcion;
@@ -68,6 +72,7 @@ public class InscripcionesActividades implements Serializable {
         this.empleado = empleado;
         this.actividad = actividad;
         this.tipoReserva = tipoReserva;
+        this.dateIngreso = dateIngreso;
     }
 
     public String getEmpleadoMailInscripciones() {
@@ -150,17 +155,25 @@ public class InscripcionesActividades implements Serializable {
         this.tipoReserva = tipoReserva;
     }
 
+    public Date getDateIngreso() {
+        return dateIngreso;
+    }
+
+    public void setDateIngreso(Date dateIngreso) {
+        this.dateIngreso = dateIngreso;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InscripcionesActividades that = (InscripcionesActividades) o;
-        return asistencia == that.asistencia && Objects.equals(empleadoMailInscripcion, that.empleadoMailInscripcion) && Objects.equals(actividadNombreInscripcion, that.actividadNombreInscripcion) && Objects.equals(actividadDiaInscripcion, that.actividadDiaInscripcion) && Objects.equals(actividadHoraInscripcion, that.actividadHoraInscripcion) && Objects.equals(actividadCentroInscripcion, that.actividadCentroInscripcion) && Objects.equals(empleado, that.empleado) && Objects.equals(actividad, that.actividad) && Objects.equals(tipoReserva, that.tipoReserva);
+        return asistencia == that.asistencia && Objects.equals(empleadoMailInscripcion, that.empleadoMailInscripcion) && Objects.equals(actividadNombreInscripcion, that.actividadNombreInscripcion) && Objects.equals(actividadDiaInscripcion, that.actividadDiaInscripcion) && Objects.equals(actividadHoraInscripcion, that.actividadHoraInscripcion) && Objects.equals(actividadCentroInscripcion, that.actividadCentroInscripcion) && Objects.equals(empleado, that.empleado) && Objects.equals(actividad, that.actividad) && Objects.equals(tipoReserva, that.tipoReserva) && Objects.equals(dateIngreso, that.dateIngreso);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(empleadoMailInscripcion, actividadNombreInscripcion, actividadDiaInscripcion, actividadHoraInscripcion, actividadCentroInscripcion, asistencia, empleado, actividad, tipoReserva);
+        return Objects.hash(empleadoMailInscripcion, actividadNombreInscripcion, actividadDiaInscripcion, actividadHoraInscripcion, actividadCentroInscripcion, asistencia, empleado, actividad, tipoReserva, dateIngreso);
     }
 
     @Override
@@ -175,6 +188,7 @@ public class InscripcionesActividades implements Serializable {
                 ", empleado=" + empleado +
                 ", actividad=" + actividad +
                 ", tipoReserva='" + tipoReserva + '\'' +
+                ", dateIngreso=" + dateIngreso +
                 '}';
     }
 }
