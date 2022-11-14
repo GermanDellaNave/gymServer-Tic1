@@ -8,14 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class InscripcionesActividadesService {
@@ -70,6 +66,7 @@ public class InscripcionesActividadesService {
         InscripcionesActividades inscripcionActividadActualizable = inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado,nombreActividad,date,time,mailCentroActividad);
 
         inscripcionActividadActualizable.setAsistencia(true);
+        inscripcionActividadActualizable.setDateIngreso(new Date());
 
     }
 }
