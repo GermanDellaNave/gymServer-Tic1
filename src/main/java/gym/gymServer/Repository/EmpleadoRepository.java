@@ -34,7 +34,6 @@ public interface EmpleadoRepository extends CrudRepository<Empleado, String> {
     @Query(value = "SELECT * FROM empleados e WHERE e.empresa_mail= ?1 AND e.deuda> 0", nativeQuery = true)
     List<Empleado> getDeudoresPorEmpresa(String mailEmpresa);
 
-
     @Query(value = "SELECT COUNT(e) FROM empleados e", nativeQuery = true)
     Integer getCantidadEmpleados();
 
