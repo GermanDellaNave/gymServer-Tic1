@@ -54,4 +54,11 @@ public class InscripcionesActividadesController {
         inscripcionesActividadesService.asistencia(mailEmpleado,nombreActividad,diaActividad,horaActividad,mailCentroActividad);
     }
 
+    @GetMapping(path = "/inscripcion/{mailEmpleado}/{nombreActividad}/{diaActividad}/{horaActividad}/{centroMailActividad}")
+    public InscripcionesActividades getInscripcion(@PathVariable("mailEmpleado") String mailEmpleado, @PathVariable("nombreActividad") String nombreActividad, @PathVariable("diaActividad") String diaActividad, @PathVariable("horaActividad") String horaActividad,@PathVariable("mailCentroActividad") String mailCentroActividad) {
+        return inscripcionesActividadesService.getInscripcion(mailEmpleado,nombreActividad,diaActividad,horaActividad,mailCentroActividad);
+    }
+
+
+
 }

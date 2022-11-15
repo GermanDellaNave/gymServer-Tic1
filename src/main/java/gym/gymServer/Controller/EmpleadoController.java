@@ -51,6 +51,11 @@ public class EmpleadoController {
         return empleadoService.getEmpleadosConDeuda(mail);
     }
 
+    @GetMapping("/cantidadEmpleados")
+    Integer getNumeroEmpleados () {
+        return empleadoService.getCantidadEmpleados();
+    }
+
     @DeleteMapping(path = "/deleteEmpleado/{mailEmpleado}")
     public void deleteEmpleado(@PathVariable("mailEmpleado") String mail) {
         empleadoService.deleteEmpleado(mail);

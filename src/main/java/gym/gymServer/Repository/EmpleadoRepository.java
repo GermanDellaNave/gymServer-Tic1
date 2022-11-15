@@ -36,7 +36,7 @@ public interface EmpleadoRepository extends CrudRepository<Empleado, String> {
 
 
     @Query(value = "SELECT COUNT(e) FROM empleados e", nativeQuery = true)
-    Integer getNumeroEmpleados();
+    Integer getCantidadEmpleados();
 
 
 

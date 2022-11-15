@@ -69,4 +69,14 @@ public class InscripcionesActividadesService {
         inscripcionActividadActualizable.setDateIngreso(new Date());
 
     }
+
+    public InscripcionesActividades getInscripcion(String mailEmpleado, String nombreActividad, String diaActividad, String horaActividad,String mailCentroActividad) {
+        LocalDate date = LocalDate.parse(diaActividad);
+        LocalTime time = LocalTime.parse(horaActividad);
+
+        return inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado,nombreActividad,date,time,mailCentroActividad);
+
+    }
+
+
 }

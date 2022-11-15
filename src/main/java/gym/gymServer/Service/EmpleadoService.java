@@ -70,6 +70,10 @@ public class EmpleadoService {
         //}
     }
 
+    public Integer getCantidadEmpleados(){
+        return empleadoRepository.getCantidadEmpleados();
+    }
+
     @Transactional
     public void actualizarEmpleado(String mailEmpleado,Empleado empleado) {
         Empleado empleadoActualizable = empleadoRepository.findOneByMail(mailEmpleado);
