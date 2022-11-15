@@ -20,8 +20,8 @@ public class SaldoConfiguration {
     @Autowired
     EmpleadoRepository empleadoRepository;
 
-    @Scheduled(cron = "0 0 1 1 * ?")
-    //@Bean
+    //@Scheduled(cron = "0 0 1 1 * ?")
+    @Bean
     @Transactional
     public void actualizarSaldoDisponible () {
         List<Empleado> empleados = (List<Empleado>) empleadoRepository.findAll();
