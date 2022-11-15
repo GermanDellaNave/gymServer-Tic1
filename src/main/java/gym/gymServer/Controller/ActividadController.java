@@ -79,4 +79,9 @@ public class ActividadController {
         return actividadService.getCantidadActividades();
     }
 
+    @GetMapping("/similarActividadCentro/{search}/{mailCentro}")
+    public List<Actividad> findBySearchAndCentro(@PathVariable("search") String search,@PathVariable("mailCentro") String mailCentro) {
+        return actividadService.findBySearchAndCentro(search,mailCentro);
+    }
+
 }
