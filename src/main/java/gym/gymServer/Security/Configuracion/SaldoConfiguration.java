@@ -20,7 +20,7 @@ public class SaldoConfiguration {
     @Autowired
     EmpleadoRepository empleadoRepository;
 
-    //@Scheduled(cron = "0 0 1 1 * ?")
+    @Scheduled(cron = "0 0 1 1 * ?")
     @Bean
     @Transactional
     public void actualizarSaldoDisponible () {
@@ -31,7 +31,7 @@ public class SaldoConfiguration {
                 Integer deuda = Math.abs(empleado_i.getSaldoDisponible() + empleado_i.getDeuda());
                 empleado_i.setDeuda(deuda);
             }
-            empleado_i.setSaldoDisponible(empleados.get(i).getEmpresa().getBono());
+            empleado_i.setSaldoDisponible(empleado_i.getEmpresa().getBono());
         }
     }
 
