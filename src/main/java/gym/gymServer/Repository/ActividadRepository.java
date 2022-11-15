@@ -3,6 +3,7 @@ package gym.gymServer.Repository;
 import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.ActividadesID;
 import gym.gymServer.Classes.CentrosDeportivos;
+import gym.gymServer.Classes.Empleado;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -42,6 +43,9 @@ public interface ActividadRepository extends CrudRepository<Actividad, Actividad
 
     @Query(value = "SELECT COUNT(a) FROM actividades a", nativeQuery = true)
     Integer getCantidadActividades();
+
+    @Query(value = "SELECT * FROM actividades a WHERE a.nombre_actividad LIKE %?1% AND a.centro_mail_actividad= ?2 ORDER BY a.date_creada DESC ", nativeQuery = true)
+    List<Actividad> findBySearchAndCentro(String search, String mailCentro);
 
 
 

@@ -88,4 +88,8 @@ public class ActividadService {
     public Integer getCantidadActividades(){
         return actividadRepository.getCantidadActividades();
     }
+
+    public List<Actividad> findBySearchAndCentro(String search,String mailCentro) {
+        return actividadRepository.findBySearchAndCentro(search,mailCentro);
+    }
 }
