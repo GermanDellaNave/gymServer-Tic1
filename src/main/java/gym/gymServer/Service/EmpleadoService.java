@@ -56,6 +56,10 @@ public class EmpleadoService {
         return empleadoRepository.findTopNewestEmpresa(mailEmpresa);
     }
 
+    public Integer getCantidadEmpleadosEmpresa(String mailEmpresa) {
+        return empleadoRepository.getCantidadEmpleadosEmpresa(mailEmpresa);
+    }
+
     public List<Empleado> getEmpleadosConDeuda(String mailEmpresa) {
         return empleadoRepository.getDeudoresPorEmpresa(mailEmpresa);
     }

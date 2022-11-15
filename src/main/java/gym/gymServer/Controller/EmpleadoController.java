@@ -52,8 +52,13 @@ public class EmpleadoController {
     }
 
     @GetMapping("/cantidadEmpleados")
-    Integer getNumeroEmpleados () {
+    Integer getCantidadEmpleados () {
         return empleadoService.getCantidadEmpleados();
+    }
+
+    @GetMapping("/cantidadEmpleadosEmpresa/{mailEmpresa}")
+    public Integer getCantidadEmpleadosEmpresa(@PathVariable("mailEmpresa") String mail) {
+        return empleadoService.getCantidadEmpleadosEmpresa(mail);
     }
 
     @DeleteMapping(path = "/deleteEmpleado/{mailEmpleado}")

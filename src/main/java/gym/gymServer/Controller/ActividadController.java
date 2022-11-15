@@ -74,4 +74,9 @@ public class ActividadController {
         return actividadService.getActividadesCentro(centroMail);
     }
 
+    @GetMapping("/cantidadActividades")
+    Integer getCantidadActividades () {
+        return actividadService.getCantidadActividades();
+    }
+
 }

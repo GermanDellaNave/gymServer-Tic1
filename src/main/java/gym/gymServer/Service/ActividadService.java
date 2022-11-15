@@ -84,4 +84,8 @@ public class ActividadService {
     public List<Actividad> getActividadesCentro(String mailCentro){
         return actividadRepository.findOneByCentro(mailCentro,LocalDate.now(),LocalTime.now());
     }
+
+    public Integer getCantidadActividades(){
+        return actividadRepository.getCantidadActividades();
+    }
 }

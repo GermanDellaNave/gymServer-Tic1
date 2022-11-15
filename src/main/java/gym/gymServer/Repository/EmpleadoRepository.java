@@ -38,6 +38,9 @@ public interface EmpleadoRepository extends CrudRepository<Empleado, String> {
     @Query(value = "SELECT COUNT(e) FROM empleados e", nativeQuery = true)
     Integer getCantidadEmpleados();
 
+    @Query(value = "SELECT COUNT(e) FROM empleados e WHERE e.empresa_mail = :mailEmpresa", nativeQuery = true)
+    Integer getCantidadEmpleadosEmpresa(@Param("mailEmpresa") String mailEmpresa);
+
 
 
 }
