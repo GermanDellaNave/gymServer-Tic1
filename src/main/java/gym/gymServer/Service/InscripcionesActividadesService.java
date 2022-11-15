@@ -69,12 +69,15 @@ public class InscripcionesActividadesService {
         inscripcionActividadActualizable.setDateIngreso(new Date());
 
     }
-
-    public InscripcionesActividades getInscripcion(String mailEmpleado, String nombreActividad, String diaActividad, String horaActividad,String mailCentroActividad) {
+    @Transactional
+    public InscripcionesActividades getInscripcionActividad(String mailEmpleado, String nombreActividad, String diaActividad, String horaActividad,String mailCentroActividad) {
         LocalDate date = LocalDate.parse(diaActividad);
         LocalTime time = LocalTime.parse(horaActividad);
+        InscripcionesActividades inscripcionReturn = inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado,nombreActividad,date,time,mailCentroActividad);
+        System.out.println(inscripcionReturn);
+        System.out.println("busqueda inscripcion hecha");
 
-        return inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado,nombreActividad,date,time,mailCentroActividad);
+        return inscripcionReturn;
 
     }
 

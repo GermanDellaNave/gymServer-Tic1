@@ -50,13 +50,15 @@ public class InscripcionesActividadesController {
     }
 
     @PutMapping(path = "/actualizar/{mailEmpleado}/{nombreActividad}/{diaActividad}/{horaActividad}/{centroMailActividad}")
-    public void asistencia(@PathVariable("mailEmpleado") String mailEmpleado, @PathVariable("nombreActividad") String nombreActividad, @PathVariable("diaActividad") String diaActividad, @PathVariable("horaActividad") String horaActividad,@PathVariable("mailCentroActividad") String mailCentroActividad) {
+    public void asistencia(@PathVariable("mailEmpleado") String mailEmpleado, @PathVariable("nombreActividad") String nombreActividad, @PathVariable("diaActividad") String diaActividad, @PathVariable("horaActividad") String horaActividad,@PathVariable("centroMailActividad") String mailCentroActividad) {
         inscripcionesActividadesService.asistencia(mailEmpleado,nombreActividad,diaActividad,horaActividad,mailCentroActividad);
     }
 
     @GetMapping(path = "/inscripcion/{mailEmpleado}/{nombreActividad}/{diaActividad}/{horaActividad}/{centroMailActividad}")
-    public InscripcionesActividades getInscripcion(@PathVariable("mailEmpleado") String mailEmpleado, @PathVariable("nombreActividad") String nombreActividad, @PathVariable("diaActividad") String diaActividad, @PathVariable("horaActividad") String horaActividad,@PathVariable("centroMailActividad") String mailCentroActividad) {
-        return inscripcionesActividadesService.getInscripcion(mailEmpleado,nombreActividad,diaActividad,horaActividad,mailCentroActividad);
+    public InscripcionesActividades getInscripcionActividad(@PathVariable("mailEmpleado") String mailEmpleado, @PathVariable("nombreActividad") String nombreActividad, @PathVariable("diaActividad") String diaActividad, @PathVariable("horaActividad") String horaActividad,@PathVariable("centroMailActividad") String mailCentroActividad) {
+        InscripcionesActividades inscripcionReturn = inscripcionesActividadesService.getInscripcionActividad(mailEmpleado,nombreActividad,diaActividad,horaActividad,mailCentroActividad);
+        System.out.println("Obtener inscripcion");
+        return inscripcionReturn;
     }
 
 
