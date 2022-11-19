@@ -43,9 +43,8 @@ public  void registrarActividad(Actividad actividad) {
 public Actividad getActividad(String nombre, String hora, String dia, String centroMail) {
         LocalTime horaLT = LocalTime.parse(hora);
         LocalDate diaLT = LocalDate.parse(dia);
-        CentrosDeportivos centroDeportivo = centrosDeportivosRepository.findOneByMail(centroMail);
-        return null;
-        //return actividadRepository.findOneById(nombre, horaLT, diaLT, centroDeportivo);
+
+       return actividadRepository.findOneByKey(centroMail,diaLT,horaLT,nombre);
         }
 
 public List<Actividad> getActividadesDisponibles(){
