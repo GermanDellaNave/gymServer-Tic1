@@ -4,6 +4,7 @@ import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.ActividadesID;
 import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empleado;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -48,6 +49,9 @@ public interface ActividadRepository extends CrudRepository<Actividad, Actividad
     List<Actividad> findDisponiblesBySearchAndCentro(String search, String mailCentro,LocalDate date,LocalTime time);
 
 
+    @Modifying
+    @Query(value = "DELETE FROM actividades a WHERE a.nombre_actividad = :nombreActividad AND a.dia_actividad = :diaActividad AND a.hora_actividad = :horaActividad AND a.centro_mail_actividad = :centroMailActividad", nativeQuery = true)
+    void deleteActividad (@Param("nombreActividad") String nombreActividad,@Param("diaActividad")LocalDate diaActividad, @Param("horaActividad")LocalTime horaActividad,@Param("centroMailActividad") String centroMailActividad);
 
 
 
