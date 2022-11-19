@@ -87,5 +87,10 @@ public class ActividadController {
     }
 
 
+    @DeleteMapping(path = "/deleteActividad/{nombreActividad}/{diaActividad}/{horaActividad}/{mailCentroActividad}")
+    public void deleteActividad(@PathVariable("nombreActividad") String nombreActividad,@PathVariable("diaActividad") String diaActividad,@PathVariable("horaActividad") String horaActividad,@PathVariable("mailCentroActividad") String mailCentroActividad) {
+    }
+
+
 
 }

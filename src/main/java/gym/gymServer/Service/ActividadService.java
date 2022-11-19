@@ -92,4 +92,10 @@ public class ActividadService {
     public List<Actividad> findBySearchAndCentro(String search,String mailCentro) {
         return actividadRepository.findDisponiblesBySearchAndCentro(search,mailCentro,LocalDate.now(),LocalTime.now());
     }
+
+    public void deleteActividad(String nombreActividad,String diaActividad,String horaActividad,String mailCentroActividad) {
+        LocalDate date=LocalDate.parse(diaActividad);
+        LocalTime time=LocalTime.parse(horaActividad;
+
+    }
 }
