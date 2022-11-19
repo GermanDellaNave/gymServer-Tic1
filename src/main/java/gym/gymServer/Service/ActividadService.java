@@ -78,7 +78,15 @@ public void actualizarActividad(String nombre, String dia, String hora, String c
         LocalTime time = LocalTime.parse(hora);
         System.out.println("Entro actualizar actividad");
         Actividad actividadActualizable = actividadRepository.findOneByKey(centroMail, date, time, nombre);
+        System.out.println(actividadActualizable);
         actividadActualizable.setCupos(actividad.getCupos());
+        actividadActualizable.setImagen(actividad.getImagen());
+        actividadActualizable.setCosto(actividad.getCosto());
+        actividadActualizable.setDescripcion(actividad.getDescripcion());
+        actividadActualizable.setReservable(actividad.isReservable());
+        //actividadActualizable.setTipo(actividad.getTipo());
+        actividadActualizable.setDuracion(actividad.getDuracion());
+
 
         }
 
@@ -97,12 +105,13 @@ public List<Actividad> findBySearchAndCentro(String search,String mailCentro) {
 public void deleteActividad(String nombreActividad,String diaActividad,String horaActividad,String mailCentroActividad) {
     LocalDate date=LocalDate.parse(diaActividad);
     LocalTime time=LocalTime.parse(horaActividad);
+    System.out.println("Borrar actividad");
 
     Actividad actividad=actividadRepository.findOneByKey(nombreActividad,date,time,mailCentroActividad);
+    System.out.println(actividad);
 
-    if(actividad!=null){
-        actividadRepository.deleteActividad(nombreActividad,date,time,mailCentroActividad);
-    }
+    actividadRepository.deleteActividad(nombreActividad,date,time,mailCentroActividad);
+
 }
 }
 
