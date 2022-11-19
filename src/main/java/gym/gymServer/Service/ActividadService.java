@@ -98,7 +98,11 @@ public void deleteActividad(String nombreActividad,String diaActividad,String ho
     LocalDate date=LocalDate.parse(diaActividad);
     LocalTime time=LocalTime.parse(horaActividad);
 
-    actividadRepository.deleteActividad(nombreActividad,date,time,mailCentroActividad);
+    Actividad actividad=actividadRepository.findOneByKey(nombreActividad,date,time,mailCentroActividad);
+
+    if(actividad!=null){
+        actividadRepository.deleteActividad(nombreActividad,date,time,mailCentroActividad);
+    }
 }
 }
 
