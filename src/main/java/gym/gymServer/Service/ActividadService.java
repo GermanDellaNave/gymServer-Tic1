@@ -90,6 +90,6 @@ public class ActividadService {
     }
 
     public List<Actividad> findBySearchAndCentro(String search,String mailCentro) {
-        return actividadRepository.findBySearchAndCentro(search,mailCentro);
+        return actividadRepository.findDisponiblesBySearchAndCentro(search,mailCentro,LocalDate.now(),LocalTime.now());
     }
 }

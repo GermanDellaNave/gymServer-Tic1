@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -80,8 +82,10 @@ public class ActividadController {
     }
 
     @GetMapping("/similarActividadCentro/{search}/{mailCentro}")
-    public List<Actividad> findBySearchAndCentro(@PathVariable("search") String search,@PathVariable("mailCentro") String mailCentro) {
+    public List<Actividad> findDisponiblesBySearchAndCentro(@PathVariable("search") String search,@PathVariable("mailCentro") String mailCentro) {
         return actividadService.findBySearchAndCentro(search,mailCentro);
     }
+
+
 
 }
