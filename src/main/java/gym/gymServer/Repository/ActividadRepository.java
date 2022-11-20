@@ -45,7 +45,7 @@ public interface ActividadRepository extends CrudRepository<Actividad, Actividad
     @Query(value = "SELECT COUNT(a) FROM actividades a", nativeQuery = true)
     Integer getCantidadActividades();
 
-    @Query(value = "SELECT * FROM actividades a WHERE a.nombre_actividad LIKE %?1% AND a.centro_mail_actividad= ?2 AND ((a.dia_actividad = ?3 AND a.hora_actividad > ?4) OR (a.dia_actividad >?3)) ORDER BY a.date_creada DESC", nativeQuery = true)
+    @Query(value = "SELECT * FROM actividades a WHERE a.nombre_actividad LIKE %?1% AND a.centro_mail_actividad= ?2 AND ((a.dia_actividad = ?3 AND a.hora_actividad > ?4) OR (a.dia_actividad >?3)) ORDER BY a.dia_actividad ASC,a.hora_actividad ASC,a.nombre_actividad ASC ", nativeQuery = true)
     List<Actividad> findDisponiblesBySearchAndCentro(String search, String mailCentro,LocalDate date,LocalTime time);
 
 
