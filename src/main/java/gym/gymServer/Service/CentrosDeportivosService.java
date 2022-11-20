@@ -60,11 +60,14 @@ public class CentrosDeportivosService {
         }
     }
 
-    public void registrarCentroDeportivo (CentrosDeportivos nuevoCentro) throws CentroDeportivoYaExiste {
+    public void registrarCentroDeportivo (CentrosDeportivos nuevoCentro)  {
+       /*
         if (centrosDeportivosRepository.findOneByMail(nuevoCentro.getMail()) != null) {
             System.out.println("ERROR");
             throw new CentroDeportivoYaExiste();
         }
+
+        */
         centrosDeportivosRepository.save(nuevoCentro);
         System.out.println("Registro Centro");
     }
@@ -79,12 +82,15 @@ public class CentrosDeportivosService {
         }
     }
 
-    public void actualizarDatosCD(String mailId, String nombre, String contrasena) throws CentroDeportivoNoExiste {
+    public void actualizarDatosCD(String mailId, String nombre, String contrasena) {
         CentrosDeportivos centroActualizable = centrosDeportivosRepository.findOneByMail(mailId);
 
+        /*
         if (centroActualizable == null) {
             throw new CentroDeportivoNoExiste();
         }
+
+         */
 
         centroActualizable.setNombre(nombre);
 

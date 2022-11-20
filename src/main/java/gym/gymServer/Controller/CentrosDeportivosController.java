@@ -56,7 +56,7 @@ public class CentrosDeportivosController {
     }
 
     @PostMapping
-    public void registrarCentroDeportivo(@RequestBody CentrosDeportivos nuevoCentroDeportivo) throws CentroDeportivoYaExiste {
+    public void registrarCentroDeportivo(@RequestBody CentrosDeportivos nuevoCentroDeportivo) {
         System.out.println("Centro Deportivo controller post");
         centrosDeportivosService.registrarCentroDeportivo(nuevoCentroDeportivo);
     }
@@ -68,7 +68,7 @@ public class CentrosDeportivosController {
     }
 
     @PutMapping(path = "/updateCentro/{mail}")
-    public void modificarDatoEmpresa(@PathVariable("centroDeportivoId") String mailId, String nombre, String contrasena) throws CentroDeportivoNoExiste {
+    public void modificarDatoEmpresa(@PathVariable("centroDeportivoId") String mailId, String nombre, String contrasena) {
         centrosDeportivosService.actualizarDatosCD(mailId, nombre, contrasena);
     }
 

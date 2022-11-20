@@ -37,10 +37,12 @@ public class EmpresasService {
         return empresasRepository.findTopNewest();
     }
 
-    public void registrarEmpresa (Empresas nuevaEmpresa) throws EmpresaYaExiste {
-        if (empresasRepository.findOneByMail(nuevaEmpresa.getMail()) != null) {
+    public void registrarEmpresa (Empresas nuevaEmpresa)  {
+        /*if (empresasRepository.findOneByMail(nuevaEmpresa.getMail()) != null) {
             throw new EmpresaYaExiste();
         }
+
+         */
         System.out.println("Definicion empresa service");
         System.out.println(nuevaEmpresa);
         empresasRepository.save(nuevaEmpresa);
@@ -53,12 +55,15 @@ public class EmpresasService {
         }
     }
 
-    public void actualizarDatosEmpresa(String mailId, String nombre, String contrasena) throws EmpresaNoExiste {
+    public void actualizarDatosEmpresa(String mailId, String nombre, String contrasena) {
         Empresas empresaActualizable = empresasRepository.findOneByMail(mailId);
 
+        /*
         if (empresaActualizable == null) {
             throw new EmpresaNoExiste();
         }
+
+         */
 
         empresaActualizable.setNombre(nombre);
 
