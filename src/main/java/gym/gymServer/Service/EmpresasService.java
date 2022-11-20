@@ -30,7 +30,7 @@ public class EmpresasService {
     }
 
     public List<Empresas> getEmpresas() {
-        return (List<Empresas>) empresasRepository.findAll();
+        return (List<Empresas>) empresasRepository.findAllByOrderByIdAsc();
     }
 
     public List<Empresas> getNuevasEmpresas() {
