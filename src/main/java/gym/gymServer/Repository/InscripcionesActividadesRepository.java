@@ -42,8 +42,8 @@ public interface InscripcionesActividadesRepository extends CrudRepository<Inscr
     void borrarInscripcionActividad (@Param("mailEmpleado") String mailEmpleado, @Param("nombreActividad") String nombreActividad, @Param("diaActividad")LocalDate diaActividad, @Param("horaActividad")LocalTime horaActividad,@Param("centroMailActividad") String centroMailActividad);
 
 
-    @Query(value = "SELECT * FROM inscripciones_empleado_actividad i WHERE i.actividad_nombre_inscripcion = :nombreActividad AND i.actividad_dia_inscripcion = :diaActividad AND i.actividad_hora_inscripcion = :horaActividad AND i.actividad_centro_inscripcion = :centroMailActividad ORDER BY i.empleado_mail_inscripcion ASC ", nativeQuery = true)
-    List<InscripcionesActividades> getInscripcionesActividad (@Param("nombreActividad") String nombreActividad, @Param("diaActividad")LocalDate diaActividad, @Param("horaActividad")LocalTime horaActividad,@Param("centroMailActividad") String centroMailActividad);
+    @Query(value = "SELECT COUNT(i) FROM inscripciones_empleado_actividad i WHERE i.actividad_nombre_inscripcion = :nombreActividad AND i.actividad_dia_inscripcion = :diaActividad AND i.actividad_hora_inscripcion = :horaActividad AND i.actividad_centro_inscripcion = :centroMailActividad", nativeQuery = true)
+    Integer getInscripcionesActividad (@Param("nombreActividad") String nombreActividad, @Param("diaActividad")LocalDate diaActividad, @Param("horaActividad")LocalTime horaActividad,@Param("centroMailActividad") String centroMailActividad);
 
 }
 

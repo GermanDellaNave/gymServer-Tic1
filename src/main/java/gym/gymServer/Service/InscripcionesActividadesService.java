@@ -83,11 +83,13 @@ public class InscripcionesActividadesService {
     }
 
     @Transactional
-    public List<InscripcionesActividades> getInscripcionesActividad(String nombreActividad, String diaActividad, String horaActividad,String mailCentroActividad) {
+    public Integer getInscripcionesActividad(String nombreActividad, String diaActividad, String horaActividad,String mailCentroActividad) {
         LocalDate date = LocalDate.parse(diaActividad);
         LocalTime time = LocalTime.parse(horaActividad);
-
-        return inscripcionesActividadesRepository.getInscripcionesActividad(nombreActividad, date, time, mailCentroActividad);
+        Integer inscripcionesReturn = inscripcionesActividadesRepository.getInscripcionesActividad(nombreActividad, date, time, mailCentroActividad);
+        System.out.println(inscripcionesReturn);
+        System.out.println("Busqueda inscripcion hecha");
+        return inscripcionesReturn;
     }
 
 }
