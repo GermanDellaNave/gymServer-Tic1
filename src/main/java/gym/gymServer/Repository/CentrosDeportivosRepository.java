@@ -2,6 +2,7 @@ package gym.gymServer.Repository;
 
 import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.CentrosDeportivos;
+import gym.gymServer.Classes.Empresas;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -18,5 +19,8 @@ public interface CentrosDeportivosRepository extends CrudRepository<CentrosDepor
 
     @Query(value = "SELECT COUNT(c) FROM centros_deportivos c", nativeQuery = true)
     Integer getNumeroCentrosDeportivos();
+
+    @Query(value = "SELECT * FROM centros_deportivos c ORDER BY c.date_creado DESC LIMIT 5", nativeQuery = true)
+    List<CentrosDeportivos> findTopNewest();
 
 }

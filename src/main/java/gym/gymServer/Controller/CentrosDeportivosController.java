@@ -29,6 +29,11 @@ public class CentrosDeportivosController {
         return centrosDeportivosService.getCentrosDeportivos();
     }
 
+    @GetMapping("/nuevosCentros")
+    public List<CentrosDeportivos> getNuevosCentros() {
+        return centrosDeportivosService.getNuevosCentros();
+    }
+
     @GetMapping("/centrosMail/{mail}")
     public CentrosDeportivos getCentroDeportivo(@PathVariable("mail") String mail) {
         System.out.println("Buscando centro");

@@ -33,6 +33,10 @@ public class CentrosDeportivosService {
         return (List<CentrosDeportivos>) centrosDeportivosRepository.findAll();
     }
 
+    public List<CentrosDeportivos> getNuevosCentros() {
+        return centrosDeportivosRepository.findTopNewest();
+    }
+
     public CentrosDeportivos getCentroDeportivo(String mail) {
         System.out.println("Buscando");
         CentrosDeportivos centro = centrosDeportivosRepository.findOneByMail(mail);

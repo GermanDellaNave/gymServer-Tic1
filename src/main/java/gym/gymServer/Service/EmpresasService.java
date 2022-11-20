@@ -33,6 +33,10 @@ public class EmpresasService {
         return (List<Empresas>) empresasRepository.findAll();
     }
 
+    public List<Empresas> getNuevasEmpresas() {
+        return empresasRepository.findTopNewest();
+    }
+
     public void registrarEmpresa (Empresas nuevaEmpresa) throws EmpresaYaExiste {
         if (empresasRepository.findOneByMail(nuevaEmpresa.getMail()) != null) {
             throw new EmpresaYaExiste();

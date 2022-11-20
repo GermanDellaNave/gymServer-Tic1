@@ -2,6 +2,7 @@ package gym.gymServer.Controller;
 
 import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.CentrosDeportivos;
+import gym.gymServer.Classes.Empleado;
 import gym.gymServer.Classes.Empresas;
 import gym.gymServer.Classes.Exceptions.CentroDeportivoNoExiste;
 import gym.gymServer.Classes.Exceptions.EmpresaNoExiste;
@@ -26,6 +27,11 @@ public class EmpresasController {
     @GetMapping("/allEmpresas")
     public List<Empresas> getEmpresas() {
         return empresasService.getEmpresas();
+    }
+
+    @GetMapping("/nuevasEmpresas")
+    public List<Empresas> getNuevasEmpresas() {
+        return empresasService.getNuevasEmpresas();
     }
 
     @GetMapping("/empresaMail/{mail}")
