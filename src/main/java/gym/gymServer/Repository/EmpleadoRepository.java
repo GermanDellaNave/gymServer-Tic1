@@ -16,19 +16,19 @@ import java.util.List;
 @Transactional
 public interface EmpleadoRepository extends CrudRepository<Empleado, String> {
 
-    @Query(value = "SELECT * FROM empleados e WHERE e.mail_empleado = :mail", nativeQuery = true)
+    @Query(value = "SELECT * FROM empleados e WHERE e.mail_empleado = :mail ORDER BY e.mail_empleado ASC,e.apellido ASC,e.nombre ASC ", nativeQuery = true)
     Empleado findOneByMail(@Param("mail") String mail);
 
-    @Query(value = "SELECT * FROM empleados e WHERE e.mail_empleado LIKE %?1% OR e.nombre LIKE %?1% OR e.apellido LIKE %?1%", nativeQuery = true)
+    @Query(value = "SELECT * FROM empleados e WHERE e.mail_empleado LIKE %?1% OR e.nombre LIKE %?1% OR e.apellido LIKE %?1% ORDER BY e.mail_empleado ASC,e.apellido ASC,e.nombre ASC ", nativeQuery = true)
     List<Empleado> findBySearch(String input);
 
-    @Query(value = "SELECT * FROM empleados e WHERE e.empresa_mail = :mailEmpresa  ORDER BY e.mail_empleado ASC ", nativeQuery = true)
+    @Query(value = "SELECT * FROM empleados e WHERE e.empresa_mail = :mailEmpresa  ORDER BY e.mail_empleado ASC,e.apellido ASC,e.nombre ASC ", nativeQuery = true)
     List<Empleado> findAllByEmpresa(@Param("mailEmpresa") String mailEmpresa);
 
     @Query(value = "SELECT * FROM empleados e WHERE e.empresa_mail = :mailEmpresa ORDER BY e.date_creado DESC LIMIT 5", nativeQuery = true)
     List<Empleado> findTopNewestEmpresa(@Param("mailEmpresa") String mailEmpresa);
 
-    @Query(value = "SELECT * FROM empleados e WHERE (e.mail_empleado LIKE %?1% OR e.nombre LIKE %?1% OR e.apellido LIKE %?1%) AND e.empresa_mail= ?2", nativeQuery = true)
+    @Query(value = "SELECT * FROM empleados e WHERE (e.mail_empleado LIKE %?1% OR e.nombre LIKE %?1% OR e.apellido LIKE %?1%) AND e.empresa_mail= ?2 ORDER BY e.mail_empleado ASC,e.apellido ASC,e.nombre ASC", nativeQuery = true)
     List<Empleado> findBySearchAndEmpresa(String input,String mailEmpresa);
 
     @Query(value = "SELECT * FROM empleados e WHERE e.empresa_mail= ?1 AND e.deuda> 0", nativeQuery = true)

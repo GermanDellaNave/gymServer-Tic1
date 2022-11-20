@@ -34,8 +34,8 @@ public class PagoController {
         return pagoService.getPagosCentro(mail);
     }
 
-    @GetMapping("/pagosByCentroAndMail/{mailCentro}/{input}")
-    public List<Pago> findByCentroAndMail(@PathVariable("mailCentro") String mailCentro,@PathVariable("input")String input) {
+    @GetMapping("/pagosByCentroAndSearch/{mailCentro}/{input}")
+    public List<Pago> findByCentroAndSearch(@PathVariable("mailCentro") String mailCentro,@PathVariable("input")String input) {
         return pagoService.findByCentroAndSearch(mailCentro,input);
     }
 
