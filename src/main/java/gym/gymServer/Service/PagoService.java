@@ -33,4 +33,8 @@ public class PagoService {
     public List<Pago> getPagosCentro(String mail) {
         return (List<Pago>) pagoRepository.findOneByCentro(mail);
     }
+
+    public List<Pago> findByCentroAndSearch(String mailCentro,String input){
+        return pagoRepository.findByCentroAndSearch(mailCentro,input);
+    }
 }

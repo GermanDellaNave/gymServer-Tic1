@@ -22,4 +22,10 @@ public interface PagoRepository extends CrudRepository<Pago, PagoId> {
     @Query(value = "SELECT * FROM pago_empresa_centro p WHERE p.centro_mail_pago = :mailCentro", nativeQuery = true)
     List<Pago> findOneByCentro(@Param("mailCentro") String mailCentro);
 
+    @Query(value = "SELECT * FROM pago_empresa_centro p WHERE p.centro_mail_pago = ?1 AND p.empresa_mail_pago LIKE %?2%", nativeQuery = true)
+    List<Pago> findByCentroAndSearch(String mailCentro,String input);
+
+
+
+
 }

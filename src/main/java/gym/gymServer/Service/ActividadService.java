@@ -72,7 +72,8 @@ public List<Actividad> getActividadesTipo(String tipo) {
         }
 
 @Transactional
-public void actualizarActividad(String nombre, String dia, String hora, String centroMail, Actividad actividad) {
+public void
+actualizarActividad(String nombre, String dia, String hora, String centroMail, Actividad actividad) {
         LocalDate date = LocalDate.parse(dia);
         LocalTime time = LocalTime.parse(hora);
         System.out.println("Entro actualizar actividad");
