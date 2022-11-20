@@ -91,7 +91,7 @@ actualizarActividad(String nombre, String dia, String hora, String centroMail, A
         }
 
 public List<Actividad> getActividadesCentro(String mailCentro){
-        return actividadRepository.findOneByCentro(mailCentro,LocalDate.now(),LocalTime.now());
+        return actividadRepository.findOneByCentro(mailCentro,LocalDate.now());
         }
 
 public Integer getCantidadActividades(){
