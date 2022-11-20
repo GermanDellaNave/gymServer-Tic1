@@ -30,7 +30,7 @@ public class CentrosDeportivosService {
     }
 
     public List<CentrosDeportivos> getCentrosDeportivos() {
-        return (List<CentrosDeportivos>) centrosDeportivosRepository.findAll();
+        return (List<CentrosDeportivos>) centrosDeportivosRepository.findAllByOrderByMailAsc();
     }
 
     public List<CentrosDeportivos> getNuevosCentros() {

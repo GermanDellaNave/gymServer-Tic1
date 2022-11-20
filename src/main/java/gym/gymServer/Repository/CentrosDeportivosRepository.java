@@ -23,4 +23,5 @@ public interface CentrosDeportivosRepository extends CrudRepository<CentrosDepor
     @Query(value = "SELECT * FROM centros_deportivos c ORDER BY c.date_creado DESC LIMIT 5", nativeQuery = true)
     List<CentrosDeportivos> findTopNewest();
 
+    List<CentrosDeportivos> findAllByOrderByMailAsc();
 }
