@@ -16,7 +16,7 @@ public interface EmpresasRepository extends CrudRepository<Empresas, String> {
 
     Empresas findOneByMail(String mail);
 
-    List<Empresas> findAllByOrderByIdAsc();
+    List<Empresas> findAllByOrderByMailAsc();
 
 
     @Query(value = "SELECT * FROM empresas e WHERE e.mail_empresa LIKE %?1% OR e.nombre LIKE %?1% ORDER BY e.mail_empresa ASC,e.nombre ASC ", nativeQuery = true)
