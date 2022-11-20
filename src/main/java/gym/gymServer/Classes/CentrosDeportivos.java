@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,6 +26,8 @@ public class CentrosDeportivos implements Serializable {
     @Lob
     private String imagen;
 
+    private Date dateCreado;
+
     //Eliminar
     /*@OneToMany()
     @JoinColumn(name = "listaActividad", referencedColumnName = "mailCentro")
@@ -38,11 +41,12 @@ public class CentrosDeportivos implements Serializable {
     public CentrosDeportivos() {
     }
 
-    public CentrosDeportivos(UserLogin userLogin, String nombre, String mail, String imagen) {
+    public CentrosDeportivos(UserLogin userLogin, String nombre, String mail, String imagen, Date dateCreado) {
         this.userLogin = userLogin;
         this.nombre = nombre;
         this.mail = mail;
         this.imagen = imagen;
+        this.dateCreado = dateCreado;
     }
 
     public String getNombre() {
@@ -85,6 +89,14 @@ public class CentrosDeportivos implements Serializable {
         this.imagen = imagen;
     }
 
+    public Date getDateCreado() {
+        return dateCreado;
+    }
+
+    public void setDateCreado(Date dateCreado) {
+        this.dateCreado = dateCreado;
+    }
+
     /*public List<Pago> getPagos() {
         return pagos;
     }
@@ -98,12 +110,12 @@ public class CentrosDeportivos implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CentrosDeportivos that = (CentrosDeportivos) o;
-        return Objects.equals(userLogin, that.userLogin) && Objects.equals(nombre, that.nombre) && Objects.equals(mail, that.mail) && Objects.equals(imagen, that.imagen);
+        return Objects.equals(userLogin, that.userLogin) && Objects.equals(nombre, that.nombre) && Objects.equals(mail, that.mail) && Objects.equals(imagen, that.imagen) && Objects.equals(dateCreado, that.dateCreado);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userLogin, nombre, mail, imagen);
+        return Objects.hash(userLogin, nombre, mail, imagen, dateCreado);
     }
 
     @Override
@@ -113,6 +125,7 @@ public class CentrosDeportivos implements Serializable {
                 ", nombre='" + nombre + '\'' +
                 ", mail='" + mail + '\'' +
                 ", imagen='" + imagen + '\'' +
+                ", dateCreado=" + dateCreado +
                 '}';
     }
 }

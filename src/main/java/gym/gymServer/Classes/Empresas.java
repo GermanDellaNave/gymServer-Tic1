@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,18 +27,21 @@ public class Empresas implements Serializable {
     @Lob
     private String imagen;
 
+    private Date dateCreada;
+
     /*@OneToMany(targetEntity = Empleado.class, cascade = CascadeType.ALL, mappedBy = "empresa")
     private List<Empleado> listaEmpleados;*/
 
     /*@OneToMany(fetch = FetchType.EAGER, mappedBy = "empresa")
     private List<Pago> pagos;*/
 
-    public Empresas(UserLogin userLoginReference, String nombre, Integer bono, String mail, String imagen) {
+    public Empresas(UserLogin userLoginReference, String nombre, Integer bono, String mail, String imagen, Date dateCreada) {
         this.userLoginReference = userLoginReference;
         this.nombre = nombre;
         this.bono = bono;
         this.mail = mail;
         this.imagen = imagen;
+        this.dateCreada = dateCreada;
     }
 
     public Empresas() {
@@ -83,17 +87,25 @@ public class Empresas implements Serializable {
         this.imagen = imagen;
     }
 
+    public Date getDateCreada() {
+        return dateCreada;
+    }
+
+    public void setDateCreada(Date dateCreada) {
+        this.dateCreada = dateCreada;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Empresas empresas = (Empresas) o;
-        return Objects.equals(userLoginReference, empresas.userLoginReference) && Objects.equals(nombre, empresas.nombre) && Objects.equals(bono, empresas.bono) && Objects.equals(mail, empresas.mail) && Objects.equals(imagen, empresas.imagen);
+        return Objects.equals(userLoginReference, empresas.userLoginReference) && Objects.equals(nombre, empresas.nombre) && Objects.equals(bono, empresas.bono) && Objects.equals(mail, empresas.mail) && Objects.equals(imagen, empresas.imagen) && Objects.equals(dateCreada, empresas.dateCreada);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userLoginReference, nombre, bono, mail, imagen);
+        return Objects.hash(userLoginReference, nombre, bono, mail, imagen, dateCreada);
     }
 
     @Override
@@ -104,6 +116,7 @@ public class Empresas implements Serializable {
                 ", bono=" + bono +
                 ", mail='" + mail + '\'' +
                 ", imagen='" + imagen + '\'' +
+                ", dateCreada=" + dateCreada +
                 '}';
     }
 }
