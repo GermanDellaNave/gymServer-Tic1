@@ -2,6 +2,8 @@ plugins {
 	id 'org.springframework.boot' version '2.7.4'
 	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
 	id 'java'
+	id 'application'
+	id 'org.openjfx.javafxplugin' version '0.0.10'
 }
 
 group = 'gym'
@@ -31,3 +33,5 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+mainClassName = 'gym.gymServer.Main'
