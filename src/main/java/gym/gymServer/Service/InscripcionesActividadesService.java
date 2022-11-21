@@ -57,16 +57,17 @@ public class InscripcionesActividadesService {
     }
 
     @Transactional
+    @org.springframework.transaction.annotation.Transactional
     public InscripcionesActividades getInscripcionActividad(String mailEmpleado, String nombreActividad, String diaActividad, String horaActividad, String mailCentroActividad) {
         LocalDate date = LocalDate.parse(diaActividad);
         LocalTime time = LocalTime.parse(horaActividad);
         InscripcionesActividades inscripcionReturn = inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado, nombreActividad, date, time, mailCentroActividad);
-
+        System.out.println("");
+        System.out.println(inscripcionReturn);
         return inscripcionReturn;
 
     }
 
-    @Transactional
     public Integer getInscripcionesActividad(String nombreActividad, String diaActividad, String horaActividad,String mailCentroActividad) {
         LocalDate date = LocalDate.parse(diaActividad);
         LocalTime time = LocalTime.parse(horaActividad);
