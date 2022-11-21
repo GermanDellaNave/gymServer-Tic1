@@ -23,33 +23,28 @@ public class UserLoginService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public String getRole(String mail) throws Exception {
+    public String getRole(String mail)  {
         UserLogin user = userLoginRepository.findOneByMail(mail);
         if (user == null) {
             return null;
-            //throw new Exception("Usuario no encontrado");
         }
-        System.out.println("Encontrado");
         return user.getTipoDeUsuario();
     }
 
-    public void registrarLogin(UserLogin nuevoUserLogin) throws Exception {
+    public void registrarLogin(UserLogin nuevoUserLogin) {
         if (userLoginRepository.findOneByMail(nuevoUserLogin.getMail()) != null) {
 
-            //throw new Exception("Entidad ya existe");
         } else {
             String encodedPassword = this.passwordEncoder.encode(nuevoUserLogin.getContrasena());
             nuevoUserLogin.setContrasena(encodedPassword);
             userLoginRepository.save(nuevoUserLogin);
-            System.out.println("Login creado");
         }
     }
 
-    public String entrar(UserLogin usuarioAIngresar) throws Exception {
+    public String entrar(UserLogin usuarioAIngresar)  {
         UserLogin usuarioTmpl = userLoginRepository.findOneByMail(usuarioAIngresar.getMail());
         if (usuarioTmpl == null) {
             return null;
-            //throw new Exception("Entidad no existe");
         }
         return usuarioTmpl.getTipoDeUsuario();
     }
@@ -59,7 +54,6 @@ public class UserLoginService {
         if (userLogin == null) {
             return null;
         }
-        System.out.println("Confirmando contraseña");
         return this.passwordEncoder.matches(password, userLogin.getContrasena());
     }
 }

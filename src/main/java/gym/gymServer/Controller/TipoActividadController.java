@@ -1,6 +1,5 @@
 package gym.gymServer.Controller;
 
-import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.TipoActividad;
 import gym.gymServer.Service.TipoActividadService;
 import org.springframework.beans.factory.annotation.Autowired;

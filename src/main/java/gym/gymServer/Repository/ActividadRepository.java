@@ -2,8 +2,6 @@ package gym.gymServer.Repository;
 
 import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.ActividadesID;
-import gym.gymServer.Classes.CentrosDeportivos;
-import gym.gymServer.Classes.Empleado;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,7 +10,6 @@ import org.springframework.data.repository.query.Param;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 @Transactional

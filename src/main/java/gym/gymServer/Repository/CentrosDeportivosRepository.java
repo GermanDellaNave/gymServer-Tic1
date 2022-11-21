@@ -1,8 +1,6 @@
 package gym.gymServer.Repository;
 
-import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.CentrosDeportivos;
-import gym.gymServer.Classes.Empresas;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

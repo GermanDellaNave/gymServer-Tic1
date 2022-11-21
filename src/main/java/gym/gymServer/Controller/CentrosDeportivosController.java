@@ -1,13 +1,6 @@
 package gym.gymServer.Controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.CentrosDeportivos;
-import gym.gymServer.Classes.Empresas;
-import gym.gymServer.Classes.Exceptions.CentroDeportivoNoExiste;
-import gym.gymServer.Classes.Exceptions.CentroDeportivoYaExiste;
-import gym.gymServer.Classes.Exceptions.EmpresaNoExiste;
-import gym.gymServer.Classes.Exceptions.EmpresaYaExiste;
 import gym.gymServer.Service.CentrosDeportivosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +29,6 @@ public class CentrosDeportivosController {
 
     @GetMapping("/centrosMail/{mail}")
     public CentrosDeportivos getCentroDeportivo(@PathVariable("mail") String mail) {
-        System.out.println("Buscando centro");
         return centrosDeportivosService.getCentroDeportivo(mail);
     }
 
@@ -57,13 +49,11 @@ public class CentrosDeportivosController {
 
     @PostMapping
     public void registrarCentroDeportivo(@RequestBody CentrosDeportivos nuevoCentroDeportivo) {
-        System.out.println("Centro Deportivo controller post");
         centrosDeportivosService.registrarCentroDeportivo(nuevoCentroDeportivo);
     }
 
     @DeleteMapping (path = {"/delete/{centroDeportivoId}"})
     public void borrarCentroDeportivo(@PathVariable("centroDeportivoId") String mailId) {
-        System.out.println("Borrando centro deportivo controller");
         centrosDeportivosService.borrarCentroDeportivo(mailId);
     }
 

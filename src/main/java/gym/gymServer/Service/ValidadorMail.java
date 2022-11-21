@@ -12,7 +12,6 @@ public class ValidadorMail implements Predicate<String> {
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
-    /*"^[A-Za-z0-9+_.-]+@(.+)$", ^[A-Za-z0-9+_.-]*/
 
     @Override
     public boolean test(String s){

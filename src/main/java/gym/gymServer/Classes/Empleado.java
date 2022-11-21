@@ -4,11 +4,10 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Empleados"/* uniqueConstraints = {@UniqueConstraint(name = "uniqueConstraint", columnNames = "nombre")}*/)
+@Table(name = "Empleados")
 @Component
 public class Empleado {
 
@@ -38,10 +37,7 @@ public class Empleado {
     @Lob
     private String imagen;
 
-    /*
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "empleado")
-    private List<InscripcionesActividades> actividadesInscripto;
-*/
+
     public Empleado() {
     }
 
@@ -137,14 +133,6 @@ public class Empleado {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-
-    /*public List<InscripcionesActividades> getActividadesInscripto() {
-        return actividadesInscripto;
-    }
-
-    public void setActividadesInscripto(List<InscripcionesActividades> actividadesInscripto) {
-        this.actividadesInscripto = actividadesInscripto;
-    }*/
 
     @Override
     public boolean equals(Object o) {

@@ -29,11 +29,6 @@ public class Empresas implements Serializable {
 
     private Date dateCreada;
 
-    /*@OneToMany(targetEntity = Empleado.class, cascade = CascadeType.ALL, mappedBy = "empresa")
-    private List<Empleado> listaEmpleados;*/
-
-    /*@OneToMany(fetch = FetchType.EAGER, mappedBy = "empresa")
-    private List<Pago> pagos;*/
 
     public Empresas(UserLogin userLoginReference, String nombre, Integer bono, String mail, String imagen, Date dateCreada) {
         this.userLoginReference = userLoginReference;

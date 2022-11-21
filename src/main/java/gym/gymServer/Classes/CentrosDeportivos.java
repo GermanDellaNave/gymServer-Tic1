@@ -1,12 +1,10 @@
 package gym.gymServer.Classes;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -28,15 +26,6 @@ public class CentrosDeportivos implements Serializable {
 
     private Date dateCreado;
 
-    //Eliminar
-    /*@OneToMany()
-    @JoinColumn(name = "listaActividad", referencedColumnName = "mailCentro")
-    private List<Actividad> listaActividades;
-
-    //Eliminar
-    @OneToMany()
-    @JoinColumn(name = "pagos", referencedColumnName = "mailCentro")
-    private List<Pago> pagos;*/
 
     public CentrosDeportivos() {
     }
@@ -65,14 +54,6 @@ public class CentrosDeportivos implements Serializable {
         this.mail = mail;
     }
 
-    /*public List<Actividad> getListaActividades() {
-        return listaActividades;
-    }
-
-    public void setListaActividades(List<Actividad> listaActividades) {
-        this.listaActividades = listaActividades;
-    }*/
-
     public UserLogin getUserLogin() {
         return userLogin;
     }
@@ -96,14 +77,6 @@ public class CentrosDeportivos implements Serializable {
     public void setDateCreado(Date dateCreado) {
         this.dateCreado = dateCreado;
     }
-
-    /*public List<Pago> getPagos() {
-        return pagos;
-    }
-
-    public void setPagos(List<Pago> pagos) {
-        this.pagos = pagos;
-    }*/
 
     @Override
     public boolean equals(Object o) {

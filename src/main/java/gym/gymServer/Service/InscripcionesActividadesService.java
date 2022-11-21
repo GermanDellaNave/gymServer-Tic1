@@ -1,17 +1,18 @@
 package gym.gymServer.Service;
 
-import gym.gymServer.Classes.*;
+import gym.gymServer.Classes.Actividad;
+import gym.gymServer.Classes.InscripcionesActividades;
 import gym.gymServer.Repository.ActividadRepository;
 import gym.gymServer.Repository.InscripcionesActividadesRepository;
-import org.hibernate.type.TrueFalseType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class InscripcionesActividadesService {
@@ -23,36 +24,21 @@ public class InscripcionesActividadesService {
     ActividadRepository actividadRepository;
 
     public void registrarInscripcion(InscripcionesActividades inscripcionesActividades) {
-        //if (inscripcionesActividadesRepository.findById(new InscripcionesActividadesID(inscripcionesActividades.getEmpleadoMailInscripcion(), inscripcionesActividades.getActividadNombreInscripcion(), inscripcionesActividades.getActividadDiaInscripcion(), inscripcionesActividades.getActividadHoraInscripcion(), inscripcionesActividades.getActividadCentroInscripcion())) == null) {
         inscripcionesActividadesRepository.save(inscripcionesActividades);
-        //} else {
-        System.out.println("usuario ya inscripto a esa actividad");
-        //}
     }
 
     public List<Actividad> getActividadesReservadasUsuario(String mailUsuario) {
         List<InscripcionesActividades> lista = inscripcionesActividadesRepository.getActividadesInscriptoEmpleado(mailUsuario);
-        //System.out.println(lista);
         List<Actividad> listaActividades = new ArrayList<>();
         for (InscripcionesActividades actividadReturn : lista) {
             Actividad actividadAgregar = actividadRepository.findOneByKey(actividadReturn.getActividadCentroInscripcion(), actividadReturn.getActividadDiaInscripcion(), actividadReturn.getActividadHoraInscripcion(), actividadReturn.getActividadNombreInscripcion());
             listaActividades.add(actividadAgregar);
-            //System.out.println(actividadReturn.toString());
         }
-        //System.out.println(listaActividades);
-        System.out.println("Salgo del for");
         return listaActividades;
     }
 
     public void borrarInscripcionActividad(String mailEmpleado, String nombreActividad, LocalDate diaActividad, LocalTime horaActividad, String mailCentroActividad) {
-        System.out.println("Entro service borrar Inscripcion");
-        System.out.println(horaActividad);
-        System.out.println(mailCentroActividad);
-        System.out.println(mailEmpleado);
-        System.out.println(diaActividad);
-        System.out.println(nombreActividad);
         InscripcionesActividades inscripcionesActividades = inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado, nombreActividad, diaActividad, horaActividad, mailCentroActividad);
-        //System.out.println(inscripcionesActividades);
         if (inscripcionesActividades != null) {
             inscripcionesActividadesRepository.borrarInscripcionActividad(mailEmpleado, nombreActividad, diaActividad, horaActividad.withSecond(0), mailCentroActividad);
         }
@@ -75,8 +61,6 @@ public class InscripcionesActividadesService {
         LocalDate date = LocalDate.parse(diaActividad);
         LocalTime time = LocalTime.parse(horaActividad);
         InscripcionesActividades inscripcionReturn = inscripcionesActividadesRepository.getInscripcionActividad(mailEmpleado, nombreActividad, date, time, mailCentroActividad);
-        System.out.println(inscripcionReturn);
-        System.out.println("busqueda inscripcion hecha");
 
         return inscripcionReturn;
 
@@ -87,8 +71,6 @@ public class InscripcionesActividadesService {
         LocalDate date = LocalDate.parse(diaActividad);
         LocalTime time = LocalTime.parse(horaActividad);
         Integer inscripcionesReturn = inscripcionesActividadesRepository.getInscripcionesActividad(nombreActividad, date, time, mailCentroActividad);
-        System.out.println(inscripcionesReturn);
-        System.out.println("Busqueda inscripcion hecha");
         return inscripcionesReturn;
     }
 

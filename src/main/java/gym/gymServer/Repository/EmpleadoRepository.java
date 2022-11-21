@@ -1,16 +1,11 @@
 package gym.gymServer.Repository;
 
-import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.Empleado;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.security.core.parameters.P;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @Transactional

@@ -1,8 +1,6 @@
 package gym.gymServer.Controller;
 
-import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.Pago;
-import gym.gymServer.Service.InscripcionesActividadesService;
 import gym.gymServer.Service.PagoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

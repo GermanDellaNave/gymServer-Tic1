@@ -1,12 +1,9 @@
 package gym.gymServer.Service;
 
-import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.TipoActividad;
 import gym.gymServer.Repository.TipoActividadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 

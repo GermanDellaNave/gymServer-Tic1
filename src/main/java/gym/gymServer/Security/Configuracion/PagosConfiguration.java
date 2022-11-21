@@ -1,7 +1,6 @@
 package gym.gymServer.Security.Configuracion;
 
 import gym.gymServer.Classes.*;
-import gym.gymServer.Repository.EmpleadoRepository;
 import gym.gymServer.Repository.InscripcionesActividadesRepository;
 import gym.gymServer.Repository.PagoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +13,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.temporal.Temporal;
-import java.util.Date;
 import java.util.List;
-
-import static java.time.temporal.ChronoUnit.DAYS;
 
 @Configuration
 @EnableScheduling
@@ -31,7 +26,7 @@ public class PagosConfiguration {
     @Autowired
     InscripcionesActividadesRepository inscripcionesActividadesRepository;
 
-    //@Scheduled(cron = "0 0 */12 * * *")
+    @Scheduled(cron = "0 0 */12 * * *")
     @Bean
     @Transactional
     public void cobrar(){
@@ -44,7 +39,7 @@ public class PagosConfiguration {
             CentrosDeportivos centro_deportivo_i=inscripcionActividad_i.getActividad().getCentroDeportivo();
             Actividad actividad_i=inscripcionActividad_i.getActividad();
 
-            //long daysBetween=DAYS.between((Temporal) new Date(),actividad_i.getDia());
+
 
             Period period=Period.between(LocalDate.now(),actividad_i.getDia());
 

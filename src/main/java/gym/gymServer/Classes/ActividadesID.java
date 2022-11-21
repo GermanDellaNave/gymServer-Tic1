@@ -1,10 +1,9 @@
 package gym.gymServer.Classes;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 import java.util.Objects;
 
 public class ActividadesID implements Serializable {

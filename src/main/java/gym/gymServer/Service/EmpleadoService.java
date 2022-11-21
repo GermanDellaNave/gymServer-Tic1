@@ -1,15 +1,11 @@
 package gym.gymServer.Service;
 
-import gym.gymServer.Classes.Actividad;
-import gym.gymServer.Classes.CentrosDeportivos;
 import gym.gymServer.Classes.Empleado;
 import gym.gymServer.Repository.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -25,12 +21,10 @@ public class EmpleadoService {
         this.empleadoRepository = empleadoRepository;
     }
 
-    public void registrarEmpleado(Empleado empleado) throws Exception {
+    public void registrarEmpleado(Empleado empleado)  {
         if(empleadoRepository.findOneByMail(empleado.getMail())!=null){
-            throw new Exception();
         }
         empleadoRepository.save(empleado);
-        System.out.println("Registro empleado");
     }
 
 
@@ -40,7 +34,6 @@ public class EmpleadoService {
 
     public Empleado getEmpleado(String mail){
         Empleado empleado = empleadoRepository.findOneByMail(mail);
-        System.out.println(empleado);
         return empleado;
     }
 
@@ -65,13 +58,8 @@ public class EmpleadoService {
     }
 
     public void deleteEmpleado(String mail) {
-        System.out.println("Entro delete empleado");
-        System.out.println(mail);
-        //if (empleadoRepository.findOneByMail(mail) != null) {
-            System.out.println("Entro if");
-            empleadoRepository.deleteById(mail);
-            //empleadoRepository.borrarEmpleadoEmail(mail);
-        //}
+        empleadoRepository.deleteById(mail);
+
     }
 
     public Integer getCantidadEmpleados(){

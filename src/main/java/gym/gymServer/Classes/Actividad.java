@@ -1,18 +1,13 @@
 package gym.gymServer.Classes;
 
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "Actividades")
@@ -33,21 +28,13 @@ public class Actividad implements Serializable {
     @Column(name = "centroMailActividad")
     private @Id String centroMail;
 
-    @ManyToOne(cascade = CascadeType.PERSIST/*, targetEntity = TipoActividad.class, fetch = FetchType.LAZY*/)
-    @JoinColumn(name = "tipo", referencedColumnName = "tipo"/*, updatable = false*/)
+    @ManyToOne(cascade = CascadeType.PERSIST )
+    @JoinColumn(name = "tipo", referencedColumnName = "tipo")
     private TipoActividad tipo;
 
     private String descripcion;
 
     private int duracion;
-
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "empleado_actividad", joinColumns = {@JoinColumn(name = "nombre_actividad", referencedColumnName = "nombreActividad"),
-//            @JoinColumn(name = "hora_actividad", referencedColumnName = "horaActividad"),
-//            @JoinColumn(name = "dia_actividad", referencedColumnName = "diaActividad"),
-//            @JoinColumn(name = "centro_actividad", referencedColumnName = "centro_mail")},
-//            inverseJoinColumns = @JoinColumn(name = "mail_empleado", referencedColumnName = "mailEmpleado"))
-//    private List<Empleado> listaEmpleadoInscriptos;
 
     private int costo;
 
@@ -64,8 +51,6 @@ public class Actividad implements Serializable {
     @JoinColumn(name = "centro", referencedColumnName = "mailCentro")
     private CentrosDeportivos centroDeportivo;
 
-    /*@OneToMany(fetch = FetchType.EAGER, mappedBy = "actividad")
-    private List<InscripcionesActividades> actividadesInscripto = new ArrayList<>();*/
 
     public Actividad() {
         super();
@@ -129,14 +114,6 @@ public class Actividad implements Serializable {
         this.descripcion = descripcion;
     }
 
-    /*public List<Empleado> getListaEmpleadoInscriptos() {
-        return listaEmpleadoInscriptos;
-    }
-
-    public void setListaEmpleadoInscriptos(List<Empleado> listaEmpleadoInscriptos) {
-        this.listaEmpleadoInscriptos = listaEmpleadoInscriptos;
-    }*/
-
     public String getCentroMail() {
         return centroMail;
     }
@@ -152,14 +129,6 @@ public class Actividad implements Serializable {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-
-    /*public List<InscripcionesActividades> getActividadesInscripto() {
-        return actividadesInscripto;
-    }
-
-    public void setActividadesInscripto(List<InscripcionesActividades> actividadesInscripto) {
-        this.actividadesInscripto = actividadesInscripto;
-    }*/
 
     public int getCosto() {
         return costo;

@@ -1,19 +1,11 @@
 package gym.gymServer.Service;
 
-import gym.gymServer.Classes.Actividad;
 import gym.gymServer.Classes.CentrosDeportivos;
-import gym.gymServer.Classes.Empresas;
-import gym.gymServer.Classes.Exceptions.CentroDeportivoNoExiste;
-import gym.gymServer.Classes.Exceptions.CentroDeportivoYaExiste;
-import gym.gymServer.Classes.Exceptions.EmpresaNoExiste;
-import gym.gymServer.Classes.Exceptions.EmpresaYaExiste;
 import gym.gymServer.Repository.CentrosDeportivosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -38,20 +30,16 @@ public class CentrosDeportivosService {
     }
 
     public CentrosDeportivos getCentroDeportivo(String mail) {
-        System.out.println("Buscando");
         CentrosDeportivos centro = centrosDeportivosRepository.findOneByMail(mail);
         if (centro == null) {
-            System.out.println("ERROR: centro no existe");
             return null;
         } else {
-            System.out.println("Busqueda Centro exitosa");
             return centro;
         }
 
     }
 
     public String getCentroDeportivoNombre(String mail) {
-        System.out.println("Buscando");
         CentrosDeportivos centro = centrosDeportivosRepository.findOneByMail(mail);
         if (centro == null) {
             return null;
@@ -61,15 +49,7 @@ public class CentrosDeportivosService {
     }
 
     public void registrarCentroDeportivo (CentrosDeportivos nuevoCentro)  {
-       /*
-        if (centrosDeportivosRepository.findOneByMail(nuevoCentro.getMail()) != null) {
-            System.out.println("ERROR");
-            throw new CentroDeportivoYaExiste();
-        }
-
-        */
         centrosDeportivosRepository.save(nuevoCentro);
-        System.out.println("Registro Centro");
     }
 
     public int getCantidadCentros(){
@@ -84,13 +64,6 @@ public class CentrosDeportivosService {
 
     public void actualizarDatosCD(String mailId, String nombre, String contrasena) {
         CentrosDeportivos centroActualizable = centrosDeportivosRepository.findOneByMail(mailId);
-
-        /*
-        if (centroActualizable == null) {
-            throw new CentroDeportivoNoExiste();
-        }
-
-         */
 
         centroActualizable.setNombre(nombre);
 

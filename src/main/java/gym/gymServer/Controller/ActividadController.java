@@ -1,16 +1,10 @@
 package gym.gymServer.Controller;
 
 import gym.gymServer.Classes.Actividad;
-import gym.gymServer.Classes.Empresas;
-import gym.gymServer.Classes.Exceptions.EmpresaNoExiste;
-import gym.gymServer.Classes.Exceptions.EmpresaYaExiste;
 import gym.gymServer.Service.ActividadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -25,7 +19,6 @@ public class ActividadController {
 
     @PostMapping
     public void registrarActividad(@RequestBody Actividad actividad) {
-        System.out.println(actividad);
         actividadService.registrarActividad(actividad);
     }
 
@@ -36,7 +29,6 @@ public class ActividadController {
 
     @GetMapping("/actividad/{nombre}/{hora}/{dia}/{centroMail}")
     public Actividad getActividad(@PathVariable("nombre") String nombre, @PathVariable("hora") String hora, @PathVariable("dia") String dia, @PathVariable("centroMail") String centroMail) {
-        System.out.println("Buscando empresa");
         return actividadService.getActividad(nombre, hora, dia, centroMail);
     }
 
@@ -57,7 +49,6 @@ public class ActividadController {
 
     @GetMapping(path = "/actividadTipo/{tipo}")
     public List<Actividad> getActividadesTipo(@PathVariable("tipo") String tipo) {
-        System.out.println(tipo);
         return actividadService.getActividadesTipo(tipo);
     }
 

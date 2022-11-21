@@ -1,6 +1,5 @@
 package gym.gymServer.Repository;
 
-import gym.gymServer.Classes.Empleado;
 import gym.gymServer.Classes.Pago;
 import gym.gymServer.Classes.PagoId;
 import org.springframework.data.jpa.repository.Query;
